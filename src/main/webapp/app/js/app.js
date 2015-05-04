@@ -10,6 +10,11 @@ angular.module("venteEnLigne", ["ngRoute"])
 		controller: "ConnectController",
 		controllerAs: "connectControl"
 	})
+	.when("/details", {
+		templateUrl: "app/views/details.html",
+		controller: "DetailController",
+		controllerAs: "detailCtrl"
+	})
 	.otherwise({
 		redirectTo: "/"
 	});

@@ -19,6 +19,14 @@ public class User {
 	private String telephone;
 	private String fax;
 
+	public User() {
+	}
+
+	public User(String login, String password) {
+		this.login = login;
+		this.password = password;
+	}
+
 	public int getId() {
 		return id;
 	}

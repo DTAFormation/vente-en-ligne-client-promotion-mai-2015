@@ -18,6 +18,11 @@ angular.module("venteEnLigne", ["ngRoute", "ui.bootstrap"])
 		controller: "DetailController",
 		controllerAs: "detailCtrl"
 	})
+	.when("/validatePayment", {
+		templateUrl: "app/views/validatePayment.html",
+		controller: "ValidatePaymentController",
+		controllerAs: "validatePaymentControl"
+	})
 	.otherwise({
 		redirectTo: "/"
 	});

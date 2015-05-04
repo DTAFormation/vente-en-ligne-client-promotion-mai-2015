@@ -1,19 +1,34 @@
 package com.dta.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.dta.domain.Article;
+import com.dta.service.ArticleService;
 
 
 @RestController
-@RequestMapping("/article")
+@RequestMapping
 public class ArticleController {
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String getArticle() {
-		return "{ \"id\" : \"1\" ,"
-				+ " \"name\" : \"ball\" ,"
-				+ " \"price\" : \"15\" }";
-	}
+	@Autowired
+	private ArticleService articleService;
 	
+	@RequestMapping(value="/article/{id}")
+	@ResponseBody
+	public Article getArticle(@PathVariable("id") int id) {
+
+		return articleService.find(id);
+	}
+
+	@RequestMapping(value="/articles")
+	@ResponseBody
+	public List<Article> getArticle() {
+		return articleService.findAll();
+	}
 }

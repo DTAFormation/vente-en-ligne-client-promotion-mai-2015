@@ -1,16 +1,15 @@
 angular.module("venteEnLigne")
 
-.controller("DetailController",function($http){
+.controller("DetailController",function(ItemService,$routeParams){
 	var ctrl = this;
 	var article=article;
-	  function	getArticle(){
-			 $http.get("/VentesEnLigneClient/rest/article")
-            .then(function(result){
-            	ctrl.article = result.data ;
-            },
-            function(error){
-                   alert("probleme connexion")
-            }) 
-		}
-	  getArticle();
+	 ItemService.getItem($routeParams.id)
+	 .then(function(result){
+	 	
+	 	ctrl.article =result;
+	},
+        function(error){
+               alert("probleme recup")
+       })	 
+	
 });

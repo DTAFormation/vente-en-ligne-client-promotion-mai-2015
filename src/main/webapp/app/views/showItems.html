@@ -1,0 +1,18 @@
+	<table>
+	<thead>
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Price</th>
+              <th></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="item in listItemCtrl.items" ng-click="listItemCtrl.showItem(item)">
+			<td>{{item.article_id}}</td>
+			<td>{{item.name}}</td>
+			<td>{{item.price}}</td>
+		</tr>
+
+	</tbody>
+	</table>

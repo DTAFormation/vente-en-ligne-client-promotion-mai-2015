@@ -1,7 +1,7 @@
 angular.module("venteEnLigne")
 .controller("ValidatePaymentController", function () {
 	var validatePaymentControl = this;
-	validatePaymentControl.basket = JSON.parse(window.localStorage.basket);
+	validatePaymentControl.basket = JSON.parse(window.localStorage.basket || "[]");
 	/*
 	[
 		 {

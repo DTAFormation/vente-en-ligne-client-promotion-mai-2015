@@ -12,4 +12,5 @@ public class UserController {
 	public String getUser() {
 		return "Hello World!!!";
 	}
+	
 }

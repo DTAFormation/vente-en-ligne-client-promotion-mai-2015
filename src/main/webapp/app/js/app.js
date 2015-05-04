@@ -1,4 +1,4 @@
-angular.module("venteEnLigne", ["ngRoute"])
+angular.module("venteEnLigne", ["ngRoute", "ui.bootstrap"])
 
 .config(function($routeProvider) {
 	$routeProvider

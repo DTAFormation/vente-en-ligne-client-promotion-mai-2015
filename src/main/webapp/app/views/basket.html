@@ -1,12 +1,18 @@
-<section>
-<table class="basket">
-	<tr ng-repeat="item in basketControl.basket">
-        <td>
-        {{ item.id }} 
-		</td>
-		<td>
-		{{ item.name }}
-		</td>
-	</tr>
-</table>
-</section>
+<div class="row">
+    <div class="col-md-6">
+        <table class="table table-hover">
+            <tr>
+                <th width="50">&nbsp</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+            <tr ng-repeat="item in basketControl.basket">
+                <td width="50"><img height="42" width="42" src="{{item.image}}"></td>
+                <td><strong>{{item.name}}</strong></td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.quantity*item.unitPrice | currency}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

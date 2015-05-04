@@ -3,3 +3,4 @@
 .settings/
 /target/
 .springBeans
+.tern-project

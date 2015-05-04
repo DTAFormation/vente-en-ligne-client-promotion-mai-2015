@@ -6,12 +6,10 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.dta.domain.User;
 
-@Component("userDao")
-@Transactional
+@Component
 public class UserDaoImpl implements UserDao {
 
 	private HibernateTemplate hibernateTemplate;

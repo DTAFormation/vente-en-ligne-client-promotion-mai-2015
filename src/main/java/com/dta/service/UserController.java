@@ -1,14 +1,16 @@
-package com.dta.business;
+package com.dta.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dta.dao.UserDao;
 import com.dta.domain.User;
 
-@Controller("userController")
+@Service
+@Transactional
 public class UserController {
 
 	@Autowired

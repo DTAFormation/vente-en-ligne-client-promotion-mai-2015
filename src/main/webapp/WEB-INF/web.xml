@@ -10,7 +10,7 @@
 		- Applied by ContextLoaderListener. -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:spring/application-config.xml</param-value>
+		<param-value>classpath:spring/app-context.xml</param-value>
 	</context-param>
 
 	<listener>

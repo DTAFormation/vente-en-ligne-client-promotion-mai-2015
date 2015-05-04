@@ -3,7 +3,7 @@ angular.module("venteEnLigne").controller("ConnectController", function(ConnectS
 
 	this.connect = function() {
 		if(this.connectForm.$valid) {
-			console.log(ConnectService.connect(this.logins));
+			ConnectService.connect(this.logins);
 		}
 	}
 

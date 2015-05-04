@@ -1,31 +1,16 @@
 package com.dta.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+public class Logins {
 
-@Entity
-public class User {
-
-	@Id
-	private int id;
-	
 	private String username;
 	private String password;
-
-	public User() {
+	
+	public Logins() {
 	}
 
-	public User(String username, String password) {
+	public Logins(String username, String password) {
 		this.username = username;
 		this.password = password;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getUsername() {

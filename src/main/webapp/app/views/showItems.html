@@ -1,17 +1,14 @@
 	<table>
 	<thead>
-	<tr>
-		<th>ID</th>
+	<tr>	
 		<th>Name</th>
-		<th>Price</th>
-              <th></th>
+		<th>Price</th>   
 	</tr>
 	</thead>
 	<tbody>
-	<tr ng-repeat="item in listItemCtrl.items" ng-click="listItemCtrl.showItem(item)">
-			<td>{{item.article_id}}</td>
-			<td>{{item.name}}</td>
-			<td>{{item.price}}</td>
+	<tr ng-repeat="item in listItemCtrl.items">
+			<td><a href="" ng-click="listItemCtrl.showItem(item)">{{item.name}}</a></td>
+			<td><a href="" ng-click="listItemCtrl.showItem(item)">{{item.price}}</a></td>
 		</tr>
 
 	</tbody>

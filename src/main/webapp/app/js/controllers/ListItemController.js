@@ -11,22 +11,18 @@ angular.module("venteEnLigne")
 	}
 	fetchItems();
 
-	this.showItem = function(item) {
+	ctrl.showItem = function(item) {
 		ItemService.showItem(item)
 	}
 
 	ctrl.add = function (item) {
-		
-		
+		console.log(item)
 		itemSave={//utilisation de itemSave pour supprimer le champ $$hashKey de item
 			article_id: item.article_id, 
 			name: item.name, 
 			price: item.price
 		}
-		
 		ItemService.addItem(itemSave)
-		
-		
 	};
 
 })

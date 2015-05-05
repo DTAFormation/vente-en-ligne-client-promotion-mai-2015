@@ -7,18 +7,7 @@ angular.module("venteEnLigne").controller("BasketController", function (ItemServ
 	};
 
 	this.addItem = function (value) {
-		var basket = JSON.parse(webStorage.getItem('basket'));
-		if (basket == null) {
-			basket=[];
-		}
-		basket = basket.filter(function(v) {
-			return v.id!=value.id
-		});
-		basket.push(value);
-		
-		webStorage.setItem("basket", JSON.stringify(basket));
-		console.log(webStorage.getItem("basket"));
-
+		ItemService.addItem(value)
 	};
 	
 	this.basket = this.getBasket();

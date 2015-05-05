@@ -1,58 +1,45 @@
-angular.module("venteEnLigne") 
-.controller("SignInController", function (ProfilService, $scope, $modal) {
-	var signin = this;
-	signin.title = "Controller title"
+angular.module("venteEnLigne").controller("SignInController", function (ProfilService, $scope, $modal) {
+	
+	$scope.profil = {};
 
 	// Fonction de sauvegarde du formulaire
-	signin.saveProfil = function (profil) {
-		// En cas d'erreur on affiche
-		if(signin.profilForm.$invalid) {
-			console.log("Informations non valides")
-			return
-		}
-
-		// Copie de l'objet et envoie sur le serveur
-		ProfilService.saveProfil(profil)
+	$scope.saveProfil = function () {
+		ProfilService.saveProfil($scope.profil) 
 		.then(
-			function(result) {
-				console.log("Sauvegarde OK")
-				
-				$scope.open()	
-				
-				// Clean de l'objet
-				angular.extend(profil, {
-					firstName: '',
-					lastName: '',
-					email: '',
-					login: '',
-					password: '',
-					telephone: '',
+			function(result) {			
+				$scope.sauvegardeOk();					
+				angular.extend($scope.profil, {
+					firstName: '', lastName: '',
+					email: '', login: '',
+					password: '', telephone: '',
 					fax: ''
-				})						
+				});						
 			},
 			function(error) {
-				console.log("Sauvegarde non OK")
+				$scope.sauvegardeNoOk();
 			}
-		)
-
-
-	}
+		);
+	};
 	
-	// Fonction modal
-	$scope.open = function (size) {
-		
+	$scope.sauvegardeOk = function () {		
 		var modalInstance = $modal.open({
 			animation: true,
-			templateUrl: 'app/views/modalInscriptionContent.html',
-			controller: 'ModalInstanceCtrl',
-			size: size
+			templateUrl: 'app/views/modalInscriptionSuccessContent.html',
+			controller: 'ModalInstanceCtrl'			
 		});
-	}	
+	};	
 	
-})
+	$scope.sauvegardeNoOk = function () {		
+		var modalInstance = $modal.open({
+			animation: true,
+			templateUrl: 'app/views/modalInscriptionFailureContent.html',
+			controller: 'ModalInstanceCtrl'			
+		});
+	};	
+	
+});
 
-angular
-.module('venteEnLigne').controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
+angular.module('venteEnLigne').controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
 	$scope.ok = function () {
 		$modalInstance.close();
 	};

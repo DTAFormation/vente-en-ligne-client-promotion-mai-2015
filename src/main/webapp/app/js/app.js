@@ -1,12 +1,12 @@
 angular.module("venteEnLigne", ["ngRoute", "ui.bootstrap"])
-
 .config(function($routeProvider) {
 	$routeProvider
 	.when("/", {
 		templateUrl: "app/views/welcome.html"
 	})
 	.when("/signin", {
-		templateUrl: "app/views/signin.html"
+		templateUrl: "app/views/signin.html",
+		controller: "SignInController",
 	})
 	.when("/connect", {
 		templateUrl: "app/views/connect.html",

@@ -17,12 +17,7 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
-	
-	@RequestMapping(method = RequestMethod.GET)
-	public User getUser() {
-		return userService.find(1);
-	}
-	
+		
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK) // Envoie 200 par défaut mais bien une exception si elle est soulevée
 	public void createUser(@RequestBody User user) {		

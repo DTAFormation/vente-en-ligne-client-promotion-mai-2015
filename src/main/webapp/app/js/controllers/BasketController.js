@@ -1,19 +1,22 @@
-angular.module("venteEnLigne").controller("BasketController", function (ItemService) {
-
-	var webStorage = window['localStorage'];
-
-	this.getBasket = function () {
-		return JSON.parse(webStorage.getItem('basket'));
+angular.module("venteEnLigne").controller("BasketController", ['$scope', function ($scope, ItemService) {
+	
+	$scope.getBasket = function () {
+		return JSON.parse(localStorage.getItem('basket'));
 	};
+	
+	$scope.deleteBasket = function () {
+		localStorage.basket="";
+		//ItemService.deleteBasket();
+	}
 
-	this.addItem = function (value) {
+	$scope.addItem = function (value) {
 		ItemService.addItem(value)
 	};
 	
-	this.basket = this.getBasket();
+	$scope.basket = $scope.getBasket();
 	
-	this.showItem = function(item){
+	$scope.showItem = function(item){
 		ItemService.showItem(item)
 	};
 
-});
+}]);

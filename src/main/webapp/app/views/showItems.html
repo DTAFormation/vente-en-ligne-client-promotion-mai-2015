@@ -3,11 +3,6 @@
 		<h2>Liste articles</h2>
 	</div>
 </div>
-
-
-
-
-
 <div class="row">
 	<div class="col-md-6">
 		<table class="table table-hover">
@@ -24,8 +19,6 @@
 				<td width="50"><img height="42" width="42" src="{{item.image}}"></td>
 				<td><strong>{{item.name}}</strong></td>
 				<td>{{item.price | currency}}</td>
-				
-				
 				<td>
 					<div class="input-group">
 						<span class="input-group-btn">
@@ -43,11 +36,8 @@
 						</span>
 					</div>
 				</td>
-
-				<td><button class="btn btn-primary" ng-click="listItemCtrl.add(item)">Add to basket</button></td>
-
+				<td><button class="btn btn-primary" ng-click="listItemCtrl.add(item); $event.stopPropagation();">Add to basket</button></td>
 			</tr>
-
 		</table>
 	</div>
 </div>

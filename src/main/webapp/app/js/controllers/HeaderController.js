@@ -3,7 +3,7 @@ angular.module("venteEnLigne")
 	var headerControl = this;
 	
 	//TODO: get the state of the connexion, login and all information from the cookies / localStorage or whereever it is stored
-	headerControl.connected = true;
+	headerControl.connected = false;
 	headerControl.login = "toto";
 
 	$scope.logout = function() {

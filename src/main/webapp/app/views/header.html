@@ -5,7 +5,7 @@
 				<li ng-class="{active: headerControl.currentPage() == '/articles'}"><a href="#/articles">Home</a></li>
 				<li ng-class="{active: headerControl.currentPage() == '/validatePayment'}"><a href="#/validatePayment">Purchase</a></li>
 				<li ng-class="{active: headerControl.currentPage() == '/basket'}"><a href="#/basket">Basket</a></li>
-				<li ng-class="{active: headerControl.currentPage() == '/disconnet'}" ng-show="headerControl.connected"><a href="#/disconnect">{{headerControl.login}}</a></li>
+				<li ng-class="{active: headerControl.currentPage() == '/disconnet'}" ng-show="headerControl.connected"><a ng-click="logout()">{{headerControl.login}}</a></li>
 				<li ng-class="{active: headerControl.currentPage() == '/connect'}" ng-hide="headerControl.connected"><a href="#/connect">Sign in/Sign up</a></li>
 			</ul>
 		</div>

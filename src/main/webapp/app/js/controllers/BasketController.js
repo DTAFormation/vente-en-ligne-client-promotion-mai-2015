@@ -20,9 +20,6 @@ angular.module("venteEnLigne").controller("BasketController", function () {
 		console.log(webStorage.getItem("basket"));
 
 	};
-
-	this.addItem({"id":1, "name":"truc"});
-	this.addItem({"id":2, "name":"bidule"});
 	
 	this.basket = this.getBasket();
 	

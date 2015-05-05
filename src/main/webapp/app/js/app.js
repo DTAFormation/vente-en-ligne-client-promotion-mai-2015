@@ -28,6 +28,7 @@ angular.module("venteEnLigne", ["ngRoute", "ui.bootstrap"])
 		templateUrl: "app/views/showItems.html",
 		controller: "ListItemController",
 		controllerAs: "listItemCtrl"
+	})
 	.when("/basket", {
 		templateUrl: "app/views/basket.html",
 		controller: "BasketController",
@@ -35,5 +36,5 @@ angular.module("venteEnLigne", ["ngRoute", "ui.bootstrap"])
 	})
 	.otherwise({
 		redirectTo: "/"
-	});
+	})
 });

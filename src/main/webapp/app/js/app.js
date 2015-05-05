@@ -4,9 +4,9 @@ angular.module("venteEnLigne", ["ngRoute", "ui.bootstrap"])
 	.when("/", {
 		templateUrl: "app/views/welcome.html"
 	})
-	.when("/signin", {
-		templateUrl: "app/views/signin.html",
-		controller: "SignInController",
+	.when("/signup", {
+		templateUrl: "app/views/signUp.html",
+		controller: "SignUpController",
 	})
 	.when("/connect", {
 		templateUrl: "app/views/connect.html",

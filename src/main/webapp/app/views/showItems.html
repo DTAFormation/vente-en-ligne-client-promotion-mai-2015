@@ -1,15 +1,16 @@
-	<table>
+
+<table>
 	<thead>
-	<tr>	
-		<th>Name</th>
-		<th>Price</th>   
-	</tr>
+		<tr>
+			<th>Name</th>
+			<th>Price</th>
+		</tr>
 	</thead>
 	<tbody>
-	<tr ng-repeat="item in listItemCtrl.items">
+		<tr ng-repeat="item in listItemCtrl.items">
 			<td><a href="" ng-click="listItemCtrl.showItem(item)">{{item.name}}</a></td>
 			<td><a href="" ng-click="listItemCtrl.showItem(item)">{{item.price}}</a></td>
 		</tr>
 
 	</tbody>
-	</table>
+</table>

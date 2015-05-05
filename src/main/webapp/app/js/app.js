@@ -10,8 +10,7 @@ angular.module("venteEnLigne", ["ngRoute", "ui.bootstrap"])
 	})
 	.when("/connect", {
 		templateUrl: "app/views/connect.html",
-		controller: "ConnectController",
-		controllerAs: "connectControl"
+		controller: "ConnectController"
 	})
 	.when("/article/:id", {
 		templateUrl: "app/views/details.html",

@@ -1,8 +1,8 @@
-angular.module("venteEnLigne").controller("ConnectController", function(ConnectService) {
-	this.logins = {};
+angular.module("venteEnLigne").controller("ConnectController", function(ConnectService, $scope) {
+	$scope.logins = {};
 
-	this.connect = function() {
-		if(this.connectForm.$valid) {
+	$scope.connect = function() {
+		if($scope.connectForm.$valid) {
 			ConnectService.connect(this.logins);
 		}
 	}

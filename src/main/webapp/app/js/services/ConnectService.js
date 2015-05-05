@@ -11,7 +11,6 @@ angular.module("venteEnLigne").factory("ConnectService", function($http) {
 				headers: {"Content-Type": "application/x-www-form-urlencoded"}
 			}).then(
 				function(response) {
-					console.log(response.data);
 					return response;
 				},
 				function(error) {

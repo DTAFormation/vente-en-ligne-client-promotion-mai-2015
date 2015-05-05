@@ -21,7 +21,8 @@ angular.module("venteEnLigne")
 		itemSave={//utilisation de itemSave pour supprimer le champ $$hashKey de item
 			article_id: item.article_id, 
 			name: item.name, 
-			price: item.price
+			price: item.price,
+			quantity: 1
 		}
 		
 		ItemService.addItem(itemSave)

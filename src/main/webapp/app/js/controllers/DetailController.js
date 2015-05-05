@@ -1,6 +1,6 @@
 angular.module("venteEnLigne")
 
-.controller("DetailController",function(ItemService,$routeParams){
+.controller("DetailController",function(ItemService, BasketService, $routeParams){
 
 	var ctrl = this;
 	var article;
@@ -25,6 +25,6 @@ angular.module("venteEnLigne")
 			alert("probleme recup")
 		})
 		
-		ItemService.addItem(ctrl.article)
+		BasketService.addItem(ctrl.article)
 	};
 });

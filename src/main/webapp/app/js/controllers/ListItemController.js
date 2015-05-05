@@ -1,6 +1,6 @@
 angular.module("venteEnLigne")
 
-.controller("ListItemController",function($http,ItemService,$location){
+.controller("ListItemController",function($http, ItemService, $location, BasketService){
 	var ctrl = this;
 	var items;
 	function fetchItems(){
@@ -24,7 +24,7 @@ angular.module("venteEnLigne")
 			price: item.price
 		}
 		
-		ItemService.addItem(itemSave)
+		BasketService.addItem(itemSave)
 		
 		
 	};

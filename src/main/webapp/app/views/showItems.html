@@ -19,7 +19,7 @@
 				<td width="50"><img height="42" width="42" src="{{item.image}}"></td>
 				<td><strong>{{item.name}}</strong></td>
 				<td>{{item.price | currency}}</td>
-				<td><button class="btn btn-primary" ng-click="listItemCtrl.add(item)">Add to basket</button></td>
+				<td><button class="btn btn-primary" ng-click="listItemCtrl.add(item); $event.stopPropagation();">Add to basket</button></td>
 			</tr>
 
 		</table>

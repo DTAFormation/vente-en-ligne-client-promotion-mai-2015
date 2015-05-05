@@ -3,7 +3,13 @@ angular.module("venteEnLigne").factory("ConnectService", function($http) {
 		version: "1.0",
 
 		connect: function(logins) {
-			return $http.post("/VentesEnLigneClient/rest/connect", logins).then(
+			var credentials = "j_username=" + logins.usr + "&j_password=" + logins.pwd;
+			$http({
+				method: "POST",
+				url: "/VentesEnLigneClient/j_spring_security_check",
+				data: credentials,
+				headers: {"Content-Type": "application/x-www-form-urlencoded"}
+			}).then(
 				function(response) {
 					console.log(response.data);
 					return response;
@@ -12,8 +18,7 @@ angular.module("venteEnLigne").factory("ConnectService", function($http) {
 					console.log(error);
 					return error;
 				}
-			)
+			);
 		}
-
 	};
 });

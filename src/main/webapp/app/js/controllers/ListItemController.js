@@ -1,6 +1,6 @@
 angular.module("venteEnLigne")
 
-.controller("ListItemController",function($http,ItemService,$location){
+.controller("ListItemController",function($http, ItemService, $location, BasketService){
 	var ctrl = this;
 	var items;
 	function fetchItems(){
@@ -16,13 +16,13 @@ angular.module("venteEnLigne")
 	}
 
 	ctrl.add = function (item) {
-		console.log(item)
 		itemSave={//utilisation de itemSave pour supprimer le champ $$hashKey de item
 			article_id: item.article_id, 
 			name: item.name, 
-			price: item.price
+			price: item.price,
+			quantity: 1
 		}
-		ItemService.addItem(itemSave)
+		BasketService.addItem(itemSave)
 	};
 
 })

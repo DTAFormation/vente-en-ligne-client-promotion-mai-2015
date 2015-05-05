@@ -1,16 +1,15 @@
-angular.module("venteEnLigne").controller("BasketController", ['$scope', function ($scope, ItemService) {
+angular.module("venteEnLigne").controller("BasketController", ['$scope', function ($scope, BasketService, ItemService) {
 	
 	$scope.getBasket = function () {
 		return JSON.parse(localStorage.getItem('basket'));
 	};
 	
 	$scope.deleteBasket = function () {
-		localStorage.basket="";
-		//ItemService.deleteBasket();
+		BasketService.deleteBasket();
 	}
 
 	$scope.addItem = function (value) {
-		ItemService.addItem(value)
+		BasketService.addItemToBasket(value)
 	};
 	
 	$scope.basket = $scope.getBasket();

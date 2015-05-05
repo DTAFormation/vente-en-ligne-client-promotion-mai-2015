@@ -13,6 +13,6 @@ fetchItems();
 
 this.showItem = function(item) {
 	
-	$location.path("/article/"+item.article_id)
+	ItemService.showItem(item)
 }
 })

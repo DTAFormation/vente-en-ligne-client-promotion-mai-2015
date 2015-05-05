@@ -1,6 +1,6 @@
 angular.module("venteEnLigne")
 
-.factory("ItemService",function($http){
+.factory("ItemService",function($http,$location){
 
 	return {
 		version : "1.0",
@@ -25,6 +25,11 @@ angular.module("venteEnLigne")
                      alert("probleme connexion")
               }) 
   
+		},
+		
+		showItem : function(item) {
+			
+			$location.path("/article/"+item.article_id)
 		}
 
 	}

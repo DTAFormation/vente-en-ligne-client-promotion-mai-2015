@@ -4,7 +4,7 @@ angular.module("venteEnLigne")
 	var headerControl = this;
 	
 	//TODO: get the state of the connexion, login and all information from the cookies / localStorage or whereever it is stored
-	headerControl.connected = true;
+	headerControl.connected = false;
 	headerControl.login = "toto";
 
 	headerControl.currentPage = function() {
@@ -25,16 +25,9 @@ angular.module("venteEnLigne")
 		var modalInstance = $modal.open({
 			animation: true,
 			templateUrl: 'app/views/modalLogoutContent.html',
-			controller: 'ModalLogoutCtrl',
+			controller: 'ModalController',
 			size: size
 		});
 	};
 	
-});
-
-angular
-.module('venteEnLigne').controller('ModalLogoutCtrl', function ($scope, $modalInstance) {
-	$scope.ok = function () {
-		$modalInstance.close();
-	};
 });

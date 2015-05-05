@@ -7,12 +7,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.dta.domain.Article;
 
 @Service
-@Transactional
 public class ArticleServiceImpl implements ArticleService{
 
 	private EntityManager em;

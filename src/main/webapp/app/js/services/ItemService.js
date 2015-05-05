@@ -3,11 +3,9 @@ angular.module("venteEnLigne")
 .factory("ItemService",function($http,$location){
 
 	return {
-		version : "1.0",
 		getItems : function (){
 			return   $http.get("/VentesEnLigneClient/rest/articles")
               .then(function(result){
-               //console.log("http ",result)
               	return result.data ;
               },
               function(error){
@@ -46,8 +44,7 @@ angular.module("venteEnLigne")
 			basket.push(item);
 			
 			webStorage.setItem("basket", JSON.stringify(basket));
-			console.log("CONTENU DU PANIER COURANT APRES AJOUT : ");
-			console.log(webStorage.getItem("basket"));
+	
 			
 		}
 		

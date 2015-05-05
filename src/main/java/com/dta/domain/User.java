@@ -3,8 +3,13 @@ package com.dta.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(
+	name="findUserByEmail",
+	query = "SELECT OBJECT(u) FROM User u WHERE u.email = :uemail"
+)
 public class User {
 
 	@Id

@@ -16,7 +16,13 @@ angular.module("venteEnLigne").controller("SignUpController", function (ProfilSe
 				});						
 			},
 			function(error) {
-				$scope.sauvegardeNoOk();
+				switch(error.status) {
+				case 400 :
+					$scope.sauvegardeExists();
+					break;
+				default :
+					$scope.sauvegardeNoOk();
+				}
 			}
 		);
 	};
@@ -36,6 +42,14 @@ angular.module("venteEnLigne").controller("SignUpController", function (ProfilSe
 			controller: 'ModalInstanceCtrl'			
 		});
 	};	
+	
+	$scope.sauvegardeExists = function () {		
+		var modalInstance = $modal.open({
+			animation: true,
+			templateUrl: 'app/views/modalInscriptionExistsContent.html',
+			controller: 'ModalInstanceCtrl'			
+		});
+	};		
 	
 });
 

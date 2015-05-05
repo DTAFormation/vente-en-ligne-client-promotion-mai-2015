@@ -20,16 +20,9 @@ angular.module("venteEnLigne")
 		var modalInstance = $modal.open({
 			animation: true,
 			templateUrl: 'app/views/modalLogoutContent.html',
-			controller: 'ModalLogoutCtrl',
+			controller: 'ModalController',
 			size: size
 		});
 	};
 	
-});
-
-angular
-.module('venteEnLigne').controller('ModalLogoutCtrl', function ($scope, $modalInstance) {
-	$scope.ok = function () {
-		$modalInstance.close();
-	};
 });

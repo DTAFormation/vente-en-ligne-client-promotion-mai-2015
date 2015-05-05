@@ -25,7 +25,7 @@ angular.module("venteEnLigne").controller("SignInController", function (ProfilSe
 		var modalInstance = $modal.open({
 			animation: true,
 			templateUrl: 'app/views/modalInscriptionSuccessContent.html',
-			controller: 'ModalInstanceCtrl'			
+			controller: 'ModalController'			
 		});
 	};	
 	
@@ -33,14 +33,8 @@ angular.module("venteEnLigne").controller("SignInController", function (ProfilSe
 		var modalInstance = $modal.open({
 			animation: true,
 			templateUrl: 'app/views/modalInscriptionFailureContent.html',
-			controller: 'ModalInstanceCtrl'			
+			controller: 'ModalController'			
 		});
 	};	
 	
 });
-
-angular.module('venteEnLigne').controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
-	$scope.ok = function () {
-		$modalInstance.close();
-	};
-}); 

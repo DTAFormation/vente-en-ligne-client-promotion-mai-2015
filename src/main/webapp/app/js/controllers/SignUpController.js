@@ -1,4 +1,4 @@
-angular.module("venteEnLigne").controller("SignInController", function (ProfilService, $scope, $modal) {
+angular.module("venteEnLigne").controller("SignUpController", function (ProfilService, $scope, $modal) {
 	
 	$scope.profil = {};
 

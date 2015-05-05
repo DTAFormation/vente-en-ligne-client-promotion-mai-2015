@@ -26,9 +26,12 @@
 
 		<!-- Test -->
 		<junit.version>4.11</junit.version>
-		
+
 		<!-- Jackson -->
 		<jackson.databind-version>2.2.3</jackson.databind-version>
+
+		<!-- Spring Security -->
+		<spring-security.version>3.2.7.RELEASE</spring-security.version>
 
 	</properties>
 
@@ -133,6 +136,19 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson.databind-version}</version>
 		</dependency>
+
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>javax.servlet</groupId>

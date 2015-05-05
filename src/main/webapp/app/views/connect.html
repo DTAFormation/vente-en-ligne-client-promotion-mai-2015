@@ -1,15 +1,15 @@
 <div>
-	<form id="connectForm" name="connectControl.connectForm" ng-submit="connectControl.connect()" novalidate>
+	<form id="connectForm" name="connectForm" ng-submit="connect()" novalidate>
 		<table>
 			<tr>
 				<td><label for="connect_username">Username: </label></td>
-				<td><input id="connect_username" name="username" type="text" ng-model="connectControl.logins.username" required></td>
+				<td><input id="connect_username" name="username" type="text" ng-model="logins.usr" required></td>
 			</tr>
 			<tr>
 				<td><label for="connect_pwd">Password: </label></td>
-				<td><input id="connect_pwd" name="password" type="password" ng-model="connectControl.logins.password" required></td>
+				<td><input id="connect_pwd" name="password" type="password" ng-model="logins.pwd" required></td>
 			</tr>
 		</table>
-		<button type="submit" ng-disabled="connectControl.connectForm.$invalid">Connect</button>
+		<input type="submit" ng-disabled="connectForm.$invalid" value="Connect">
 	</form>
 </div>

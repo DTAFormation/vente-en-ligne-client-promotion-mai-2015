@@ -1,49 +1,28 @@
 package com.dta.service;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dta.domain.User;
 
 @Service
-@Transactional
 public class UserServiceImpl implements UserService {
-
-	private EntityManager em;
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
 	@PersistenceContext(unitName = "entityManagerFactory")
-	public void setEm(EntityManager em) {
-		this.em = em;
-	}
-
+	private EntityManager em;
+	
 	@Override
+	@Transactional
 	public void create(User user) {
+		LOGGER.info("Create user {}",user);
 		em.persist(user);
-	}
-
-	@Override
-	public User find(int id) {
-		return em.find(User.class, id);
-	}
-
-	@Override
-	public List<User> findAll() {
-		return null;
-	}
-
-	@Override
-	public User update(User user) {
-		return user;
-	}
-
-	@Override
-	public void delete(int id) {
-
 	}
 
 }

@@ -18,6 +18,9 @@ public class User {
 	private String email;
 	private String telephone;
 	private String fax;
+	
+	private String role;
+	private boolean active;
 
 	public User() {
 	}
@@ -89,6 +92,22 @@ public class User {
 
 	public void setFax(String fax) {
 		this.fax = fax;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 	
 }

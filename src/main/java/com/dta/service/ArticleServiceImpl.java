@@ -24,6 +24,7 @@ public class ArticleServiceImpl implements ArticleService{
 		return em.find(Article.class, id);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Article> findAll() {
 		Query q = em.createQuery("From Article");
 		return (List<Article>) q.getResultList();

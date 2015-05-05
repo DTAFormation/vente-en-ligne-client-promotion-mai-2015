@@ -18,7 +18,6 @@ angular.module("venteEnLigne")
 		getItem : function (id){
 			return   $http.get("/VentesEnLigneClient/rest/article/"+id)
               .then(function(result){
-               console.log("http ",result)
               	return result.data ;
               },
               function(error){
@@ -30,7 +29,27 @@ angular.module("venteEnLigne")
 		showItem : function(item) {
 			
 			$location.path("/article/"+item.article_id)
-		}
+		},
 
+		addItem : function(item) {
+			
+			var webStorage = window['localStorage'];
+			var basket = JSON.parse(webStorage.getItem('basket'));
+						
+			if (basket == null) {
+				basket=[];
+			}
+			basket = basket.filter(function(v) {
+				return v.article_id!=item.article_id
+			});
+			
+			basket.push(item);
+			
+			webStorage.setItem("basket", JSON.stringify(basket));
+			console.log("CONTENU DU PANIER COURANT APRES AJOUT : ");
+			console.log(webStorage.getItem("basket"));
+			
+		}
+		
 	}
 }) 

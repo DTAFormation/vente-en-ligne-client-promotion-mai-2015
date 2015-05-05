@@ -2,7 +2,7 @@ angular.module("venteEnLigne")
 
 .controller("DetailController",function(ItemService,$routeParams){
 	var ctrl = this;
-	var article=article;
+	var article;
 	 ItemService.getItem($routeParams.id)
 	 .then(function(result){
 	 	

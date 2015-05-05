@@ -1,47 +1,53 @@
-<section ng-controller="SignInController as SignInControl"> 
+<section>
 
-	{{ SignInControl.title }} <br/>
-
-	<form name="SignInControl.profilForm" ng-submit="SignInControl.saveProfil(profil)" novalidate>
+	<form name="profilForm" ng-submit="saveProfil()">
 
 		<div class="container">
 			<div class="input-group">
-			  <span class="input-group-addon" id="basic-addon1">First name</span>
-			  <input type="text" class="form-control" placeholder="Enter first name" aria-describedby="basic-addon1" ng-model="profil.firstName" required>
+				<span class="input-group-addon">First name</span> <input type="text"
+					class="form-control" placeholder="Enter first name"
+					ng-model="profil.firstName" required>
 			</div>
-			<br/>
+			<br />
 			<div class="input-group">
-			  <span class="input-group-addon" id="basic-addon1">Last name</span>
-			  <input type="text" class="form-control" placeholder="Enter last name" aria-describedby="basic-addon1" ng-model="profil.lastName" required>
+				<span class="input-group-addon">Last name</span> <input type="text"
+					class="form-control" placeholder="Enter last name"
+					ng-model="profil.lastName" required>
 			</div>
-			<br/>  
+			<br />
 			<div class="input-group">
-			  <span class="input-group-addon" id="basic-addon1">Email</span>
-			  <input type="email" class="form-control" placeholder="Enter email" aria-describedby="basic-addon1" ng-model="profil.email" required>
+				<span class="input-group-addon">Email</span> <input type="email"
+					class="form-control" placeholder="Enter email"
+					ng-model="profil.email" required>
 			</div>
-			<br/>  
+			<br />
 			<div class="input-group">
-			  <span class="input-group-addon" id="basic-addon1">Login</span>
-			  <input type="text" class="form-control" placeholder="Enter login" aria-describedby="basic-addon1" ng-model="profil.login" required>
+				<span class="input-group-addon">Login</span> <input type="text"
+					class="form-control" placeholder="Enter login"
+					ng-model="profil.login" required>
 			</div>
-			<br/>
+			<br />
 			<div class="input-group">
-			  <span class="input-group-addon" id="basic-addon1">Password</span>
-			  <input type="password" class="form-control" placeholder="Enter password" aria-describedby="basic-addon1" ng-model="profil.password" required>
+				<span class="input-group-addon">Password</span> <input
+					type="password" class="form-control" placeholder="Enter password"
+					ng-model="profil.password" required>
 			</div>
-			<br/>
+			<br />
 			<div class="input-group">
-			  <span class="input-group-addon" id="basic-addon1">Telephone number</span>
-			  <input type="text" class="form-control" placeholder="Enter telephone number" aria-describedby="basic-addon1" ng-model="profil.telephone" required>
+				<span class="input-group-addon">Telephone number</span> <input
+					type="text" class="form-control"
+					placeholder="Enter telephone number" ng-model="profil.telephone">
 			</div>
-			<br/>
-			<div class="input-group">		  	  
-			  <span class="input-group-addon" id="basic-addon1">Fax number</span>
-			  <input type="text" class="form-control" placeholder="Enter fax number" aria-describedby="basic-addon1" ng-model="profil.fax" required>
+			<br />
+			<div class="input-group">
+				<span class="input-group-addon">Fax number</span> <input type="text"
+					class="form-control" placeholder="Enter fax number"
+					ng-model="profil.fax">
 			</div>
-			<br/>
-			<div class="input-group">	
-			  <button type="save" class="btn btn-primary" disabled="disabled" ng-disabled="SignInControl.profilForm.$invalid">Save</button>	  
+			<br />
+			<div class="input-group">
+				<button type="submit" class="btn btn-primary" disabled="disabled"
+					ng-disabled="profilForm.$invalid">Save</button>
 			</div>
 		</div>
 

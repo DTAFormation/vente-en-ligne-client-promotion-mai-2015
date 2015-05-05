@@ -49,8 +49,8 @@
 		<secu:authentication-provider>
 			<secu:jdbc-user-service
 				data-source-ref="dataSource"
-				users-by-username-query="select username,password,active from user where username=?"
-				authorities-by-username-query="select username,role from user where username =?" />
+				users-by-username-query="select login,password,active from user where login=?"
+				authorities-by-username-query="select login,role from user where login=?" />
 		</secu:authentication-provider>
 	</secu:authentication-manager>
 

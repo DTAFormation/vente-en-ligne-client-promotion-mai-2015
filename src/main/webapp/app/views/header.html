@@ -5,7 +5,7 @@
 				<li><a href="#/articles">Home</a></li>
 				<li><a href="#/validatePayment">Purchase</a></li>
 				<li><a href="#/basket">Basket</a></li>
-				<li ng-show="headerControl.connected"><a href="#/disconnect">{{headerControl.login}}</a></li>
+				<li ng-show="headerControl.connected"><a ng-click="logout()">{{headerControl.login}}</a></li>
 				<li ng-hide="headerControl.connected"><a href="#/connect">Sign in/Sign up</a></li>
 			</ul>
 		</div>

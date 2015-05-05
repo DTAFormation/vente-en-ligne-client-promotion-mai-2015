@@ -6,9 +6,11 @@ table th, td {
 	text-align: center
 
 }
+
 thead {
 	background-color: rgb(233, 241, 253)
 }
+
 .clickable-row {
 	cursor: pointer;
 }

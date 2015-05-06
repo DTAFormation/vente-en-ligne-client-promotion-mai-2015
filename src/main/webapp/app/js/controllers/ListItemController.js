@@ -1,12 +1,13 @@
 angular.module("venteEnLigne")
-
-.controller("ListItemController",function($http, ItemService, $location, BasketService){
+.controller("ListItemController",function($http,ItemService,$location,BasketService){
 	var ctrl = this;
-	var items;
+	ctrl.items = [];
 	function fetchItems(){
 		ItemService.getItems()
 		.then (function(items){
-			ctrl.items = items;
+			for(var i=0; i<items.length; i++) {
+				ctrl.items.push({entity: items[i], quantity: 1});
+			}
 		})
 	}
 	fetchItems();
@@ -16,13 +17,15 @@ angular.module("venteEnLigne")
 	}
 
 	ctrl.add = function (item) {
-		itemSave={//utilisation de itemSave pour supprimer le champ $$hashKey de item
-			article_id: item.article_id, 
-			name: item.name, 
-			price: item.price,
-			quantity: 1
+		
+		itemSave={
+			article_id: item.entity.article_id, 
+			name: item.entity.name, 
+			price: item.entity.price,
+			quantity: item.quantity
 		}
-		BasketService.addItem(itemSave)
+		
+		BasketService.addItemToBasket(itemSave)
+		
 	};
-
 })

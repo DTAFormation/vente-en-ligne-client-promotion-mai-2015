@@ -15,10 +15,7 @@ angular.module("venteEnLigne").factory("BasketService", function($http, $locatio
 			});
 			
 			basket.push(item);
-			
 			webStorage.setItem("basket", JSON.stringify(basket));
-			console.log("CONTENU DU PANIER COURANT APRES AJOUT : ");
-			console.log(webStorage.getItem("basket"));
 			
 		},
 

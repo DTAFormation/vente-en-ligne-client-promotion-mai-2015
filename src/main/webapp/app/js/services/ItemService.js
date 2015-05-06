@@ -27,7 +27,7 @@ angular.module("venteEnLigne")
 		showItem : function(item) {
 			
 			$location.path("/article/"+item.article_id)
-		},
+		}
 		
 	}
 }) 

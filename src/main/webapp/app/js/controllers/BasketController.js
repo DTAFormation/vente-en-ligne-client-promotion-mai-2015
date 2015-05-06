@@ -1,7 +1,7 @@
 angular.module("venteEnLigne").controller("BasketController", ['$scope', function ($scope, BasketService, ItemService) {
 	
 	$scope.getBasket = function () {
-		return JSON.parse(localStorage.getItem('basket'));
+		return JSON.parse(window.localStorage.getItem('basket'));
 	};
 	
 	$scope.deleteBasket = function () {

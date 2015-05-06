@@ -2,11 +2,12 @@ angular.module("venteEnLigne", ["ngRoute", "ui.bootstrap"])
 .config(function($routeProvider) {
 	$routeProvider
 	.when("/", {
-		templateUrl: "app/views/welcome.html"
+		templateUrl: "app/views/showItems.html",
+		controller: "ListItemController"
 	})
 	.when("/signup", {
 		templateUrl: "app/views/signUp.html",
-		controller: "SignUpController",
+		controller: "SignUpController"
 	})
 	.when("/connect", {
 		templateUrl: "app/views/connect.html",
@@ -14,17 +15,12 @@ angular.module("venteEnLigne", ["ngRoute", "ui.bootstrap"])
 	})
 	.when("/article/:id", {
 		templateUrl: "app/views/details.html",
-		controller: "DetailController",
+		controller: "DetailController"
 	})
-
 	.when("/validatePayment", {
 		templateUrl: "app/views/validatePayment.html",
 		controller: "ValidatePaymentController",
 		controllerAs: "validatePaymentControl"
-	})
-	.when("/articles", {
-		templateUrl: "app/views/showItems.html",
-		controller: "ListItemController",
 	})
 	.when("/basket", {
 		templateUrl: "app/views/basket.html",

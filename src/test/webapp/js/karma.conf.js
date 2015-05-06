@@ -17,7 +17,7 @@ module.exports = function(config) {
     files: [
       'https://code.angularjs.org/1.3.15/angular.js',
       'https://code.angularjs.org/1.3.15/angular-route.js',
-      '../../../main/webapp/app/js/bootstrap-gh-pages/ui-bootstrap-0.13.0.min.js',
+      '../../../main/webapp/app/js/bootstrap/ui-bootstrap-0.13.0.min.js',
       'https://code.angularjs.org/1.3.15/angular-mocks.js',
       '../../../main/webapp/app/js/app.js',
       '../../../main/webapp/app/js/controllers/*.js',

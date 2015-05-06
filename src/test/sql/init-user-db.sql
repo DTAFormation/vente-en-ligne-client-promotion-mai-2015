@@ -1,0 +1,2 @@
+insert into User (id, email, fax, firstName, lastName, login, password, telephone, active, role) VALUES (1, 'admin@yahourt.com', '0365429432', 'ad', 'min', 'admin', 'admin', '0563795143', 1, 'admin');
+insert into User (id, email, fax, firstName, lastName, login, password, telephone, active, role) VALUES (2, 'guest@yahourt.com', '0365429434', 'gu', 'est', 'guest', 'guest', '0563795145', 1, 'guest');

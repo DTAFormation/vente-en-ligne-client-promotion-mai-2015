@@ -61,5 +61,9 @@ public class UserServiceImpl implements UserService {
 		List<User> users = queryUserByLogin.getResultList();
 		return !users.isEmpty();
 	}
+	
+	public void setEm(EntityManager em) {
+		this.em = em;
+	}
 
 }

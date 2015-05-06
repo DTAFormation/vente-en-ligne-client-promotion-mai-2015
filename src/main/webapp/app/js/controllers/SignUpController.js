@@ -7,7 +7,7 @@ angular.module("venteEnLigne").controller("SignUpController", function (ProfilSe
 		ProfilService.saveProfil($scope.profil) 
 		.then(
 			function(result) {			
-				$scope.sauvegardeOk();					
+				$scope.saveOk();					
 				angular.extend($scope.profil, {
 					firstName: '', lastName: '',
 					email: '', login: '',
@@ -18,16 +18,16 @@ angular.module("venteEnLigne").controller("SignUpController", function (ProfilSe
 			function(error) {
 				switch(error.status) {
 				case 400 :
-					$scope.sauvegardeExists();
+					$scope.saveExists();
 					break;
 				default :
-					$scope.sauvegardeNoOk();
+					$scope.saveNoOk();
 				}
 			}
 		);
 	};
 	
-	$scope.sauvegardeOk = function () {
+	$scope.saveOk = function () {
 		ModalService.openModal(
 			"Inscription validation",
 			"Congratulations, you have successfully subscribed !",
@@ -35,7 +35,7 @@ angular.module("venteEnLigne").controller("SignUpController", function (ProfilSe
 		);
 	};	
 	
-	$scope.sauvegardeNoOk = function () {
+	$scope.saveNoOk = function () {
 		ModalService.openModal(
 			"Inscription failed",
 			"The subscription has failed !",
@@ -43,10 +43,10 @@ angular.module("venteEnLigne").controller("SignUpController", function (ProfilSe
 		);
 	};	
 	
-	$scope.sauvegardeExists = function () {
+	$scope.saveExists = function () {
 		ModalService.openModal(
 			"Inscription failed",
-			"Mail address already used !",
+			"Mail address or login already used !",
 			"OK"
 		);
 	};		

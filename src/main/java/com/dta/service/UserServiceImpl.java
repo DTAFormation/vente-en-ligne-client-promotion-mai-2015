@@ -25,11 +25,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public void create(User user) throws UserAlreadyExistsException {
-		if(userExists(user.getEmail())) {
+		if(emailExists(user.getEmail()) || loginExists(user.getLogin())) {
 			throw new UserAlreadyExistsException();
 		}
 		else {
-			LOGGER.info("Create user {}",user);
+			LOGGER.info("Create user with email {}",user.getEmail());
 			em.persist(user);
 		}
 	}
@@ -41,10 +41,24 @@ public class UserServiceImpl implements UserService {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean userExists(String uemail) {
+	public boolean emailExists(String uemail) {
 		Query queryUserByMail = em.createNamedQuery("findUserByEmail");
 		queryUserByMail.setParameter("uemail", uemail);
 		List<User> users = queryUserByMail.getResultList();
+		return !users.isEmpty();
+	}
+
+	/**
+	 * Méthode pour vérifier si un utilisateur existe déjà en base
+	 * en vérifiant si le login est présent
+	 * retourne VRAI si l'utilisateur existe, FAUX sinon
+	 */	
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean loginExists(String ulogin) {
+		Query queryUserByLogin = em.createNamedQuery("findUserByLogin");
+		queryUserByLogin.setParameter("ulogin", ulogin);
+		List<User> users = queryUserByLogin.getResultList();
 		return !users.isEmpty();
 	}
 

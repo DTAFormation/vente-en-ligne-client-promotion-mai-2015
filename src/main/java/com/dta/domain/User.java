@@ -3,13 +3,20 @@ package com.dta.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(
-	name="findUserByEmail",
-	query = "SELECT OBJECT(u) FROM User u WHERE u.email = :uemail"
-)
+@NamedQueries({
+	@NamedQuery(
+		name="findUserByEmail",
+		query = "SELECT OBJECT(u) FROM User u WHERE u.email = :uemail"
+	),
+	@NamedQuery(
+		name="findUserByLogin",
+		query = "SELECT OBJECT(u) FROM User u WHERE u.login = :ulogin"
+	)
+})
 public class User {
 
 	@Id

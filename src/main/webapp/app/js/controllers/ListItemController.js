@@ -17,7 +17,7 @@ angular.module("venteEnLigne")
 
 	$scope.addItemToBasket = function (item) {
 		itemSave={//utilisation de itemSave pour supprimer le champ $$hashKey de item
-			article_id: item.article_id, 
+			articleId: item.articleId, 
 			name: item.name, 
 			price: item.price,
 			quantity: 1

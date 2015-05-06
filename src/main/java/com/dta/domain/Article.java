@@ -9,7 +9,7 @@ public class Article {
 	
 	@Id
 	@GeneratedValue
-	private int article_id;
+	private int articleId;
 	
 	private String name;
 	private String price;
@@ -22,11 +22,11 @@ public class Article {
 		this.name = name;
 		this.price = price;
 	}
-	public int getArticle_id() {
-		return article_id;
+	public int getArticleId() {
+		return articleId;
 	}
-	public void setArticle_id(int article_id) {
-		this.article_id = article_id;
+	public void setArticleId(int articleId) {
+		this.articleId = articleId;
 	}
 	public String getName() {
 		return name;

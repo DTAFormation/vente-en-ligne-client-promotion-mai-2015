@@ -1,4 +1,4 @@
-angular.module("venteEnLigne").factory("BasketService", function($http, $location) {
+angular.module("venteEnLigne").factory("BasketService", function() {
 	return {
 		version: "1.0",
 
@@ -10,8 +10,9 @@ angular.module("venteEnLigne").factory("BasketService", function($http, $locatio
 			if (basket == null) {
 				basket=[];
 			}
+			console.log(basket)
 			basket = basket.filter(function(v) {
-				return v.article_id!=item.article_id
+				return v.articleId!=item.articleId
 			});
 			
 			basket.push(item);

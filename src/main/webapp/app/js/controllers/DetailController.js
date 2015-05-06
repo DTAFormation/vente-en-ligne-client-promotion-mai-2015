@@ -18,7 +18,7 @@ angular.module("venteEnLigne")
 	$scope.addItemToBasket = function () {
 		
 		itemSave={
-			article_id: $scope.article.article_id, 
+			articleId: $scope.article.articleId, 
 			name: $scope.article.name, 
 			price: $scope.article.price,
 			quantity: 1

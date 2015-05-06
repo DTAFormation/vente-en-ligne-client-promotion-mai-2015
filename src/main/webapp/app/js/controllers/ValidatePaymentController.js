@@ -1,12 +1,11 @@
 angular.module("venteEnLigne")
 .controller("ValidatePaymentController", function ($scope, $location, ConnectService, BasketService) {
-	var validatePaymentControl = this;
 	
-	validatePaymentControl.basket = BasketService.getBasket();
+	$scope.basket = BasketService.getBasket();
 	
-	validatePaymentControl.totalPrice = function() {
+	$scope.totalPrice = function() {
 		var totalPrice = 0;
-		validatePaymentControl.basket.forEach(function(d) {
+		$scope.basket.forEach(function(d) {
 			totalPrice += d.quantity*d.entity.price;
 		})
 		return totalPrice;

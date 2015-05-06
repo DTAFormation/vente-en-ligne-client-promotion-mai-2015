@@ -15,7 +15,7 @@
 					<th>Price</th>
 				</tr>
 			</thead>
-			<tr ng-repeat="item in validatePaymentControl.basket">
+			<tr ng-repeat="item in basket">
 				<td width="50"><img height="42" width="42" src="{{item.image}}"></td>
 				<td><strong>{{item.entity.name}}</strong></td>
 				<td>{{item.quantity}}</td>
@@ -23,7 +23,7 @@
 			</tr>
 			<tr>
 				<td colspan="3"></td>
-				<td><strong>{{validatePaymentControl.totalPrice() |	currency}}</strong></td>
+				<td><strong>{{totalPrice() | currency}}</strong></td>
 			</tr>
 			<tr>
 				<td colspan="3"></td>

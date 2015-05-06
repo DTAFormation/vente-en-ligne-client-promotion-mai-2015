@@ -1,11 +1,7 @@
 angular.module("venteEnLigne")
 
-.controller("HeaderController", function($http, $scope, $modal, $location, BasketService, ConnectService) {
+.controller("HeaderController", function($http, $scope, $location, BasketService, ConnectService, ModalService) {
 	var headerControl = this;
-	
-	//TODO: get the state of the connexion, login and all information from the cookies / localStorage or whereever it is stored
-	headerControl.connected = true;
-	headerControl.login = "toto";
 
 	$scope.currentPage = function() {
 		return $location.path();
@@ -21,19 +17,13 @@ angular.module("venteEnLigne")
 			function() {
 				BasketService.deleteBasket();
 				ConnectService.setConnected(false);
-				$scope.open();
+				ModalService.openModal(
+					"Logged out",
+					"You have successfully logged out !",
+					"OK"
+				);
 			}
 		);
-	};
-
-	$scope.open = function (size) {
-		
-		var modalInstance = $modal.open({
-			animation: true,
-			templateUrl: 'app/views/modalLogoutContent.html',
-			controller: 'ModalController',
-			size: size
-		});
 	};
 
 	$scope.isConnected = function() {

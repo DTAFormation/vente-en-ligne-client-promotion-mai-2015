@@ -48,4 +48,7 @@ public class UserServiceImpl implements UserService {
 		return !users.isEmpty();
 	}
 
+	public void setEm(EntityManager em) {
+		this.em = em;
+	}
 }

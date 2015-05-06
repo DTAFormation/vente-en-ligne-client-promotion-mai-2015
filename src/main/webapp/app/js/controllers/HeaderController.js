@@ -1,14 +1,12 @@
 angular.module("venteEnLigne")
 
 .controller("HeaderController", function($http, $scope, $location, BasketService, ConnectService, ModalService) {
-	var headerControl = this;
 
 	$scope.currentPage = function() {
 		return $location.path();
 	};
 
-	$scope.goToPage = function(page) {
-		var path = "/" + page;
+	$scope.goToPage = function(path) {
 		$location.path(path);
 	};
 

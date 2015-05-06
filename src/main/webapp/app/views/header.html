@@ -2,11 +2,11 @@
 	<div class="container">
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li ng-class="{active: currentPage() == '/articles'}"><a ng-click="goToPage('articles')">Home</a></li>
-				<li ng-class="{active: currentPage() == '/validatePayment'}"><a ng-click="goToPage('validatePayment')">Purchase</a></li>
-				<li ng-class="{active: currentPage() == '/basket'}"><a ng-click="goToPage('basket')">Basket</a></li>
+				<li ng-class="{active: currentPage() == '/'}"><a ng-click="goToPage('/')">Home</a></li>
+				<li ng-class="{active: currentPage() == '/validatePayment'}"><a ng-click="goToPage('/validatePayment')">Purchase</a></li>
+				<li ng-class="{active: currentPage() == '/basket'}"><a ng-click="goToPage('/basket')">Basket</a></li>
 				<li ng-class="{active: currentPage() == '/disconnet'}" ng-show="isConnected()"><a ng-click="logout()">{{getConnectedUser()}}</a></li>
-				<li ng-class="{active: currentPage() == '/connect'}" ng-hide="isConnected()"><a ng-click="goToPage('connect')">Sign in/Sign up</a></li>
+				<li ng-class="{active: currentPage() == '/connect'}" ng-hide="isConnected()"><a ng-click="goToPage('/connect')">Sign in/Sign up</a></li>
 			</ul>
 		</div>
 	</div>

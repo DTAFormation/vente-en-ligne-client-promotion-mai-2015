@@ -26,6 +26,10 @@ angular.module("venteEnLigne", ["ngRoute", "ui.bootstrap"])
 		templateUrl: "app/views/basket.html",
 		controller: "BasketController",
 	})
+	.when("/payment", {
+		templateUrl: "app/views/payment.html",
+		controller: "PaymentController"
+	})
 	.otherwise({
 		redirectTo: "/"
 	})

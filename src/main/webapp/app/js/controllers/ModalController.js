@@ -5,7 +5,6 @@ angular.module("venteEnLigne")
 	$scope.footerText = texts.footerText;
 	
 	$scope.ok = function () {
-		console.log("coucou");
 		$modalInstance.close();
 	};
 });

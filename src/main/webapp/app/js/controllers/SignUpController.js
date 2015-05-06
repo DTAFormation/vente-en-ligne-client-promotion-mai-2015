@@ -47,7 +47,7 @@ angular.module("venteEnLigne").controller("SignUpController", function (ProfilSe
 		var modalInstance = $modal.open({
 			animation: true,
 			templateUrl: 'app/views/modalInscriptionExistsContent.html',
-			controller: 'ModalInstanceCtrl'			
+			controller: 'ModalController'			
 		});
 	};		
 	

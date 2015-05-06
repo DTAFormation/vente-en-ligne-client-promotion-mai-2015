@@ -18,7 +18,11 @@ angular.module("venteEnLigne")
 
 	$scope.addItemToBasket = function (item) {
 
-		BasketService.addItemToBasket(item)
+		itemSave={entity: item.entity, quantity: item.quantity 
+		
+		}
+
+		BasketService.addItemToBasket(itemSave)
 
 	};
 })

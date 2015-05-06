@@ -27,7 +27,7 @@ angular.module("venteEnLigne")
 		})
 
 		itemSave={
-			article_id: $scope.article.entity.article_id, 
+			articleId: $scope.article.entity.articleId, 
 			name: $scope.article.entity.name, 
 			price: $scope.article.entity.price,
 			quantity: $scope.article.quantity

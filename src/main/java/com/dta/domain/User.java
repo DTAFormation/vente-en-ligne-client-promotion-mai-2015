@@ -30,7 +30,6 @@ public class User {
 	private String email;
 	private String telephone;
 	private String fax;
-	
 	private String role;
 	private boolean active;
 

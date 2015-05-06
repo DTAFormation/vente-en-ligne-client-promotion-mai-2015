@@ -14,7 +14,7 @@ angular.module("venteEnLigne")
 		$http.get("/VentesEnLigneClient/j_spring_security_logout").then(
 			function() {
 				BasketService.deleteBasket();
-				ConnectService.setConnected(false);
+				ConnectService.setDisconnected();
 				ModalService.openModal(
 					"Logged out",
 					"You have successfully logged out !",

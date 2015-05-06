@@ -1,28 +1,28 @@
 angular.module("venteEnLigne")
 
-.controller("ListItemController",function($http, ItemService, $location, BasketService){
+.controller("ListItemController",function($http, ItemService, $location, $scope,BasketService){
 	var ctrl = this;
-	var items;
+	$scope.items;
 	function fetchItems(){
 		ItemService.getItems()
 		.then (function(items){
-			ctrl.items = items;
+			$scope.items = items;
 		})
 	}
 	fetchItems();
 
-	ctrl.showItem = function(item) {
+	$scope.showItem = function(item) {
 		ItemService.showItem(item)
 	}
 
-	ctrl.add = function (item) {
+	$scope.addItemToBasket = function (item) {
 		itemSave={//utilisation de itemSave pour supprimer le champ $$hashKey de item
 			article_id: item.article_id, 
 			name: item.name, 
 			price: item.price,
 			quantity: 1
 		}
-		BasketService.addItem(itemSave)
+		BasketService.addItemToBasket(itemSave)
 	};
 
 })

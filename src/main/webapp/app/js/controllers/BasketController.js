@@ -1,4 +1,4 @@
-angular.module("venteEnLigne").controller("BasketController", ['$scope', function ($scope, BasketService, ItemService) {
+angular.module("venteEnLigne").controller("BasketController", function ($scope, BasketService, ItemService) {
 	
 	$scope.getBasket = function () {
 		return JSON.parse(localStorage.getItem('basket'));
@@ -8,7 +8,7 @@ angular.module("venteEnLigne").controller("BasketController", ['$scope', functio
 		BasketService.deleteBasket();
 	}
 
-	$scope.addItem = function (value) {
+	$scope.addItemToBasket = function (value) {
 		BasketService.addItemToBasket(value)
 	};
 	
@@ -18,4 +18,4 @@ angular.module("venteEnLigne").controller("BasketController", ['$scope', functio
 		ItemService.showItem(item)
 	};
 
-}]);
+});

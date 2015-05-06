@@ -15,7 +15,6 @@ angular.module("venteEnLigne", ["ngRoute", "ui.bootstrap"])
 	.when("/article/:id", {
 		templateUrl: "app/views/details.html",
 		controller: "DetailController",
-		controllerAs: "detailCtrl"
 	})
 
 	.when("/validatePayment", {
@@ -26,7 +25,6 @@ angular.module("venteEnLigne", ["ngRoute", "ui.bootstrap"])
 	.when("/articles", {
 		templateUrl: "app/views/showItems.html",
 		controller: "ListItemController",
-		controllerAs: "listItemCtrl"
 	})
 	.when("/basket", {
 		templateUrl: "app/views/basket.html",

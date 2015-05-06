@@ -14,11 +14,10 @@
 					<th></th>
 				</tr>
 			</thead>
-			<tr class="clickable-row" ng-repeat="item in listItemCtrl.items"
-				ng-click="listItemCtrl.showItem(item)">
-				<td width="50"><img height="42" width="42" src="{{item.image}}"></td>
-				<td><strong>{{item.name}}</strong></td>
-				<td>{{item.price | currency}}</td>
+			<tr class="clickable-row" ng-repeat="item in items"	>
+				<td width="50"><img height="42" width="42" ></td>
+				<td ng-click="showItem(item)"><strong>{{item.name}}</strong></td>
+				<td ng-click="showItem(item)">{{item.price | currency}}</td>
 				<td>
 					<div class="input-group">
 						<span class="input-group-btn">
@@ -36,7 +35,7 @@
 						</span>
 					</div>
 				</td>
-				<td><button class="btn btn-primary" ng-click="listItemCtrl.add(item); $event.stopPropagation();">Add to basket</button></td>
+				<td><button class="btn btn-primary" ng-click="addItemtoBasket(item); $event.stopPropagation();">Add to basket</button></td>
 			</tr>
 		</table>
 	</div>

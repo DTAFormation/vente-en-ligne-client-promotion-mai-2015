@@ -1,5 +1,5 @@
 angular.module("venteEnLigne")
-.controller("ValidatePaymentController", function () {
+.controller("ValidatePaymentController", function ($scope, $location, ConnectService) {
 	var validatePaymentControl = this;
 	
 	validatePaymentControl.basket = JSON.parse(window.localStorage.basket || "[]");
@@ -10,5 +10,12 @@ angular.module("venteEnLigne")
 			totalPrice += d.quantity*d.price;
 		})
 		return totalPrice;
+	}
+	
+	$scope.validate = function() {
+		if(!ConnectService.isConnected())
+			$location.path("/connect");
+		else
+			$location.path("/payment");
 	}
 });

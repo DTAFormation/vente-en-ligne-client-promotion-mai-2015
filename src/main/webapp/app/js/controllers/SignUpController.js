@@ -1,4 +1,4 @@
-angular.module("venteEnLigne").controller("SignUpController", function (ProfilService, $scope, $modal) {
+angular.module("venteEnLigne").controller("SignUpController", function (ProfilService, $scope, ModalService) {
 	
 	$scope.profil = {};
 
@@ -27,28 +27,28 @@ angular.module("venteEnLigne").controller("SignUpController", function (ProfilSe
 		);
 	};
 	
-	$scope.sauvegardeOk = function () {		
-		var modalInstance = $modal.open({
-			animation: true,
-			templateUrl: 'app/views/modalInscriptionSuccessContent.html',
-			controller: 'ModalController'			
-		});
+	$scope.sauvegardeOk = function () {
+		ModalService.openModal(
+			"Inscription validation",
+			"Congratulations, you have successfully subscribed !",
+			"OK"
+		);
 	};	
 	
-	$scope.sauvegardeNoOk = function () {		
-		var modalInstance = $modal.open({
-			animation: true,
-			templateUrl: 'app/views/modalInscriptionFailureContent.html',
-			controller: 'ModalController'			
-		});
+	$scope.sauvegardeNoOk = function () {
+		ModalService.openModal(
+			"Inscription failed",
+			"The subscription has failed !",
+			"OK"
+		);
 	};	
 	
-	$scope.sauvegardeExists = function () {		
-		var modalInstance = $modal.open({
-			animation: true,
-			templateUrl: 'app/views/modalInscriptionExistsContent.html',
-			controller: 'ModalController'			
-		});
+	$scope.sauvegardeExists = function () {
+		ModalService.openModal(
+			"Inscription failed",
+			"Mail address already used !",
+			"OK"
+		);
 	};		
 	
 });

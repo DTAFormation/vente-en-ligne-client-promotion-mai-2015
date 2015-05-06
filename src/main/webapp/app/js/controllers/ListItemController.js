@@ -2,14 +2,11 @@ angular.module("venteEnLigne")
 
 .controller("ListItemController",function($http, ItemService, $location, $scope,BasketService){
 	var ctrl = this;
-	$scope.items;
-	function fetchItems(){
-		ItemService.getItems()
-		.then (function(items){
-			$scope.items = items;
-		})
-	}
-	fetchItems();
+
+	ItemService.getItems()
+	.then (function(items){
+		$scope.items = items;
+	})
 
 	$scope.showItem = function(item) {
 		ItemService.showItem(item)

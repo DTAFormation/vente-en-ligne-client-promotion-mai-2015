@@ -50,10 +50,6 @@ INSERT INTO  `test`.`utilisateur` (`utilisateur_id`, `active`, `email`, `fax`, `
 
 INSERT INTO `test`.`catalogue` (`catalogue_id`, `description`, `nom`) VALUES ('1', 'Articles de sport', 'Sport'), ('2', 'Logement', 'Logement');
 
-INSERT INTO `test`.`catalogue` (`catalogue_id`, `description`, `nom`) VALUES ('1', 'Articles de sport', 'Sport'), ('2', 'Logement', 'Logement');
-
 INSERT INTO `test`.`produit` (`produit_id`, `description`, `nom`, `catalogue_catalogue_id`) VALUES ('1', 'Articles de football', 'Football', '1');
-
-INSERT INTO `test`.`article` (`article_id`, `nom`, `prix`, `stock`, `produit_produit_id`) VALUES ('1', 'Chaussures de football', '80', '300', '1'), ('2', 'Ballon de football', '50', '350', '1');
 
 INSERT INTO `test`.`article` (`article_id`, `nom`, `prix`, `stock`, `produit_produit_id`) VALUES ('1', 'Chaussures de football', '80', '300', '1'), ('2', 'Ballon de football', '50', '350', '1');

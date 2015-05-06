@@ -30,6 +30,7 @@ public class UserServiceImpl implements UserService {
 		}
 		else {
 			LOGGER.info("Create user with email {}",user.getEmail());
+			user.setActive(true);
 			em.persist(user);
 		}
 	}

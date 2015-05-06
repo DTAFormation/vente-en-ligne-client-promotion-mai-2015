@@ -19,7 +19,7 @@ public class UserController {
 	private UserService userService;
 
 	@RequestMapping(method=RequestMethod.POST)
-	@ResponseStatus(value = HttpStatus.OK) // Envoie 200 par défaut mais bien une exception si elle est soulevée
+	@ResponseStatus(value = HttpStatus.OK)
 	public void createUser(@RequestBody User user) {
 		userService.create(user);
 	}

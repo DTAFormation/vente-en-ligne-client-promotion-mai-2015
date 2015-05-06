@@ -1,4 +1,4 @@
-angular.module("venteEnLigne").controller("SignUpController", function (ProfilService, $scope, ModalService) {
+angular.module("venteEnLigne").controller("SignUpController", function (ProfilService, $scope, ModalService, $location) {
 	
 	$scope.profil = {};
 
@@ -32,6 +32,9 @@ angular.module("venteEnLigne").controller("SignUpController", function (ProfilSe
 			"Inscription validation",
 			"Congratulations, you have successfully subscribed !",
 			"OK"
+		).result.then(
+			goToConnect,
+			goToConnect	
 		);
 	};	
 	
@@ -50,5 +53,9 @@ angular.module("venteEnLigne").controller("SignUpController", function (ProfilSe
 			"OK"
 		);
 	};		
+	
+	function goToConnect() {
+		$location.path("/connect");
+	};
 	
 });

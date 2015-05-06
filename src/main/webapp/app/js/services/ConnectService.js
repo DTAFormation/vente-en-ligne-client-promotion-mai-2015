@@ -13,7 +13,7 @@ angular.module("venteEnLigne").factory("ConnectService", function($http) {
 		},
 
 		setConnected: function(user) {
-			sessionStorage.setItem("connected", user ? user : "false");
+			sessionStorage.setItem("connected", user || "false");
 		},
 
 		setDisconnected: function() {

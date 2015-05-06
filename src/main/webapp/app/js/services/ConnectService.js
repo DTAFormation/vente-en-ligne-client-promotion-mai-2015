@@ -9,15 +9,7 @@ angular.module("venteEnLigne").factory("ConnectService", function($http) {
 				url: "/VentesEnLigneClient/j_spring_security_check",
 				data: credentials,
 				headers: {"Content-Type": "application/x-www-form-urlencoded"}
-			}).then(
-				function(response) {
-					return response;
-				},
-				function(error) {
-					console.log(error);
-					return error;
-				}
-			);
+			});
 		},
 
 		setConnected: function(user) {

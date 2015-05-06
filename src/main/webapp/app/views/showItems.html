@@ -21,10 +21,10 @@
 			</thead>
 
 			<form id="itemsForm" novalidate>
-				<tr class="clickable-row" ng-repeat="item in listItemCtrl.items">
+				<tr class="clickable-row" ng-repeat="item in items">
 					<td width="50"><img height="42" width="42"></td>
-					<td ng-click="listItemCtrl.showItem(item.entity)"><strong>{{item.entity.name}}</strong></td>
-					<td ng-click="listItemCtrl.showItem(item.entity)">{{item.entity.price | currency}}</td>
+					<td ng-click="showItem(item.entity)"><strong>{{item.entity.name}}</strong></td>
+					<td ng-click="showItem(item.entity)">{{item.entity.price | currency}}</td>
 					<td>
 						<div class="input-group">
 							<span class="input-group-btn">

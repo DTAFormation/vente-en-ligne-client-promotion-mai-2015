@@ -1,6 +1,6 @@
 <div>
-	<h3>Article : {{detailCtrl.article.entity.name}}</h3>
-	<h4>{{detailCtrl.article.entity.price}} €</h4>
+	<h3>Article : {{article.entity.name}}</h3>
+	<h4>{{article.entity.price}} €</h4>
 	
 	<form id="itemsForm" novalidate>
 		<table>
@@ -13,7 +13,7 @@
 							</button>
 						</span>
 					
-						<input type="number" name="quantity" class="form-control input-number" value="8" min="0" max="100" ng-model="article.quantity">
+						<input type="number" name="quantity" class="form-control input-number" value="1" min="0" max="100" ng-model="article.quantity">
 						
 						<span class="input-group-btn">
 							<button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quantity" disabled="disabled">
@@ -23,7 +23,7 @@
 					</div>
 				</th>
 				<th>
-					<button class="btn btn-primary" ng-click="detailCtrl.add(article)">Add to basket</button>
+					<button class="btn btn-primary" ng-click="addItemToBasket()">Add to basket</button>
 				</th>
 			</tr>
 		</table>

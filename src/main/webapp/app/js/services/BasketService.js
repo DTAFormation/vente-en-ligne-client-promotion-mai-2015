@@ -15,6 +15,7 @@ angular.module("venteEnLigne").factory("BasketService", function($http, $locatio
 			});
 			
 			basket.push(item);
+			console.log(basket);
 			webStorage.setItem("basket", JSON.stringify(basket));
 			
 		},

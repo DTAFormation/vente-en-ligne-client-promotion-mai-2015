@@ -27,8 +27,8 @@ angular.module("venteEnLigne").factory("BasketService", function() {
 			if (basket == null) {
 				basket=[];
 			}
-			basket = basket.filter(function(v) {
-				return v.articleId!=item.articleId
+			basket = basket.filter(function(currentItem) {
+				return currentItem.entity.articleId!=item.entity.articleId
 			});
 			window.localStorage.setItem("basket", JSON.stringify(basket));
 		},

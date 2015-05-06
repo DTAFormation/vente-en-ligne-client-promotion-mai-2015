@@ -15,7 +15,7 @@
 					<th>Price</th>
 				</tr>
 			</thead>
-			<tr class="clickable-row" ng-repeat="item in basket"
+			<tr class="clickable-row" ng-repeat="item in getBasket()"
 				ng-click="showItem(item)">
 				<td width="50"><img height="42" width="42" src="{{item.image}}"></td>
 				<td><strong>{{item.entity.name}}</strong></td>

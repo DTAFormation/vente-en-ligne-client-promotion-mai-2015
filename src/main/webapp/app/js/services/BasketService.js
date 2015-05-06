@@ -2,7 +2,7 @@ angular.module("venteEnLigne").factory("BasketService", function($http, $locatio
 	return {
 		version: "1.0",
 
-		addItem : function(item) {
+		addItemToBasket : function(item) {
 			
 			var webStorage = window['localStorage'];
 			var basket = JSON.parse(webStorage.getItem('basket'));

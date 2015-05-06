@@ -20,7 +20,6 @@ angular.module("venteEnLigne", ["ngRoute", "ui.bootstrap"])
 	.when("/validatePayment", {
 		templateUrl: "app/views/validatePayment.html",
 		controller: "ValidatePaymentController",
-		controllerAs: "validatePaymentControl"
 	})
 	.when("/basket", {
 		templateUrl: "app/views/basket.html",

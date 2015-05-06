@@ -1,15 +1,23 @@
-<div>
-	<form id="connectForm" name="connectForm" ng-submit="connect()" novalidate>
-		<table>
-			<tr>
-				<td><label for="connect_username">Username: </label></td>
-				<td><input id="connect_username" name="username" type="text" ng-model="logins.usr" required></td>
-			</tr>
-			<tr>
-				<td><label for="connect_pwd">Password: </label></td>
-				<td><input id="connect_pwd" name="password" type="password" ng-model="logins.pwd" required></td>
-			</tr>
-		</table>
-		<input type="submit" ng-disabled="connectForm.$invalid" value="Connect">
-	</form>
+<div class="container">
+	<div>
+		<form id="connectForm" name="connectForm" ng-submit="connect()" novalidate>
+			<div class="input-group connectInputGroup">
+				<label class="input-group-addon" for="connect_username">Username: </label>
+				<input id="connect_username" class="form-control" name="username" type="text" ng-model="logins.usr" required>
+			</div>
+			<div class="input-group connectInputGroup">
+				<label class="input-group-addon" for="connect_pwd">Password: </label>
+				<input id="connect_pwd" class="form-control" name="password" type="password" ng-model="logins.pwd" required>
+			</div>
+			<div class="input-group connectInputGroup" ng-show="inError">
+				<span class="connectFormError">Wrong username/password</span>
+			</div>
+			<div class="input-group connectInputGroup">
+				<input class="btn btn-primary" type="submit" ng-disabled="connectForm.$invalid" value="Connect">
+			</div>
+		</form>
+	</div>
+	<div style="margin-top: 25px;">
+		<a ng-click="goToSignUp()" style="cursor: pointer;">Je n'ai pas encore de compte</a>
+	</div>
 </div>

@@ -15,9 +15,26 @@ angular.module("venteEnLigne").factory("BasketService", function() {
 				
 				
 			});
-			basket.push(item);
+			// GESTION SAISIE UTILISATEUR
+			if (typeof(item.quantity) == 'undefined'||item.quantity===0||item.quantity===null) {
+				alert("Erreur de saisie - La quantité d'article a été fixée à votre place à 1")
+				item.quantity=1
+			}
+			
+			var q = (item.quantity).toString();
+			q= +((q).replace(/,/,'.'));//gestion de la virgule de type -> , ou .
+			
+			if(q === parseInt(q)){
+				//saisie valide -> on place l'item dans le panier
+				item.quantity= parseInt(item.quantity);
+				basket.push(item);
+				window.localStorage.setItem("basket", JSON.stringify(basket));
 
-			window.localStorage.setItem("basket", JSON.stringify(basket));
+			}
+			else{
+				alert("Erreur de saisie - La quantité n'est pas un entier")
+			}
+
 		},
 		
 		deleteItemFromBasket : function(item) {

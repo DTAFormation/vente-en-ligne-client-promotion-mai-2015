@@ -1,12 +1,14 @@
 angular.module("venteEnLigne")
 
-.controller("ListItemController",function($http, ItemService, $location, $scope,BasketService){
+.controller("ListItemController",function($http,ItemService,$location,$scope,BasketService){
 	var ctrl = this;
-	$scope.items;
+	$scope.items = [];
 	function fetchItems(){
 		ItemService.getItems()
 		.then (function(items){
-			$scope.items = items;
+			for(var i=0; i<items.length; i++) {
+				$scope.items.push({entity: items[i], quantity: 1});
+			}
 		})
 	}
 	fetchItems();
@@ -15,14 +17,17 @@ angular.module("venteEnLigne")
 		ItemService.showItem(item)
 	}
 
-	$scope.addItemToBasket = function (item) {
-		itemSave={//utilisation de itemSave pour supprimer le champ $$hashKey de item
-			article_id: item.article_id, 
-			name: item.name, 
-			price: item.price,
-			quantity: 1
-		}
-		BasketService.addItemToBasket(itemSave)
-	};
 
+	$scope.addItemToBasket = function (item) {
+		
+		itemSave={
+			article_id: item.entity.article_id, 
+			name: item.entity.name, 
+			price: item.entity.price,
+			quantity: item.quantity
+		}
+		
+		BasketService.addItemToBasket(itemSave)
+		
+	};
 })

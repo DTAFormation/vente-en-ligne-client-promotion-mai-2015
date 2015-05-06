@@ -3,6 +3,11 @@
 		<h2>Liste articles</h2>
 	</div>
 </div>
+
+
+
+
+
 <div class="row">
 	<div class="col-md-6">
 		<table class="table table-hover">
@@ -14,29 +19,34 @@
 					<th></th>
 				</tr>
 			</thead>
-			<tr class="clickable-row" ng-repeat="item in items"	>
-				<td width="50"><img height="42" width="42" ></td>
-				<td ng-click="showItem(item)"><strong>{{item.name}}</strong></td>
-				<td ng-click="showItem(item)">{{item.price | currency}}</td>
-				<td>
-					<div class="input-group">
-						<span class="input-group-btn">
-							<button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="quantity[99]">
-								<span class="glyphicon glyphicon-minus"></span>
-							</button>
-						</span>
-					
-						<input type="text" name="quantity[99]" class="form-control input-number" value="1" min="0" max="100">
-						
-						<span class="input-group-btn">
-							<button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quantity[99]" disabled="disabled">
-								<span class="glyphicon glyphicon-plus"></span>
-							</button>
-						</span>
-					</div>
-				</td>
-				<td><button class="btn btn-primary" ng-click="addItemToBasket(item)">Add to basket</button></td>
-			</tr>
+
+			<form id="itemsForm" novalidate>
+				<tr class="clickable-row" ng-repeat="item in listItemCtrl.items">
+					<td width="50"><img height="42" width="42"></td>
+					<td ng-click="listItemCtrl.showItem(item.entity)"><strong>{{item.entity.name}}</strong></td>
+					<td ng-click="listItemCtrl.showItem(item.entity)">{{item.entity.price | currency}}</td>
+					<td>
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="quantity">
+									<span class="glyphicon glyphicon-minus"></span>
+								</button>
+							</span>
+
+							<input type="number" name="quantity" class="form-control input-number" value="1" min="0" max="100" ng-model="item.quantity"/>
+							
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quantity" disabled="disabled">
+									<span class="glyphicon glyphicon-plus"></span>
+								</button>
+							</span>
+						</div>
+					</td>
+	
+					<td><button class="btn btn-primary" ng-click="addItemToBasket(item)">Add to basket</button></td>
+	
+				</tr>
+			</form>
 		</table>
 	</div>
 </div>

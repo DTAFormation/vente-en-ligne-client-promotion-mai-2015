@@ -4,26 +4,41 @@ angular.module("venteEnLigne").factory("BasketService", function() {
 
 		addItemToBasket : function(item) {
 			
-			var webStorage = window['localStorage'];
-			var basket = JSON.parse(webStorage.getItem('basket'));
+			var basket = JSON.parse(window.localStorage.getItem("basket"));
 						
 			if (basket == null) {
 				basket=[];
 			}
-			console.log(basket)
 			basket = basket.filter(function(v) {
 				return v.articleId!=item.articleId
 			});
-			
 			basket.push(item);
+			window.localStorage.setItem("basket", JSON.stringify(basket));
+		},
+		
+		deleteItemFromBasket : function(item) {
 			
-			webStorage.setItem("basket", JSON.stringify(basket));
-			
+			var basket = JSON.parse(window.localStorage.getItem("basket"));
+						
+			if (basket == null) {
+				basket=[];
+			}
+			basket = basket.filter(function(v) {
+				return v.articleId!=item.articleId
+			});
+			window.localStorage.setItem("basket", JSON.stringify(basket));
 		},
 
 		deleteBasket: function() {
-			localStorage.setItem("basket", "");
-		}
+			window.localStorage.setItem("basket", "[]");
+		},
 		
+		getBasket: function() {
+			var basket = JSON.parse(window.localStorage.getItem("basket"));
+			if (basket == null) {
+				basket = []
+			}
+			return basket;
+		}
 	};
 });

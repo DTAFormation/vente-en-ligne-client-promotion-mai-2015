@@ -1,5 +1,9 @@
 VenteEnLigneClient
 
+Environement : JDK 8 TOMCAT 8
+
+Installation :
+
 Pour lancer les tests karma/jasmine :
  - Installer NodeJS : https://nodejs.org/download/
  - Installer Karma : npm install -g karma

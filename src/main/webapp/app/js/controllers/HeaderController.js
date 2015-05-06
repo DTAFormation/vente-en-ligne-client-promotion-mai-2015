@@ -21,10 +21,17 @@ angular.module("venteEnLigne")
 					"Logged out",
 					"You have successfully logged out !",
 					"OK"
+				).result.then(
+					backToHome,
+					backToHome
 				);
 			}
 		);
 	};
+
+	function backToHome() {
+		$location.path("/");
+	}
 
 	$scope.isConnected = function() {
 		return ConnectService.isConnected();

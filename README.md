@@ -18,7 +18,9 @@ Modifier dans le fichier persistance.xml create-drop -> create
 
 Créer la BDD dans PHPMYADMIN -> ecommercedb_client
 
-Modifier dans app-context.xtml -> <property name="password" value=""></property>
+Modifier dans app-context.xtml 
+
+                         -> <property name="password" value=""></property>
 
 Run as / run as server -> création des tables au sein de ecommercedb_client
 

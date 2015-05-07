@@ -4,24 +4,11 @@ angular.module("venteEnLigne")
 
 	return {
 		getItems : function (){
-			return   $http.get("/VentesEnLigneClient/rest/articles")
-              .then(function(result){
-              	return result.data ;
-              },
-              function(error){
-                     alert("probleme connexion")
-              }) 
+			return   $http.get("/VentesEnLigneClient/rest/articles"); 
   
 		},
 		getItem : function (id){
-			return   $http.get("/VentesEnLigneClient/rest/article/"+id)
-              .then(function(result){
-              	return result.data ;
-              },
-              function(error){
-                     alert("probleme connexion")
-              }) 
-  
+			return   $http.get("/VentesEnLigneClient/rest/article/"+id);
 		},
 		
 		showItem : function(item) {

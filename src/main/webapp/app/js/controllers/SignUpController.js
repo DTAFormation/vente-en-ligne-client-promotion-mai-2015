@@ -33,8 +33,8 @@ angular.module("venteEnLigne").controller("SignUpController", function (ProfilSe
 			"Congratulations, you have successfully subscribed !",
 			"OK"
 		).result.then(
-			goToConnect,
-			goToConnect	
+			$scope.goToConnect,
+			$scope.goToConnect	
 		);
 	};	
 	

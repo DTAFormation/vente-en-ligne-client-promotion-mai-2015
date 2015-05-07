@@ -25,7 +25,7 @@ public class Article {
 	@Column(name="nom", unique=true, length=255)
 	private String name;
 	@Column(name="image", length=255)
-	private String imgUrl;
+	private String image;
 	@Column(name="prix")
 	private float price;
 	@ManyToOne

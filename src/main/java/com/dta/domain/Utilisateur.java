@@ -16,14 +16,14 @@ import javax.persistence.OneToMany;
 @NamedQueries({
 	@NamedQuery(
 		name="findUserByEmail",
-		query = "SELECT OBJECT(u) FROM User u WHERE u.email = :uemail"
+		query = "SELECT OBJECT(u) FROM Utilisateur u WHERE u.email = :uemail"
 	),
 	@NamedQuery(
 		name="findUserByLogin",
-		query = "SELECT OBJECT(u) FROM User u WHERE u.login = :ulogin"
+		query = "SELECT OBJECT(u) FROM Utilisateur u WHERE u.login = :ulogin"
 	)
 })
-public class User {
+public class Utilisateur {
 
 	@Id
 	@GeneratedValue
@@ -61,10 +61,10 @@ public class User {
 	@OneToMany(mappedBy="utilisateur")
 	private List<Commande> commandes;
 	
-	public User() {
+	public Utilisateur() {
 	}
 
-	public User(String login, String password) {
+	public Utilisateur(String login, String password) {
 		this.login = login;
 		this.password = password;
 	}

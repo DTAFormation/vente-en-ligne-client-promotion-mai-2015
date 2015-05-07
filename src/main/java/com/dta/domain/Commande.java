@@ -9,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 
-import com.dta.domain.Adresse;
-
 @Entity
 public class Commande {
 
@@ -31,7 +29,7 @@ public class Commande {
 	private Adresse adresse;
 	@ManyToOne
 	@JoinTable(name="commandes_utilisateur")
-	private User utilisateur;
+	private Utilisateur utilisateur;
 	
 	/*@ManyToMany
 	private Map<Integer, Integer> bonCommande;*/
@@ -39,7 +37,7 @@ public class Commande {
 	public Commande() {}
 	public Commande(Date dateExpCarteCredit, Date dateCommande,
 			String numCarteCredit, String typeCarteCredit, Adresse adresse,
-			User utilisateur) {
+			Utilisateur utilisateur) {
 		this.dateExpCarteCredit = dateExpCarteCredit;
 		this.dateCommande = dateCommande;
 		this.numCarteCredit = numCarteCredit;
@@ -84,10 +82,10 @@ public class Commande {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-	public User getUtilisateur() {
+	public Utilisateur getUtilisateur() {
 		return utilisateur;
 	}
-	public void setUtilisateur(User utilisateur) {
+	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
 	

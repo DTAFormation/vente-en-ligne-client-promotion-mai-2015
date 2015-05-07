@@ -62,8 +62,12 @@
 								<password>${jdbc.pass}</password>
 								<autocommit>true</autocommit>
 								<srcFiles>
-									<srcFile>src/test/sql/clean-db.sql</srcFile>
+								    <srcFile>src/test/sql/init-adress-db.sql</srcFile>
+								    <srcFile>src/test/sql/init-catalog-db.sql</srcFile>
+								    <srcFile>src/test/sql/init-product-db.sql</srcFile>
 									<srcFile>src/test/sql/init-article-db.sql</srcFile>
+									<srcFile>src/test/sql/init-command-db.sql</srcFile>
+									<srcFile>src/test/sql/init-adress-db.sql</srcFile>
 									<srcFile>src/test/sql/init-user-db.sql</srcFile>
 								</srcFiles>
 							</configuration>

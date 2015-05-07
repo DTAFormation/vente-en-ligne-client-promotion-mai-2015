@@ -1,10 +1,16 @@
 package com.dta.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity
 @NamedQueries({
@@ -21,19 +27,40 @@ public class User {
 
 	@Id
 	@GeneratedValue
+	@Column(name="utilisateur_id", length=19)
 	private int id;
 	
+	@Column(name="prenom", length=255)
 	private String firstName;
+	@Column(name="nom", length=255)
 	private String lastName;
+	@Column(name="password", length=255)	
 	private String password;
+	@Column(name="login", length=255 , unique=true)
 	private String login;
+	@Column(name="email", length=255, unique=true)
 	private String email;
+	@Column(name="telephone", length=10)
 	private String telephone;
+	@Column(name="fax", length=10)
 	private String fax;
+	@Column(name="titre", length=255)
+	private String titre;
 	
+	@Column(name="type_util", length=1)
 	private String role;
+	
+	@Column(name="active", length=1)
 	private boolean active;
 
+	@OneToMany(mappedBy="utilisateur", 
+			cascade=CascadeType.ALL, 
+			fetch=FetchType.EAGER)
+
+	private List<Adresse> adresses;
+	@OneToMany(mappedBy="utilisateur")
+	private List<Commande> commandes;
+	
 	public User() {
 	}
 

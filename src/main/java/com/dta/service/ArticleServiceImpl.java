@@ -20,10 +20,12 @@ public class ArticleServiceImpl implements ArticleService{
 		this.em = em;
 	}
 	
+	@Override
 	public Article find(int id) {
 		return em.find(Article.class, id);
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<Article> findAll() {
 		Query q = em.createQuery("From Article");

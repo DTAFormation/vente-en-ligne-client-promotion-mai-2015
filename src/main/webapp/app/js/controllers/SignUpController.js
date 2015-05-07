@@ -54,8 +54,9 @@ angular.module("venteEnLigne").controller("SignUpController", function (ProfilSe
 		);
 	};		
 	
-	function goToConnect() {
+	$scope.goToConnect = function () {
 		$location.path("/connect");
 	};
+	
 	
 });

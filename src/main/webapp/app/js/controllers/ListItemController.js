@@ -4,6 +4,9 @@ angular.module("venteEnLigne")
 	var ctrl = this;
 	$scope.items = [];
 
+	$scope.minQuantity = 1;
+	$scope.maxQuantity = 10000;
+
 	ItemService.getItems()
 	.then (function(items){
 		for(var i=0; i<items.length; i++) {
@@ -13,7 +16,7 @@ angular.module("venteEnLigne")
 
 	$scope.showItem = function(item) {
 		ItemService.showItem(item)
-	}
+	};
 
 
 	$scope.addItemToBasket = function (item) {
@@ -25,4 +28,17 @@ angular.module("venteEnLigne")
 		BasketService.addItemToBasket(itemSave)
 
 	};
-})
+
+	$scope.decrementQuantity = function(item) {
+		if(item.quantity > $scope.minQuantity) {
+			item.quantity--;
+		}
+	};
+
+	$scope.incrementQuantity = function(item) {
+		if(item.quantity < $scope.maxQuantity) {
+			item.quantity++;
+		}
+	};
+
+});

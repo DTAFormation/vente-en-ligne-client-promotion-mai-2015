@@ -20,18 +20,20 @@
 				</tr>
 			</thead>
 
-			<form id="itemsForm" novalidate>
+			<form id="itemsForm" name="itemsForm" novalidate>
 				<tr class="clickable-row" ng-repeat="item in items">
 					<td width="50"><img height="42" width="42"></td>
 					<td ng-click="showItem(item.entity)"><strong>{{item.entity.name}}</strong></td>
 					<td ng-click="showItem(item.entity)">{{item.entity.price | currency}}</td>
 					<td>
 						<div class="input-group">
-							<input type="number" name="quantity" class="form-control input-number" value="1" min="0" max="10000" ng-model="item.quantity"/>
+							<span class="input-group-btn"><button class="btn btn-primary" ng-click="decrementQuantity(item)"><span class="glyphicon glyphicon-minus"></span></button></span>
+							<input type="number" name="quantity{{item.entity.articleId}}" class="form-control input-number" min="{{minQuantity}}" max="{{maxQuantity}}" ng-model="item.quantity"/>
+							<span class="input-group-btn"><button class="btn btn-primary" ng-click="incrementQuantity(item)"><span class="glyphicon glyphicon-plus"></span></button></span>
 						</div>
 					</td>
 	
-					<td><button class="btn btn-primary" ng-click="addItemToBasket(item)">Add to basket</button></td>
+					<td><button class="btn btn-primary" ng-click="addItemToBasket(item)" ng-disabled="itemsForm.quantity{{item.entity.articleId}}.$invalid">Add to basket</button></td>
 	
 				</tr>
 			</form>

@@ -6,6 +6,9 @@ angular.module("venteEnLigne")
 	
 	$scope.alerts = [];
 
+	$scope.minQuantity = 1;
+	$scope.maxQuantity = 10000;
+
 	ItemService.getItems()
 	.then (function(items){
 		for(var i=0; i<items.length; i++) {
@@ -15,7 +18,7 @@ angular.module("venteEnLigne")
 
 	$scope.showItem = function(item) {
 		ItemService.showItem(item)
-	}
+	};
 
 
 	$scope.addItemToBasket = function (item) {
@@ -33,4 +36,17 @@ angular.module("venteEnLigne")
 	$scope.closeAlert = function(index) {
 	    $scope.alerts.splice(index, 1);
 	  };
-})
+
+	$scope.decrementQuantity = function(item) {
+		if(item.quantity > $scope.minQuantity) {
+			item.quantity--;
+		}
+	};
+
+	$scope.incrementQuantity = function(item) {
+		if(item.quantity < $scope.maxQuantity) {
+			item.quantity++;
+		}
+	};
+
+});

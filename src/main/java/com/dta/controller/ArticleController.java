@@ -1,5 +1,6 @@
 package com.dta.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +22,19 @@ public class ArticleController {
 	
 	@RequestMapping(value="/article/{id}")
 	@ResponseBody
-	public Article getArticle(@PathVariable("id") int id) {
-
-		return articleService.find(id);
+	public ArticleJson getArticle(@PathVariable("id") int id) {
+		Article result = articleService.find(id);
+		return new ArticleJson(result);
 	}
 
 	@RequestMapping(value="/articles")
 	@ResponseBody
-	public List<Article> getArticle() {
-		return articleService.findAll();
+	public List<ArticleJson> getArticle() {
+		List<Article> articles = articleService.findAll();
+		List<ArticleJson> response = new ArrayList<ArticleJson>();
+		for(Article art : articles) {
+			response.add(new ArticleJson(art));
+		}
+		return response;
 	}
 }

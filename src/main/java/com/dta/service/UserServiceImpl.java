@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dta.controller.UserAlreadyExistsException;
-import com.dta.domain.User;
+import com.dta.domain.Utilisateur;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	@Transactional
-	public void create(User user) throws UserAlreadyExistsException {
+	public void create(Utilisateur user) throws UserAlreadyExistsException {
 		if(emailExists(user.getEmail()) || loginExists(user.getLogin())) {
 			throw new UserAlreadyExistsException();
 		}
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
 	public boolean emailExists(String uemail) {
 		Query queryUserByMail = em.createNamedQuery("findUserByEmail");
 		queryUserByMail.setParameter("uemail", uemail);
-		List<User> users = queryUserByMail.getResultList();
+		List<Utilisateur> users = queryUserByMail.getResultList();
 		return !users.isEmpty();
 	}
 
@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
 	public boolean loginExists(String ulogin) {
 		Query queryUserByLogin = em.createNamedQuery("findUserByLogin");
 		queryUserByLogin.setParameter("ulogin", ulogin);
-		List<User> users = queryUserByLogin.getResultList();
+		List<Utilisateur> users = queryUserByLogin.getResultList();
 		return !users.isEmpty();
 	}
 	

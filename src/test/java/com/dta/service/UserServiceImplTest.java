@@ -18,7 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.dta.controller.UserAlreadyExistsException;
-import com.dta.domain.User;
+import com.dta.domain.Utilisateur;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceImplTest {
@@ -49,15 +49,15 @@ public class UserServiceImplTest {
 		// 1 - Préparation
         LOG.info("Etant donné un objet user avec toutes ses informations correctement renseignées");
         // Objet user en entrée du service create
-        User user = new User();
+        Utilisateur user = new Utilisateur();
         user.setEmail("edward.nigma@test.fr");
         user.setFirstName("Edward");
         user.setLogin("login");
         // Programme le comportement du mock
         when(em.createNamedQuery("findUserByEmail")).thenReturn(queryEmail);
         when(em.createNamedQuery("findUserByLogin")).thenReturn(queryLogin);
-        when(queryEmail.getResultList()).thenReturn(new ArrayList<User>());
-        when(queryLogin.getResultList()).thenReturn(new ArrayList<User>());
+        when(queryEmail.getResultList()).thenReturn(new ArrayList<Utilisateur>());
+        when(queryLogin.getResultList()).thenReturn(new ArrayList<Utilisateur>());
         
         // 2 - Exécution
         LOG.info("Lorsque service.create(user)");
@@ -79,12 +79,12 @@ public class UserServiceImplTest {
     	// 1 - Préparation
         LOG.info("Etant donné un objet user avec une adresse email existant en base");
         // Objet user en entrée du service create
-        User user = new User();
+        Utilisateur user = new Utilisateur();
         user.setEmail("edward.nigma@test.fr");
         user.setFirstName("Edward");
         // Simule la présence d'un user en base 
-        List<User> usersEnBase = new ArrayList<>();
-        usersEnBase.add(new User());
+        List<Utilisateur> usersEnBase = new ArrayList<>();
+        usersEnBase.add(new Utilisateur());
 
         // 2 - Exécution
         // Programme le comportement du mock
@@ -103,19 +103,19 @@ public class UserServiceImplTest {
     	// 1 - Préparation
         LOG.info("Etant donné un objet user avec un login existant en base");
         // Objet user en entrée du service create
-        User user = new User();
+        Utilisateur user = new Utilisateur();
         user.setLogin("login");
         user.setFirstName("Edward");
         // Simule la présence d'un user en base
-        List<User> usersEnBase = new ArrayList<>();
-        usersEnBase.add(new User());
+        List<Utilisateur> usersEnBase = new ArrayList<>();
+        usersEnBase.add(new Utilisateur());
 
         // 2 - Exécution
         // Programmer le comportement du mock
         // Comme l'email est testé avant le login, il faut simuler la réponse de findUserByEmail
         when(em.createNamedQuery("findUserByEmail")).thenReturn(queryEmail);
         when(em.createNamedQuery("findUserByLogin")).thenReturn(queryLogin);
-        when(queryEmail.getResultList()).thenReturn(new ArrayList<User>());                
+        when(queryEmail.getResultList()).thenReturn(new ArrayList<Utilisateur>());                
         when(queryLogin.getResultList()).thenReturn(usersEnBase);
         
         // 3 - Vérification
@@ -129,8 +129,8 @@ public class UserServiceImplTest {
     	// 1 - Préparation
     	LOG.info("Etant donné une adresse email existant en base");
     	// Simule la présence d'un user en base
-        List<User> usersEnBase = new ArrayList<>();
-        usersEnBase.add(new User());
+        List<Utilisateur> usersEnBase = new ArrayList<>();
+        usersEnBase.add(new Utilisateur());
         // Programmer le comportement du mock
         when(em.createNamedQuery("findUserByEmail")).thenReturn(queryEmail);
         when(queryEmail.getResultList()).thenReturn(usersEnBase);
@@ -151,7 +151,7 @@ public class UserServiceImplTest {
     	LOG.info("Etant donné une adresse email n'existant pas en base");
     	// Programmer le comportement du mock
         when(em.createNamedQuery("findUserByEmail")).thenReturn(queryEmail);
-        when(queryEmail.getResultList()).thenReturn(new ArrayList<User>());
+        when(queryEmail.getResultList()).thenReturn(new ArrayList<Utilisateur>());
 
         // 2 - Exécution
         LOG.info("Lorsque service.emailExists(email)");
@@ -168,8 +168,8 @@ public class UserServiceImplTest {
     	// 1 - Préparation
     	LOG.info("Etant donné une adresse email existant en base");
     	// Simule la présence d'un user en base
-        List<User> usersEnBase = new ArrayList<>();
-        usersEnBase.add(new User());
+        List<Utilisateur> usersEnBase = new ArrayList<>();
+        usersEnBase.add(new Utilisateur());
         // Programmer le comportement du mock
         when(em.createNamedQuery("findUserByLogin")).thenReturn(queryLogin);
         when(queryLogin.getResultList()).thenReturn(usersEnBase);
@@ -190,7 +190,7 @@ public class UserServiceImplTest {
     	LOG.info("Etant donné une adresse email n'existant pas en base");
     	// Programmer le comportement du mock
         when(em.createNamedQuery("findUserByLogin")).thenReturn(queryLogin);
-        when(queryLogin.getResultList()).thenReturn(new ArrayList<User>());
+        when(queryLogin.getResultList()).thenReturn(new ArrayList<Utilisateur>());
 
         // 2 - Exécution
         LOG.info("Lorsque service.loginExists(email)");

@@ -1,2 +1,2 @@
-insert into User (id, email, fax, firstName, lastName, login, password, telephone, active, role) VALUES (1, 'admin@yahourt.com', '0365429432', 'ad', 'min', 'admin', 'admin', '0563795143', 1, 'admin');
-insert into User (id, email, fax, firstName, lastName, login, password, telephone, active, role) VALUES (2, 'guest@yahourt.com', '0365429434', 'gu', 'est', 'guest', 'guest', '0563795145', 1, 'guest');
+insert into Utilisateur (utilisateur_id, prenom, nom, password, login, email, telephone, fax, titre, type_util, active) values (1, 'George', 'Abitbol', 'Monde2merde', 'GAbitbol', 'g.abitbol@detournement.fr', '0000000000', '0000000001', 'Monsieur', 'Utilisateur', 1);
+insert into Utilisateur (utilisateur_id, prenom, nom, password, login, email, telephone, fax, titre, type_util, active) values (2, 'Gandalf', 'Leblanc', 'Shallnotpass', 'GLeblanc', 'g.legris@lotr.com', '4538619765', '4538619766', 'Valar', 'Utilisateur', 1);

@@ -37,12 +37,12 @@ public class Adresse {
 	private List<Commande> commande;
 	@ManyToOne
 	@JoinTable(name="adresses_utilisateur")
-	private User utilisateur;
+	private Utilisateur utilisateur;
 		
 	public Adresse() {}
 	public Adresse(int codePostal, String departement, int num, String pays,
 			String rue, String ville, List<Commande> commande,
-			User utilisateur) {
+			Utilisateur utilisateur) {
 		this.codePostal = codePostal;
 		this.departement = departement;
 		this.num = num;
@@ -101,10 +101,10 @@ public class Adresse {
 	public void setCommande(List<Commande> commande) {
 		this.commande = commande;
 	}
-	public User getUtilisateur() {
+	public Utilisateur getUtilisateur() {
 		return utilisateur;
 	}
-	public void setUtilisateur(User utilisateur) {
+	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
 	

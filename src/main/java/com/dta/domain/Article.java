@@ -22,13 +22,12 @@ public class Article {
 	@GeneratedValue
 	@Column(name="article_id", length=19)
 	private int articleId;
-	
 	@Column(name="nom", unique=true, length=255)
 	private String name;
-	
+	@Column(name="image", length=255)
+	private String imgUrl;
 	@Column(name="prix")
 	private float price;
-	
 	@ManyToOne
     private Produit produit;
     @Column(name="stock", length=19)

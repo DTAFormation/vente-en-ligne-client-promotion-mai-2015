@@ -56,7 +56,7 @@ L'application vente-en-ligne client est prête -> Run as / run as server
 Insertion dans la BDD test :
                          
 INSERT INTO  `ecommercedb_client`.`utilisateur` (`utilisateur_id`, `active`, `email`, `fax`, `prenom`, `nom`, `login`, `password`, `type_util`, `telephone`, `titre`) VALUES
-(1, 1, 't@toto.com', '987654321', 'toto', 'toto', 'toto', 'toto', 'c', '123456789', NULL);
+(1, 1, 't@toto.com', '987654321', 'toto', 'toto', 'toto', 'toto', 'c', '123456789', 'm');
 
 INSERT INTO `ecommercedb_client`.`catalogue` (`catalogue_id`, `description`, `nom`) VALUES ('1', 'Articles de sport', 'Sport'), ('2', 'Logement', 'Logement');
 

@@ -75,8 +75,15 @@ public class Article {
 	public int getStock() {
         return stock;
     }
-    public void setStock(int stock) {
+	public void setStock(int stock) {
         this.stock = stock;
+    }
+    public void setImage(String image) {
+        this.image = image;
+    }
+    
+    public String getImage() {
+        return image;
     }
 	
     @Override

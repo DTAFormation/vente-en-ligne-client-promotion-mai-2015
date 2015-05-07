@@ -9,16 +9,18 @@ public class ArticleJson {
 	private String name;
 	private float price;
     private int stock;
+    private String image;
     
     public ArticleJson(Article article) {
-    	this(article.getArticleId(), article.getName(), article.getPrice(), article.getStock());
+    	this(article.getArticleId(), article.getName(), article.getPrice(), article.getStock(), article.getImage());
     }
     
-	public ArticleJson(int articleId, String name, float price, int stock) {
+	public ArticleJson(int articleId, String name, float price, int stock, String image) {
 		this.articleId = articleId;
 		this.name = name;
 		this.price = price;
 		this.stock = stock;
+		this.image  = image;
 	}
 
 	public int getArticleId() {
@@ -45,5 +47,13 @@ public class ArticleJson {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 	
 }

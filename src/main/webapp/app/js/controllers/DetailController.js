@@ -5,7 +5,6 @@ angular.module("venteEnLigne")
 	var ctrl = this;
 	$scope.article;
 
-
 	ItemService.getItem($routeParams.id)
 	.then(function(result){
 

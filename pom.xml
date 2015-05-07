@@ -42,7 +42,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<build>
-                <finalName>VenteEnLigneClient</finalName>
+                <finalName>VentesEnLigneClient</finalName>
 				<pluginManagement>
 					<plugins>
 						<plugin>
@@ -107,7 +107,7 @@
 		<profile>
 			<id>jenkins</id>
 			<build>
-                <finalName>VenteEnLigneClient</finalName>
+                <finalName>VentesEnLigneClient</finalName>
 				<pluginManagement>
 					<plugins>
 						<plugin>

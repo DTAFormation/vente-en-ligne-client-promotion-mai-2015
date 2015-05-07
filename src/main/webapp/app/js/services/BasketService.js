@@ -16,8 +16,9 @@ angular.module("venteEnLigne").factory("BasketService", function() {
 				
 			});
 			// GESTION SAISIE UTILISATEUR
+			var result;
 			if (typeof(item.quantity) == 'undefined'||item.quantity===0||item.quantity===null) {
-				alert("Erreur de saisie - La quantité d'article a été fixée à votre place à 1")
+				result = {error: "Wrong value - Sent '1' instead"};
 				item.quantity=1
 			}
 			
@@ -29,12 +30,12 @@ angular.module("venteEnLigne").factory("BasketService", function() {
 				item.quantity= parseInt(item.quantity);
 				basket.push(item);
 				window.localStorage.setItem("basket", JSON.stringify(basket));
-
+				result = result || {error: false};
 			}
 			else{
-				alert("Erreur de saisie - La quantité n'est pas un entier")
+				result = {error: "Wrong value - Please enter a whole number"};
 			}
-
+			return result;
 		},
 		
 		deleteItemFromBasket : function(item) {

@@ -1,19 +1,25 @@
 <div>
 	<h3>Article : {{article.entity.name}}</h3>
 	<h4>{{article.entity.price}} €</h4>
-	
-	<form id="itemsForm" novalidate>
-		<table>
-			<tr>
-				<th width="500">
-					<div class="input-group">
-						<input type="number" name="quantity" class="form-control input-number" value="1" min="0" max="100" ng-model="article.quantity">
-					</div>
-				</th>
-				<th>
-					<button class="btn btn-primary" ng-click="addItemToBasket()">Add to basket</button>	
-				</th>
-			</tr>
-		</table>
-	</form>	
+	<div class="row">
+		<div class="col-md-6">
+			<form id="itemForm" name="itemForm" novalidate>
+				<table>
+					<tr>
+						<td>
+							<div class="input-group">
+								<span class="input-group-btn"><button class="btn btn-primary" ng-click="decrementQuantity()"><span class="glyphicon glyphicon-minus"></span></button></span>
+								<input type="number" name="quantity" class="form-control input-number" min="{{minQuantity}}" max="{{maxQuantity}}" ng-model="article.quantity"/>
+								<span class="input-group-btn"><button class="btn btn-primary" ng-click="incrementQuantity()"><span class="glyphicon glyphicon-plus"></span></button></span>
+							</div>
+						</td>
+						<td><input type="submit" class="btn btn-primary" ng-disabled="itemForm.$invalid" value="Add to basket" ng-click="addItemToBasket()"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div class="col-md-3">
+			<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+		</div>
+	</div>
 </div>

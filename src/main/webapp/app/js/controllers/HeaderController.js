@@ -1,13 +1,17 @@
 angular.module("venteEnLigne")
 
-.controller("HeaderController", function($http, $scope, $location, BasketService, ConnectService, ModalService) {
+.controller("HeaderController", function($http, $scope, $location, $rootScope, BasketService, ConnectService, ModalService) {
+
+	$scope.goToPage = function(path) {
+		var lastPage = $scope.currentPage();
+		if(lastPage != "/signup") {
+			$rootScope.lastPage = $scope.currentPage();
+		}
+		$location.path(path);
+	};
 
 	$scope.currentPage = function() {
 		return $location.path();
-	};
-
-	$scope.goToPage = function(path) {
-		$location.path(path);
 	};
 
 	$scope.logout = function() {

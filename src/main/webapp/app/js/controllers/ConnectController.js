@@ -1,4 +1,4 @@
-angular.module("venteEnLigne").controller("ConnectController", function(ConnectService, ModalService, $scope, $location) {
+angular.module("venteEnLigne").controller("ConnectController", function(ConnectService, ModalService, $scope, $location, $rootScope) {
 	$scope.logins = {};
 	$scope.inError = false;
 
@@ -12,8 +12,8 @@ angular.module("venteEnLigne").controller("ConnectController", function(ConnectS
 						"Welcome " + $scope.logins.usr,
 						"OK"
 					).result.then(
-						backToHome,
-						backToHome
+						backToLastPage,
+						backToLastPage
 					);
 				},
 				function(error) {
@@ -23,9 +23,9 @@ angular.module("venteEnLigne").controller("ConnectController", function(ConnectS
 		}
 	};
 
-	function backToHome() {
-		$location.path("/");
-	};
+	function backToLastPage() {
+		$location.path($rootScope.lastPage || "/");
+	}
 
 	$scope.goToSignUp = function() {
 		$location.path("/signup");

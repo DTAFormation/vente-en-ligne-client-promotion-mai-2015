@@ -55,11 +55,43 @@ L'application vente-en-ligne client est prête -> Run as / run as server
 
 Insertion dans la BDD test :
                          
-INSERT INTO  `ecommercedb_client`.`utilisateur` (`utilisateur_id`, `active`, `email`, `fax`, `prenom`, `nom`, `login`, `password`, `type_util`, `telephone`, `titre`) VALUES
-(1, 1, 't@toto.com', '987654321', 'toto', 'toto', 'toto', 'toto', 'c', '123456789', 'm');
+insert into Utilisateur (utilisateur_id, prenom, nom, password, login, email, telephone, fax, titre, type_util, active) values (1, 'George', 'Abitbol', 'Monde2merde', 'GAbitbol', 'g.abitbol@detournement.fr', '0000000000', '0000000001', 'Monsieur', '1', 1);
 
-INSERT INTO `ecommercedb_client`.`catalogue` (`catalogue_id`, `description`, `nom`) VALUES ('1', 'Articles de sport', 'Sport'), ('2', 'Logement', 'Logement');
+insert into Utilisateur (utilisateur_id, prenom, nom, password, login, email, telephone, fax, titre, type_util, active) values (2, 'Gandalf', 'Leblanc', 'Shallnotpass', 'GLeblanc', 'g.legris@lotr.com', '4538619765', '4538619766', 'Valar', '1', 1);
 
-INSERT INTO `ecommercedb_client`.`produit` (`produit_id`, `description`, `nom`, `catalogue_catalogue_id`) VALUES ('1', 'Articles de football', 'Football', '1');
 
-INSERT INTO `ecommercedb_client`.`article` (`article_id`, `nom`, `prix`, `stock`, `produit_produit_id`) VALUES ('1', 'Chaussures de football', '80', '300', '1'), ('2', 'Ballon de football', '50', '350', '1');
+insert into Catalogue (catalogue_id, nom, description) values (1, 'sport', 'catalogue de sport');
+
+insert into Catalogue (catalogue_id, nom, description) values (2, 'primeurs', 'catalogue de primeurs');
+
+
+insert into Produit (produit_id, nom, description, catalogue_catalogue_id) values (1, 'football', 'liste de produits concernant le football', 1);
+
+insert into Produit (produit_id, nom, description, catalogue_catalogue_id) values (2, 'basketball', 'liste de produits concernant le basketball', 1);
+
+insert into Produit (produit_id, nom, description, catalogue_catalogue_id) values (3, 'cucurbitacé', 'liste de cucurbitacés', 2);
+
+insert into Produit (produit_id, nom, description, catalogue_catalogue_id) values (4, 'tubercule', 'liste de tubercules', 2);
+
+insert into Produit (produit_id, nom, description, catalogue_catalogue_id) values (5, 'fruits', 'liste de fruits', 2);
+
+
+insert into Article (article_id, nom, image, prix, produit_produit_id, stock) VALUES (1, 'ballon de foot', 'http://i.imgur.com/4O86daR.jpg', 10, 1, 25);
+
+insert into Article (article_id, nom, image, prix, produit_produit_id, stock) VALUES (2, 'chaussures de foot', 'http://i.imgur.com/kG47bs8.jpg', 500, 1, 2000);
+ 
+insert into Article (article_id, nom, image, prix, produit_produit_id, stock) VALUES (3, 'ballon de basket', 'http://i.imgur.com/iDWMUTr.jpg', 15, 2, 30);
+
+insert into Article (article_id, nom, image, prix, produit_produit_id, stock) VALUES (4, 'panier de basket', 'http://i.imgur.com/z3rOjE9.jpg', 100, 2, 30);
+
+insert into Article (article_id, nom, image, prix, produit_produit_id, stock) VALUES (5, 'concombre', 'http://i.imgur.com/NUOJOdC.jpg', 2.35, 3, 10);
+
+insert into Article (article_id, nom, image, prix, produit_produit_id, stock) VALUES (6, 'courgette', 'http://i.imgur.com/lhxWEQ3.jpg', 59.99, 3, 5000);
+
+insert into Article (article_id, nom, image, prix, produit_produit_id, stock) VALUES (7, 'pomme de terre', 'http://i.imgur.com/vBRzDhq.jpg', 2.65, 4, 1000);
+
+insert into Article (article_id, nom, image, prix, produit_produit_id, stock) VALUES (8, 'carotte', 'http://i.imgur.com/XhUhqXX.jpg', 3.05, 4, 60);
+
+insert into Article (article_id, nom, image, prix, produit_produit_id, stock) VALUES (9, 'banane', 'http://i.imgur.com/BT2FVWT.jpg', 4.60, 5, 35);
+
+insert into Article (article_id, nom, image, prix, produit_produit_id, stock) VALUES (10, 'tomate', 'http://i.imgur.com/MQfZPWa.png', 4.70, 5, 25);

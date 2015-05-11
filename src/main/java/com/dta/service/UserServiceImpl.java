@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dta.controller.UserAlreadyExistsException;
+import com.dta.domain.Article;
 import com.dta.domain.Utilisateur;
 
 @Service
@@ -66,6 +67,11 @@ public class UserServiceImpl implements UserService {
 	
 	public void setEm(EntityManager em) {
 		this.em = em;
+	}
+
+	@Override
+	public Utilisateur find(int id) {
+		return em.find(Utilisateur.class, id);
 	}
 
 }

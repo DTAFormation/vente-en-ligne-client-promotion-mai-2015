@@ -33,5 +33,4 @@ public class UserController {
 	public void createUser(@RequestBody Utilisateur user) {
 		userService.create(user);
 	}
-
 }

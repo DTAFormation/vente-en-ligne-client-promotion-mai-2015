@@ -22,17 +22,17 @@ public class Adresse {
 	@Column(name="adresse_id", length=19)
 	private int adresseId;
 	@Column(name="code_postal", length=10)
-	private int codePostal;
+	private int postcode;
 	@Column(name="departement", length=255)
 	private String departement;
 	@Column(name="numero", length=10)
-	private int num;
+	private int number;
 	@Column(name="pays", length=255)
-	private String pays;
+	private String country;
 	@Column(name="rue", length=255)
-	private String rue;
+	private String street;
 	@Column(name="ville", length=255)
-	private String ville;
+	private String city;
 	@OneToMany(mappedBy="adresse")
 	private List<Commande> commande;
 	@ManyToOne
@@ -43,27 +43,35 @@ public class Adresse {
 	public Adresse(int codePostal, String departement, int num, String pays,
 			String rue, String ville, List<Commande> commande,
 			Utilisateur utilisateur) {
-		this.codePostal = codePostal;
+		this.postcode = codePostal;
 		this.departement = departement;
-		this.num = num;
-		this.pays = pays;
-		this.rue = rue;
-		this.ville = ville;
+		this.number = num;
+		this.country = pays;
+		this.street = rue;
+		this.city = ville;
 		this.commande = commande;
 		this.utilisateur = utilisateur;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "Adresse [adresseId=" + adresseId + ", postCode=" + postcode
+				+ ", departement=" + departement + ", number=" + number
+				+ ", country=" + country + ", street=" + street + ", city="
+				+ city + "]";
+	}
+	
 	public int getAdresseId() {
 		return adresseId;
 	}
 	public void setAdresseId(int adresseId) {
 		this.adresseId = adresseId;
 	}
-	public int getCodePostal() {
-		return codePostal;
+	public int getPostcode() {
+		return postcode;
 	}
-	public void setCodePostal(int codePostal) {
-		this.codePostal = codePostal;
+	public void setPostCode(int postcode) {
+		this.postcode = postcode;
 	}
 	public String getDepartement() {
 		return departement;
@@ -71,29 +79,29 @@ public class Adresse {
 	public void setDepartement(String departement) {
 		this.departement = departement;
 	}
-	public int getNum() {
-		return num;
+	public int getNumber() {
+		return number;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setNumber(int number) {
+		this.number = number;
 	}
-	public String getPays() {
-		return pays;
+	public String getCountry() {
+		return country;
 	}
-	public void setPays(String pays) {
-		this.pays = pays;
+	public void setCountry(String country) {
+		this.country = country;
 	}
-	public String getRue() {
-		return rue;
+	public String getStreet() {
+		return street;
 	}
-	public void setRue(String rue) {
-		this.rue = rue;
+	public void setStreet(String street) {
+		this.street = street;
 	}
-	public String getVille() {
-		return ville;
+	public String getCity() {
+		return city;
 	}
-	public void setVille(String ville) {
-		this.ville = ville;
+	public void setCity(String city) {
+		this.city = city;
 	}
 	public List<Commande> getCommande() {
 		return commande;
@@ -107,11 +115,6 @@ public class Adresse {
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
-	
-	@Override
-	public String toString() {
-		return "Addresse [adresseId=" + adresseId + ", codePostal="
-				+ codePostal + ", departement=" + departement + ", num=" + num
-				+ ", pays=" + pays + ", rue=" + rue + ", ville=" + ville + "]";
-	}
+
+
 }

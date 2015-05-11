@@ -22,7 +22,7 @@ public class CommandeController {
 	
 	@RequestMapping(value="/{login}")
 	@ResponseBody
-	public UserJson getUser(@PathVariable("login") String login) {
+	public List<CommandeJson> getCommande(@PathVariable("login") String login) {
 		
 		List<Commande> cmds = commandeService.getCommandeByLogin(login);
 		List<CommandeJson> cmdsJson = new ArrayList<CommandeJson>();
@@ -30,10 +30,7 @@ public class CommandeController {
 		for(Commande cmd : cmds){
 			cmdsJson.add(new CommandeJson(cmd));
 		}
-		
-		return null;
+		return cmdsJson;
 	}
-	
-	
 
 }

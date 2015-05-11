@@ -1,11 +1,12 @@
 angular.module("venteEnLigne")
 
-.controller('HistoryController', function(ConnectService, $scope){
+.controller('HistoryController', function(ConnectService, CommandeService, $scope){
 	
-	$scope.cmds = [{date:"05/05/2005"},{date:"05/05/2005"},{date:"05/05/2005"}];
+	$scope.cmds = [];
 
 	$scope.getCommands = function(){
 		console.log("inside getCommands");
+		$scope.cmds = CommandeService.getCommande(ConnectService.getConnectedUser());
 	}
 
 	angular.element(document).ready(function () {

@@ -9,25 +9,38 @@ angular.module("venteEnLigne").factory("BasketService", function() {
 			if (basket == null) {
 				basket=[];
 			}
-			basket = basket.filter(function(currentItem) {
-				
+
+			//Vérification si l'objet est déjà présent dans le basket
+			var itemAMAJ;
+			var itemAMAJExists = false;
+			for (var i = 0; i < basket.length; i++){
+				if(basket[i].entity.articleId == item.entity.articleId){
+					itemAMAJ = basket[i];
+					itemAMAJExists = true;
+					break;
+				}
+			}
+			
+			basket = basket.filter(function(currentItem) {	
 				return currentItem.entity.articleId!=item.entity.articleId
-				
-				
 			});
+
 			// GESTION SAISIE UTILISATEUR
 			var result;
 			if (typeof(item.quantity) == 'undefined'||item.quantity===0||item.quantity===null) {
 				result = {error: "Wrong value - Sent '1' instead"};
 				item.quantity=1
 			}
-			
+
 			var q = (item.quantity).toString();
 			q= +((q).replace(/,/,'.'));//gestion de la virgule de type -> , ou .
-			
 			if(q === parseInt(q)){
 				//saisie valide -> on place l'item dans le panier
-				item.quantity= parseInt(item.quantity);
+				if(itemAMAJExists){
+					item.quantity= itemAMAJ.quantity + parseInt(item.quantity);
+				}else{
+					item.quantity= parseInt(item.quantity);
+				}
 				basket.push(item);
 				window.localStorage.setItem("basket", JSON.stringify(basket));
 				result = result || {error: false};

@@ -8,6 +8,9 @@ angular.module("venteEnLigne")
 
 	$scope.minQuantity = 1;
 	$scope.maxQuantity = 10000;
+	
+	$scope.currentColumn = 'entity.name';
+	$scope.reverse = false;
 
 	ItemService.getItems().then(
 		function(response) {

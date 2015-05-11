@@ -8,8 +8,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(
+		name="findCommandeByUser",
+		query = "SELECT OBJECT(c) FROM Commande c WHERE c.utilisateur = :user"
+	)
+})
 public class Commande {
 
 	@Id

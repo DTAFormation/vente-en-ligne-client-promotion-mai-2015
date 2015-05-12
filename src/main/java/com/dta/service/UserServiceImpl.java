@@ -81,4 +81,7 @@ public class UserServiceImpl implements UserService {
 		return em.find(Utilisateur.class, id);
 	}
 
+	public void ahahahahahah(){
+		
+	}
 }

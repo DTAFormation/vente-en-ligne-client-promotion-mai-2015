@@ -1,5 +1,6 @@
 package com.dta.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,13 +9,17 @@ import javax.persistence.Query;
 
 import org.springframework.stereotype.Service;
 
+import com.dta.domain.Adresse;
 import com.dta.domain.Commande;
+import com.dta.domain.LigneCommande;
 import com.dta.domain.Utilisateur;
 
 @Service
 public class CommandeServiceImpl implements CommandeService {
 	
 	private EntityManager em;
+	private Adresse address;
+	private List<LigneCommande> lineCommand = new ArrayList<LigneCommande>();
 	
 	@PersistenceContext(unitName = "entityManagerFactory")
 	public void setEm(EntityManager em) {
@@ -33,5 +38,31 @@ public class CommandeServiceImpl implements CommandeService {
 		queryUserByLogin.setParameter("user", user);
 		
 		return quesryCommandeByUser.getResultList();
+	}
+
+	@Override
+	public void saveCommande() {
+	
+		reset();
+	}
+
+	@Override
+	public void addLineCommand(LigneCommande lineCommand) {
+		this.lineCommand.add(lineCommand);
+		System.out.println(this.lineCommand.size());
+		for(LigneCommande lc:this.lineCommand){
+			System.out.println(lc.toString());
+		}
+		System.out.println("");
+	}
+
+	@Override
+	public void setAddress(Adresse address) {
+		this.address=address;
+	}
+	
+	private void reset(){
+		address=null;
+		lineCommand = new ArrayList<LigneCommande>();
 	}
 }

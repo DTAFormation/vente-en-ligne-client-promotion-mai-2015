@@ -9,17 +9,19 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dta.domain.Adresse;
+import com.dta.domain.LigneCommande;
 import com.dta.service.CommandeService;
 
 @RestController
-@RequestMapping("/address")
-public class AddressController {
+@RequestMapping("/linecommand")
+public class LineCommandController {
+	
 	@Autowired
 	private CommandeService cs;
 	
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
-	public void createAddress(@RequestBody Adresse address) {
-		cs.setAddress(address);
+	public void createAddress(@RequestBody LigneCommande lineCommand) {
+		cs.addLineCommand(lineCommand);
 	}
 }

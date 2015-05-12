@@ -11,10 +11,17 @@ angular.module("venteEnLigne")
 		return totalPrice;
 	}
 	
+	
+	
 	$scope.validate = function() {
 		if(!ConnectService.isConnected())
 			$location.path("/connect");
-		else
+		else{
+			$scope.basket.forEach(function(d){
+				BasketService.saveBasket(d);
+			})
 			$location.path("/address");
+		}
+			
 	}
 });

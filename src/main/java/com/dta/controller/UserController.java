@@ -27,10 +27,16 @@ public class UserController {
 		return new UserJson(result);
 	}
 	
-	
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
 	public void createUser(@RequestBody Utilisateur user) {
 		userService.create(user);
+	}
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+	@ResponseStatus(value = HttpStatus.OK)
+	public void deleteUser(@PathVariable("id") int id) {
+		System.out.println("controller java");
+		userService.delete(id);
 	}
 }

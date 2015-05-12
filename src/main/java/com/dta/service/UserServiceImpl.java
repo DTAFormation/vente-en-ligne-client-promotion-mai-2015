@@ -36,6 +36,13 @@ public class UserServiceImpl implements UserService {
 			em.persist(user);
 		}
 	}
+	
+	@Override
+	@Transactional
+	public void delete(int userId) {
+		Utilisateur user = em.find(Utilisateur.class, userId);
+		em.remove(user);
+	}
 
 	/**
 	 * Méthode pour vérifier si un utilisateur existe déjà en base

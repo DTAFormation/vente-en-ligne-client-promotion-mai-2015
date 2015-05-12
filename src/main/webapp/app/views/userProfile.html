@@ -1,5 +1,4 @@
 <div style="width:500px">
-	<p>test Rebase</p>
 	<table class="table table-bordered">
 		<tr>
 			<td><label class="col-sm-2 control-label">Id</label></td>
@@ -38,4 +37,8 @@
 			<td>{{user.entity.fax}}</td>
 		</tr>
 	</table>
+	<button type="button" class="btn btn-default btn-lg"
+		ng-click="deleteProfil(user.entity.id)">
+		<span class="glyphicon glyphicon-remove"></span>
+	</button>
 </div>

@@ -10,10 +10,13 @@
 	<div class="col-md-6">
 		<table class="table table-hover">
 			<thead>
-				<tr class="clickable-row">
+				<tr>
 					<th width="50">&nbsp</th>
-					<th ng-click="currentColumn='name'; reverse=!reverse">Name</th>
-					<th ng-click="currentColumn='entity.price'; reverse=!reverse">Price</th>
+					<th class="nameicon" ng-click="currentColumn='name'; reverse=!reverse">Name
+					<i class="glyphicon" ng-class="getIcon('name')"></i></th>
+					
+					<th class="priceicon" ng-click="currentColumn='entity.price'; reverse=!reverse">Price
+					<i class="glyphicon" ng-class="getIcon('entity.price')"></i></th>
 					<th></th>
 				</tr>
 			</thead>

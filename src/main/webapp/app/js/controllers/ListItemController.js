@@ -3,26 +3,26 @@ angular.module("venteEnLigne")
 .controller("ListItemController",function($http,ItemService,$location,$scope,BasketService){
 	var ctrl = this;
 	$scope.items = [];
-	
+
 	$scope.alerts = [];
 
 	$scope.minQuantity = 1;
 	$scope.maxQuantity = 10000;
-	
+
 	$scope.currentColumn = 'name';
 	$scope.reverse = false;
 
 	ItemService.getItems().then(
-		function(response) {
-			var items = response.data;
-			for(var i=0; i<items.length; i++) {
-				$scope.items.push({entity: items[i], quantity: 1});
+			function(response) {
+				var items = response.data;
+				for(var i=0; i<items.length; i++) {
+					$scope.items.push({name:items[i].name, entity: items[i], quantity: 1});
+				}
+				console.log($scope.items);
+			},
+			function(error) {
+				addAlert({type: "danger", msg:"Connection error"});
 			}
-			console.log($scope.items);
-		},
-		function(error) {
-			addAlert({type: "danger", msg:"Connection error"});
-		}
 	);
 
 	$scope.showItem = function(item) {
@@ -33,7 +33,7 @@ angular.module("venteEnLigne")
 	$scope.addItemToBasket = function (item) {
 
 		itemSave={
-			entity: item.entity, quantity: item.quantity
+				entity: item.entity, quantity: item.quantity
 		}
 
 		var result = BasketService.addItemToBasket(itemSave);
@@ -50,10 +50,10 @@ angular.module("venteEnLigne")
 			$scope.alerts.shift();
 		}
 	}
-	
+
 	$scope.closeAlert = function(index) {
-	    $scope.alerts.splice(index, 1);
-	  };
+		$scope.alerts.splice(index, 1);
+	};
 
 	$scope.decrementQuantity = function(item) {
 		if(item.quantity > $scope.minQuantity) {
@@ -66,4 +66,12 @@ angular.module("venteEnLigne")
 			item.quantity++;
 		}
 	};
+
+	$scope.getIcon = function(column) {
+
+		if ($scope.currentColumn == column) {
+			return $scope.reverse ? 'glyphicon-chevron-down' : 'glyphicon-chevron-up';
+		}
+		return 'glyphicon-star';
+	}
 });

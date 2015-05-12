@@ -1,4 +1,5 @@
-.nav, .pagination, .carousel, .panel-title a {
+.nav, .pagination, .carousel, .panel-title a, .clickable-row,
+	.nameicon, .priceicon {
 	cursor: pointer;
 }
 
@@ -8,10 +9,6 @@ table th, td {
 
 thead {
 	background-color: rgb(233, 241, 253)
-}
-
-.clickable-row {
-	cursor: pointer;
 }
 
 .connectInputGroup {

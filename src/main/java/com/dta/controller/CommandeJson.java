@@ -6,25 +6,25 @@ import com.dta.domain.Commande;
 
 public class CommandeJson {
 	
-	private int codePostal;
-	private String departement;
-	private int num;
-	private String pays;
-	private String rue;
-	private String ville;
-	private int commandeId;
-	private Date dateCommande;
-	private Date dateExpCarteCredit;
-	private String numCarteCredit;
-	private String typeCarteCredit;
+	private int postalCode;
+	private String department;
+	private int phoneNumber;
+	private String country;
+	private String street;
+	private String city;
+	private int commandId;
+	private Date commandDate;
+	private Date creditCardExpCard;
+	private String creditCardNum;
+	private String creditCardType;
 
 	public CommandeJson(Commande cmd) {
-		this(cmd.getAdresse().getCodePostal(),
+		this(cmd.getAdresse().getPostcode(),
 				cmd.getAdresse().getDepartement(),
-				cmd.getAdresse().getNum(),
-				cmd.getAdresse().getPays(),
-				cmd.getAdresse().getRue(),
-				cmd.getAdresse().getVille(),
+				cmd.getAdresse().getNumber(),
+				cmd.getAdresse().getCountry(),
+				cmd.getAdresse().getStreet(),
+				cmd.getAdresse().getCity(),
 				cmd.getCommandeId(),
 				cmd.getDateCommande(),
 				cmd.getDateExpCarteCredit(),
@@ -32,110 +32,133 @@ public class CommandeJson {
 				cmd.getTypeCarteCredit());
 	}
 
-	public CommandeJson(int codePostal, String departement, int num,
-			String pays, String rue, String ville, int commandeId,
-			Date dateCommande, Date dateExpCarteCredit, String numCarteCredit,
-			String typeCarteCredit) {
-		
-		this.codePostal = codePostal;
-		this.departement = departement;
-		this.num = num;
-		this.pays = pays;
-		this.rue = rue;
-		this.ville = ville;
-		this.commandeId = commandeId;
-		this.dateCommande = dateCommande;
-		this.dateExpCarteCredit = dateExpCarteCredit;
-		this.numCarteCredit = numCarteCredit;
-		this.typeCarteCredit = typeCarteCredit;
+
+	public CommandeJson(int postalCode, String department, int phoneNumber,
+			String country, String street, String city, int commandId,
+			Date commandDate, Date creditCardExpCard, String creditCardNum,
+			String creditCardType) {
+		super();
+		this.postalCode = postalCode;
+		this.department = department;
+		this.phoneNumber = phoneNumber;
+		this.country = country;
+		this.street = street;
+		this.city = city;
+		this.commandId = commandId;
+		this.commandDate = commandDate;
+		this.creditCardExpCard = creditCardExpCard;
+		this.creditCardNum = creditCardNum;
+		this.creditCardType = creditCardType;
 	}
 
-	public int getCodePostal() {
-		return codePostal;
+
+	public int getPostalCode() {
+		return postalCode;
 	}
 
-	public void setCodePostal(int codePostal) {
-		this.codePostal = codePostal;
+
+	public void setPostalCode(int postalCode) {
+		this.postalCode = postalCode;
 	}
 
-	public String getDepartement() {
-		return departement;
+
+	public String getDepartment() {
+		return department;
 	}
 
-	public void setDepartement(String departement) {
-		this.departement = departement;
+
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 
-	public int getNum() {
-		return num;
+
+	public int getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setNum(int num) {
-		this.num = num;
+
+	public void setPhoneNumber(int phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
-	public String getPays() {
-		return pays;
+
+	public String getCountry() {
+		return country;
 	}
 
-	public void setPays(String pays) {
-		this.pays = pays;
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
-	public String getRue() {
-		return rue;
+
+	public String getStreet() {
+		return street;
 	}
 
-	public void setRue(String rue) {
-		this.rue = rue;
+
+	public void setStreet(String street) {
+		this.street = street;
 	}
 
-	public String getVille() {
-		return ville;
+
+	public String getCity() {
+		return city;
 	}
 
-	public void setVille(String ville) {
-		this.ville = ville;
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 
-	public int getCommandeId() {
-		return commandeId;
+
+	public int getCommandId() {
+		return commandId;
 	}
 
-	public void setCommandeId(int commandeId) {
-		this.commandeId = commandeId;
+
+	public void setCommandId(int commandId) {
+		this.commandId = commandId;
 	}
 
-	public Date getDateCommande() {
-		return dateCommande;
+
+	public Date getCommandDate() {
+		return commandDate;
 	}
 
-	public void setDateCommande(Date dateCommande) {
-		this.dateCommande = dateCommande;
+
+	public void setCommandDate(Date commandDate) {
+		this.commandDate = commandDate;
 	}
 
-	public Date getDateExpCarteCredit() {
-		return dateExpCarteCredit;
+
+	public Date getCreditCardExpCard() {
+		return creditCardExpCard;
 	}
 
-	public void setDateExpCarteCredit(Date dateExpCarteCredit) {
-		this.dateExpCarteCredit = dateExpCarteCredit;
+
+	public void setCreditCardExpCard(Date creditCardExpCard) {
+		this.creditCardExpCard = creditCardExpCard;
 	}
 
-	public String getNumCarteCredit() {
-		return numCarteCredit;
+
+	public String getCreditCardNum() {
+		return creditCardNum;
 	}
 
-	public void setNumCarteCredit(String numCarteCredit) {
-		this.numCarteCredit = numCarteCredit;
+
+	public void setCreditCardNum(String creditCardNum) {
+		this.creditCardNum = creditCardNum;
 	}
 
-	public String getTypeCarteCredit() {
-		return typeCarteCredit;
+
+	public String getCreditCardType() {
+		return creditCardType;
 	}
 
-	public void setTypeCarteCredit(String typeCarteCredit) {
-		this.typeCarteCredit = typeCarteCredit;
+
+	public void setCreditCardType(String creditCardType) {
+		this.creditCardType = creditCardType;
 	}
 
 }

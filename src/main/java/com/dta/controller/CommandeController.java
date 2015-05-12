@@ -1,9 +1,6 @@
 package com.dta.controller;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dta.domain.Commande;
-import com.dta.domain.Utilisateur;
 import com.dta.service.CommandeService;
 
 @RestController
@@ -35,4 +31,5 @@ public class CommandeController {
 		}
 		return cmdsJson;
 	}
+	
 }

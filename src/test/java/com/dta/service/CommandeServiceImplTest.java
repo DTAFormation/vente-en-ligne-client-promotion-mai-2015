@@ -40,7 +40,6 @@ public class CommandeServiceImplTest {
 	
 	@Test
 	public void getCommandeByLoginTest(){
-		
 		List<Commande> results;
 		List<Commande> returnedList = new ArrayList<Commande>();
 		returnedList.add(new Commande());

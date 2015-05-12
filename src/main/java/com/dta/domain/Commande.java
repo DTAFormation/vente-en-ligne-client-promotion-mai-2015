@@ -1,6 +1,7 @@
 package com.dta.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -38,7 +40,9 @@ public class Commande {
 	@ManyToOne
 	@JoinTable(name="commandes_utilisateur")
 	private Utilisateur utilisateur;
-	
+	@OneToMany(mappedBy="commande")
+	private List<LigneCommande> ligneCommandes;
+
 	public Commande() {}
 	
 	public Commande(Date dateExpCarteCredit, Date dateCommande,

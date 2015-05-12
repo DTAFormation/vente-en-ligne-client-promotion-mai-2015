@@ -1,7 +1,16 @@
-angular.module("venteEnLigne").factory("BasketService", function() {
+angular.module("venteEnLigne").factory("BasketService", function($http) {
 	return {
 		version: "1.0",
 
+		
+		
+		saveBasket : function(item){
+			var linecommand={};
+			linecommand.quantity = item.quantity;
+			linecommand.article=item.entity;
+			return $http.post("/VentesEnLigneClient/rest/linecommand", linecommand)
+		},
+		
 		addItemToBasket : function(item) {
 			
 			var basket = JSON.parse(window.localStorage.getItem("basket"));

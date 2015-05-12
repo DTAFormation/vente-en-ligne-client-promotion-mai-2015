@@ -1,6 +1,6 @@
 angular.module("venteEnLigne")
 
-.controller("UserProfileController",function(ProfilService, $scope, $routeParams, ModalService, $location){
+.controller("UserProfileController",function(ProfilService, ConnectService, $scope, $routeParams, ModalService, $location){
 
 	$scope.user = {};
 
@@ -19,6 +19,7 @@ angular.module("venteEnLigne")
 				$scope.deleteDone();										
 			}
 		);
+		ConnectService.setDisconnected()
 	};	
 	
 	$scope.deleteConfirmation = function () {

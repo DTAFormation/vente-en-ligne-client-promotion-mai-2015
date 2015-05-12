@@ -15,6 +15,6 @@ angular.module("venteEnLigne")
 		if(!ConnectService.isConnected())
 			$location.path("/connect");
 		else
-			$location.path("/payment");
+			$location.path("/address");
 	}
 });

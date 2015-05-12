@@ -6,9 +6,11 @@ angular.module("venteEnLigne").factory("ProfilService", function ($http,$locatio
 		getProfil : function (id){
 			return   $http.get("/VentesEnLigneClient/rest/user/"+id);
 		},
-		showProfil : function(user) {
-			
+		showProfil : function(user) {			
 			$location.path("/user/"+user.id)
+		},
+		deleteProfil: function (id) {
+			return $http['delete']("/VentesEnLigneClient/rest/user/"+id);
 		}
 	}
 });

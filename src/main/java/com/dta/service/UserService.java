@@ -8,5 +8,5 @@ public interface UserService {
 	public void delete(int userId);
 	public boolean emailExists(String uemail);
 	public boolean loginExists(String ulogin);
-	public Utilisateur find(int id);
+	public Utilisateur find(String login);
 }

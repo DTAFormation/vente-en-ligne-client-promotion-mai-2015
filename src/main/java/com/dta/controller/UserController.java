@@ -20,10 +20,10 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value="/{id}")
+	@RequestMapping(value="/{login}")
 	@ResponseBody
-	public UserJson getUser(@PathVariable("id") int id) {
-		Utilisateur result = userService.find(id);
+	public UserJson getUser(@PathVariable("login") String login) {
+		Utilisateur result = userService.find(login);
 		return new UserJson(result);
 	}
 	

@@ -8,6 +8,7 @@
 				<li ng-class="{active: currentPage() == '/disconnet'}" ng-show="isConnected()"><a ng-click="logout()"><span class="glyphicon glyphicon-user"></span> {{getConnectedUser()}}</a></li>
 				<li ng-class="{active: currentPage() == '/connect'}" ng-hide="isConnected()"><a ng-click="goToPage('/connect')">Sign in/Sign up</a></li>
 				<li ng-class="{active: currentPage() == '/history'}" ng-show="isConnected()"><a ng-click="goToPage('/history')">Historique</a></li>
+				<li ng-class="{active: currentPage() == '/history'}" ng-show="isConnected()"><a ng-click="goToPage('/user')">Profile</a></li>
 			</ul>
 		</div>
 	</div>

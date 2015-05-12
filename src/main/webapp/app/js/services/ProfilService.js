@@ -3,8 +3,8 @@ angular.module("venteEnLigne").factory("ProfilService", function ($http) {
 		saveProfil: function (profil) {
 			return $http.post("/VentesEnLigneClient/rest/user", profil)
 		},
-		getProfil : function (id){
-			return   $http.get("/VentesEnLigneClient/rest/user/"+id);
+		getProfil : function (login){
+			return   $http.get("/VentesEnLigneClient/rest/user/"+login);
 		},
 		deleteProfil: function (id) {
 			return $http['put']("/VentesEnLigneClient/rest/user/"+id);

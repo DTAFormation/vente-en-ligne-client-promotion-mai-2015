@@ -14,6 +14,7 @@ angular.module("venteEnLigne").factory("BasketService", function() {
 			var itemAMAJ;
 			var itemAMAJExists = false;
 			for (var i = 0; i < basket.length; i++){
+				console.log(basket[i]);
 				if(basket[i].entity.articleId == item.entity.articleId){
 					itemAMAJ = basket[i];
 					itemAMAJExists = true;

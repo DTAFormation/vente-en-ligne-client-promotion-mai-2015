@@ -30,6 +30,12 @@ describe('BasketService', function() {
 		BasketService.deleteItemFromBasket({"entity":{"articleId":2, "name":"machin"}, "quantity":1})
 		expect(BasketService.getBasket()).toEqual([{"entity":{"articleId":1, "name":"truc"}, "quantity":2}]);
 	}));
+
+	it('Basket should update the quantity of an item already existing', inject(function(BasketService){
+		BasketService.addItemToBasket({"entity":{"articleId":1, "name":"truc"}, "quantity":4});
+		BasketService.addItemToBasket({"entity":{"articleId":1, "name":"truc"}, "quantity":2});
+		expect (BasketService.getBasket()).toEqual([{"entity":{"articleId":1, "name":"truc"}, "quantity":6}])
+	}));
 	
 	
 	afterEach(function() {

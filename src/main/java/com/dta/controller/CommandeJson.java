@@ -15,7 +15,6 @@ public class CommandeJson {
 
 
 	public CommandeJson(Commande cmd) {
-		
 		this.commandId = cmd.getCommandeId();	
 		
 		this.adresse = cmd.getAdresse().getNumber() + " "

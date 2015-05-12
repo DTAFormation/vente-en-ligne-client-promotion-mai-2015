@@ -35,16 +35,4 @@ public class CommandeController {
 		}
 		return cmdsJson;
 	}
-	
-	@RequestMapping(value="/cmds")
-	@ResponseBody
-	public List<CommandeJson> getCommande() {
-		
-		List<CommandeJson> cmdsJson = new ArrayList<CommandeJson>(5);
-		
-		for(int i=0; i<10; i++){
-			cmdsJson.add(new CommandeJson(i, "52 Chemin du Bugnon 74130 Mont-Saxonnex France", "05/05/2005", "VISA 54586XXXXXXXXXX"));
-		}
-		return cmdsJson;
-	}
 }

@@ -47,6 +47,7 @@ public class Commande {
 	@OneToMany(mappedBy="commande")
 	private List<LigneCommande> ligneCommandes;
 
+
 	public Commande() {}
 	public Commande(Date dateExpCarteCredit, Date dateCommande,
 			String numCarteCredit, String typeCarteCredit, Adresse adresse,
@@ -100,6 +101,12 @@ public class Commande {
 	}
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
+	}
+	public List<LigneCommande> getLigneCommandes() {
+		return ligneCommandes;
+	}
+	public void setLigneCommandes(List<LigneCommande> ligneCommandes) {
+		this.ligneCommandes = ligneCommandes;
 	}
 	
 	@Override

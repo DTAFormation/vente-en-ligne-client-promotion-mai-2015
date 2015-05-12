@@ -1,6 +1,7 @@
 package com.dta.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -38,7 +39,10 @@ public class CommandeServiceImpl implements CommandeService {
 
 	@Override
 	public void saveCommande() {
-	
+		Commande commande=new Commande();
+		commande.setAdresse(address);
+		commande.setLigneCommandes(lineCommand);
+		commande.setDateCommande(new Date(System.currentTimeMillis()));
 		reset();
 	}
 

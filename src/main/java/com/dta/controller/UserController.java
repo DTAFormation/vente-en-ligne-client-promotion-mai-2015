@@ -33,9 +33,9 @@ public class UserController {
 		userService.create(user);
 	}
 	
-	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
+	@RequestMapping(value="/{login}", method=RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.OK)
-	public void deleteUser(@PathVariable("id") int id) {
-		userService.delete(id);
+	public void deleteUser(@PathVariable("login") String login) {
+		userService.delete(login);
 	}
 }

@@ -39,8 +39,8 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	@Transactional
-	public void delete(int userId) {
-		Utilisateur user = em.find(Utilisateur.class, userId);
+	public void delete(String login) {
+		Utilisateur user = find(login);
 		user.setActive(false);
 	}
 
@@ -83,9 +83,5 @@ public class UserServiceImpl implements UserService {
 		System.out.println(queryUserByLogin.getResultList().get(0));
 		Utilisateur user = (Utilisateur) queryUserByLogin.getResultList().get(0);
 		return user;
-	}
-
-	public void ahahahahahah(){
-		
 	}
 }

@@ -33,7 +33,7 @@ angular.module("venteEnLigne", ["ngRoute", "ui.bootstrap"])
 		templateUrl: "app/views/history.html",
 		controller: "HistoryController"
 	})
-	.when("/user/:id", {
+	.when("/user", {
 		templateUrl: "app/views/userProfile.html",
 		controller: "UserProfileController"
 	})

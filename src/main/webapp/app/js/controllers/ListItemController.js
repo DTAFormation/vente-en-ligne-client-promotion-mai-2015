@@ -9,7 +9,7 @@ angular.module("venteEnLigne")
 	$scope.minQuantity = 1;
 	$scope.maxQuantity = 10000;
 	
-	$scope.currentColumn = 'entity.name';
+	$scope.currentColumn = 'name';
 	$scope.reverse = false;
 
 	ItemService.getItems().then(
@@ -18,6 +18,7 @@ angular.module("venteEnLigne")
 			for(var i=0; i<items.length; i++) {
 				$scope.items.push({entity: items[i], quantity: 1});
 			}
+			console.log($scope.items);
 		},
 		function(error) {
 			addAlert({type: "danger", msg:"Connection error"});
@@ -65,5 +66,4 @@ angular.module("venteEnLigne")
 			item.quantity++;
 		}
 	};
-
 });

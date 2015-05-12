@@ -19,12 +19,12 @@ public class CommandeJson {
 	private String typeCarteCredit;
 
 	public CommandeJson(Commande cmd) {
-		this(cmd.getAdresse().getCodePostal(),
+		this(cmd.getAdresse().getPostcode(),
 				cmd.getAdresse().getDepartement(),
-				cmd.getAdresse().getNum(),
-				cmd.getAdresse().getPays(),
-				cmd.getAdresse().getRue(),
-				cmd.getAdresse().getVille(),
+				cmd.getAdresse().getNumber(),
+				cmd.getAdresse().getCountry(),
+				cmd.getAdresse().getStreet(),
+				cmd.getAdresse().getCity(),
 				cmd.getCommandeId(),
 				cmd.getDateCommande(),
 				cmd.getDateExpCarteCredit(),

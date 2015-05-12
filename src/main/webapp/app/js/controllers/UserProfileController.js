@@ -4,7 +4,7 @@ angular.module("venteEnLigne")
 
 	$scope.user = {};
 
-	ProfilService.getProfil(window.sessionStorage.getItem("connected"))
+	ProfilService.getProfil($routeParams.id)
 	.then(function(result){
 		$scope.user = {entity: result.data};
 	},

@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public void delete(int userId) {
 		Utilisateur user = em.find(Utilisateur.class, userId);
-		em.remove(user);
+		user.setActive(false);
 	}
 
 	/**

@@ -1,18 +1,14 @@
-.nav, .pagination, .carousel, .panel-title a {
+.nav, .pagination, .carousel, .panel-title a, .clickable-row,
+	.nameicon, .priceicon {
 	cursor: pointer;
 }
 
 table th, td {
 	text-align: center
-
 }
 
 thead {
 	background-color: rgb(233, 241, 253)
-}
-
-.clickable-row {
-	cursor: pointer;
 }
 
 .connectInputGroup {
@@ -23,11 +19,12 @@ thead {
 	color: red;
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
+	{
+	-webkit-appearance: none;
+	margin: 0;
 }
+
 input[type="number"] {
-    -moz-appearance: textfield;
+	-moz-appearance: textfield;
 }

@@ -10,16 +10,19 @@
 	<div class="col-md-6">
 		<table class="table table-hover">
 			<thead>
-				<tr class="clickable-row">
+				<tr>
 					<th width="50">&nbsp</th>
-					<th ng-click="currentColumn='entity.name'; reverse=!reverse">Name</th>
-					<th ng-click="currentColumn='entity.price'; reverse=!reverse">Price</th>
+					<th class="nameicon" ng-click="currentColumn='name'; reverse=!reverse">Name
+					<i class="glyphicon" ng-class="getIcon('name')"></i></th>
+					
+					<th class="priceicon" ng-click="currentColumn='entity.price'; reverse=!reverse">Price
+					<i class="glyphicon" ng-class="getIcon('entity.price')"></i></th>
 					<th></th>
 				</tr>
 			</thead>
 
 			<form id="itemsForm" name="itemsForm" novalidate>
-				<tr class="clickable-row" ng-repeat="item in items | filter:search | orderBy:currentColumn:reverse">
+				<tr class="clickable-row" ng-repeat="item in items | filter: {name: search} | orderBy:currentColumn:reverse">
 					<td width="50"><img height="42" width="42" src="{{item.entity.image}}"></td>
 					<td ng-click="showItem(item.entity)"><strong>{{item.entity.name}}</strong></td>
 					<td ng-click="showItem(item.entity)">{{item.entity.price | currency}}</td>

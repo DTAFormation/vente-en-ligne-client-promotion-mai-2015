@@ -33,10 +33,9 @@ public class UserController {
 		userService.create(user);
 	}
 	
-	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.OK)
 	public void deleteUser(@PathVariable("id") int id) {
-		System.out.println("controller java");
 		userService.delete(id);
 	}
 }

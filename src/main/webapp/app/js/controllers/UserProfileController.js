@@ -1,6 +1,6 @@
 angular.module("venteEnLigne")
 
-.controller("UserProfileController",function(ProfilService, $scope, $routeParams){
+.controller("UserProfileController",function(ProfilService, $scope, $routeParams, ModalService, $location){
 
 	$scope.user = {};
 
@@ -8,7 +8,6 @@ angular.module("venteEnLigne")
 	.then(function(result){
 		console.log($routeParams);
 		$scope.user = {entity: result.data};
-
 	},
 	function(error){
 		console.log(error);

@@ -1,5 +1,5 @@
-.nav, .pagination, .carousel, .panel-title a, .clickable-row,
-	.nameicon, .priceicon {
+.nav, .pagination, .carousel, .panel-title a, .clickable-row, .nameicon,
+	.priceicon {
 	cursor: pointer;
 }
 
@@ -27,4 +27,12 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 input[type="number"] {
 	-moz-appearance: textfield;
+}
+
+#share-buttons img {
+	width: 35px;
+	padding: 5px;
+	border: 0;
+	box-shadow: 0;
+	display: inline;
 }

@@ -2,7 +2,10 @@ angular.module("venteEnLigne")
 
 .controller("ListItemController",function($http,ItemService,$location,$scope,BasketService){
 	var ctrl = this;
+	var setProd = new Set();
+	
 	$scope.items = [];
+	$scope.products = []
 
 	$scope.alerts = [];
 
@@ -16,9 +19,10 @@ angular.module("venteEnLigne")
 			function(response) {
 				var items = response.data;
 				for(var i=0; i<items.length; i++) {
-					$scope.items.push({name:items[i].name, entity: items[i], quantity: 1});
+					$scope.items.push({name:items[i].name, nameProduct:items[i].nameProduct, entity: items[i], quantity: 1});
+					setProd.add(items[i].nameProduct);
 				}
-				console.log($scope.items);
+				setProd.forEach(function(value){$scope.products.push(value)})
 			},
 			function(error) {
 				addAlert({type: "danger", msg:"Connection error"});

@@ -24,8 +24,8 @@ angular.module("venteEnLigne")
 	
 	$scope.deleteConfirmation = function () {
 		ModalService.openModal(
-			"Delete",
-			"Do you want to delete your profile ?",
+			"Warning !",
+			"Do you really want to delete your profile ? :(",
 			"OK"
 		).result.then(
 			$scope.deleteProfil
@@ -34,8 +34,8 @@ angular.module("venteEnLigne")
 	
 	$scope.deleteDone = function () {
 		ModalService.openModal(
-			"Delete",
-			"Your profil has been deleted",
+			"See you",
+			"Your profile has been deleted. You will now be logged out.",
 			"OK"
 		).result.then(
 			$scope.goToHome,

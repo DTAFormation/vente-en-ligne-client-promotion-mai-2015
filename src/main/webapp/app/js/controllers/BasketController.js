@@ -27,13 +27,14 @@ angular.module("venteEnLigne").controller("BasketController", function ($scope, 
 		itemToUpdate={
 			entity: item.entity, quantity: item.quantity
 		}
-
+		$scope.deleteItemFromBasket(item);
 		var result = BasketService.addItemToBasket(itemToUpdate);
 		if(result.error) {
 			addAlert({type: "danger", msg: result.error});
 		} else {
 			addAlert({type: 'success', msg: ' Quantity of ' + item.entity.name + ' successfully updated !'});
 		}
+		fetchBasket();
 	};
 
 	function addAlert(params) {

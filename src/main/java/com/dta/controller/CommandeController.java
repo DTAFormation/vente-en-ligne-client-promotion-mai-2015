@@ -1,6 +1,9 @@
 package com.dta.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +23,7 @@ public class CommandeController {
 	@Autowired
 	private CommandeService commandeService;
 	
-	@RequestMapping(value="/{login}")
+	@RequestMapping(value="/commandes/{login}")
 	@ResponseBody
 	public List<CommandeJson> getCommande(@PathVariable("login") String login) {
 		
@@ -32,5 +35,4 @@ public class CommandeController {
 		}
 		return cmdsJson;
 	}
-
 }

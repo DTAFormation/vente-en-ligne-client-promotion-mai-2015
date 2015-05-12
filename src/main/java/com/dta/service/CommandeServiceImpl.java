@@ -26,7 +26,6 @@ public class CommandeServiceImpl implements CommandeService {
 		this.em = em;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Commande> getCommandeByLogin(String login) {
 		
@@ -34,10 +33,7 @@ public class CommandeServiceImpl implements CommandeService {
 		queryUserByLogin.setParameter("ulogin", login);
 		Utilisateur user = (Utilisateur) queryUserByLogin.getSingleResult();
 		
-		Query quesryCommandeByUser = em.createNamedQuery("findCommandeByUser");
-		queryUserByLogin.setParameter("user", user);
-		
-		return quesryCommandeByUser.getResultList();
+		return user.getCommandes();
 	}
 
 	@Override

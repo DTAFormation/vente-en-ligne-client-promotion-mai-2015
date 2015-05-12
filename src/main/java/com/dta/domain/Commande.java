@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
@@ -12,6 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @NamedQueries({
@@ -34,7 +38,7 @@ public class Commande {
 	private String numCarteCredit;
 	@Column(name="type_cartecredit", length=255)
 	private String typeCarteCredit;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinTable(name="commandes_adresse")
 	private Adresse adresse;
 	@ManyToOne

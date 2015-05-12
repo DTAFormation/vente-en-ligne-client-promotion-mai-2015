@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dta.controller.UserAlreadyExistsException;
-import com.dta.domain.Article;
 import com.dta.domain.Utilisateur;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public void delete(int userId) {
 		Utilisateur user = em.find(Utilisateur.class, userId);
-		em.remove(user);
+		user.setActive(false);
 	}
 
 	/**
@@ -77,8 +77,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Utilisateur find(int id) {
-		return em.find(Utilisateur.class, id);
+	public Utilisateur find(String login) {
+		Query queryUserByLogin = em.createNamedQuery("findUserByLogin", Utilisateur.class);
+		queryUserByLogin.setParameter("ulogin", login);
+		System.out.println(queryUserByLogin.getResultList().get(0));
+		Utilisateur user = (Utilisateur) queryUserByLogin.getResultList().get(0);
+		return user;
 	}
 
 	public void ahahahahahah(){

@@ -1,16 +1,13 @@
-angular.module("venteEnLigne").factory("ProfilService", function ($http,$location) {
+angular.module("venteEnLigne").factory("ProfilService", function ($http) {
 	return {
 		saveProfil: function (profil) {
 			return $http.post("/VentesEnLigneClient/rest/user", profil)
 		},
-		getProfil : function (id){
-			return   $http.get("/VentesEnLigneClient/rest/user/"+id);
-		},
-		showProfil : function(user) {			
-			$location.path("/user/"+user.id)
+		getProfil : function (login){
+			return   $http.get("/VentesEnLigneClient/rest/user/"+login);
 		},
 		deleteProfil: function (id) {
-			return $http['delete']("/VentesEnLigneClient/rest/user/"+id);
+			return $http['put']("/VentesEnLigneClient/rest/user/"+id);
 		}
 	}
 });

@@ -1,5 +1,5 @@
 angular.module("venteEnLigne")
-.controller("ValidatePaymentController", function ($scope, $location, ConnectService, BasketService) {
+.controller("ValidatePaymentController", function ($scope, $location, ConnectService, BasketService,ProfilService) {
 	
 	$scope.basket = BasketService.getBasket();
 	
@@ -18,8 +18,9 @@ angular.module("venteEnLigne")
 			$location.path("/connect");
 		else{
 			$scope.basket.forEach(function(d){
-				BasketService.saveBasket(d);
+				BasketService.saveBasketCommand(d);
 			})
+			ProfilService.getProfil(window.sessionStorage.getItem("connected"));
 			$location.path("/address");
 		}
 			

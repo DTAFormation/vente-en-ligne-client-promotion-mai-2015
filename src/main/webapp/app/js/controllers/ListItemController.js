@@ -2,7 +2,6 @@ angular.module("venteEnLigne")
 
 .controller("ListItemController",function($http,ItemService,$location,$scope,BasketService){
 	var ctrl = this;
-	var setProd = new Set();
 	
 	$scope.items = [];
 	$scope.products = []
@@ -18,6 +17,7 @@ angular.module("venteEnLigne")
 	ItemService.getItems().then(
 			function(response) {
 				var items = response.data;
+				var setProd = new Set();
 				for(var i=0; i<items.length; i++) {
 					$scope.items.push({name:items[i].name, nameProduct:items[i].nameProduct, entity: items[i], quantity: 1});
 					setProd.add(items[i].nameProduct);

@@ -1,41 +1,48 @@
-<div style="width:500px">
-	<p>test Rebase</p>
-	<table class="table table-bordered">
-		<tr>
-			<td><label class="col-sm-2 control-label">Id</label></td>
-			<td>{{user.entity.id}}</td>
-		</tr>
-		<tr>
-			<td><label class="col-sm-2 control-label">titre</label></td>
-			<td>{{user.entity.titre}}</td>
-		</tr>
-		<tr>
-			<td><label class="col-sm-2 control-label">firstName</label></td>
-			<td>{{user.entity.firstName}}</td>
-		</tr>
-		<tr>
-			<td><label class="col-sm-2 control-label">lastName</label></td>
-			<td>{{user.entity.lastName}}</td>
-		</tr>
-		<tr>
-			<td><label class="col-sm-2 control-label">login</label></td>
-			<td>{{user.entity.login}}</td>
-		</tr>
-		<tr>
-			<td><label class="col-sm-2 control-label">password</label></td>
-			<td>{{user.entity.password}}</td>
-		</tr>
-		<tr>
-			<td><label class="col-sm-2 control-label">email</label></td>
-			<td>{{user.entity.email}}</td>
-		</tr>
-		<tr>
-			<td><label class="col-sm-2 control-label">telephone</label></td>
-			<td>{{user.entity.telephone}}</td>
-		</tr>
-		<tr>
-			<td><label class="col-sm-2 control-label">fax</label></td>
-			<td>{{user.entity.fax}}</td>
-		</tr>
-	</table>
-</div>
+<section>
+	<div class="container">
+		<h3 style="text-align: center;">Welcome {{user.entity.firstName}} {{user.entity.lastName}}</h3>
+		<table class="table table-bordered">
+			<tr>
+				<th>Id</th>
+				<td>{{user.entity.id}}</td>
+			</tr>
+			<tr>
+				<th>Civility</th>
+				<td>{{user.entity.titre}}</td>
+			</tr>
+			<tr>
+				<th>First Name</th>
+				<td>{{user.entity.firstName}}</td>
+			</tr>
+			<tr>
+				<th>Last Name</th>
+				<td>{{user.entity.lastName}}</td>
+			</tr>
+			<tr>
+				<th>Login</th>
+				<td>{{user.entity.login}}</td>
+			</tr>
+			<tr>
+				<th>Password</th>
+				<td>{{user.entity.password}}</td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td>{{user.entity.email}}</td>
+			</tr>
+			<tr>
+				<th>Phone Number</th>
+				<td>{{user.entity.telephone}}</td>
+			</tr>
+			<tr>
+				<th>Fax Number</th>
+				<td>{{user.entity.fax}}</td>
+			</tr>
+		</table>
+
+		<button type="button" class="btn btn-danger"
+			ng-click="deleteConfirmation()">
+			<span class="glyphicon glyphicon-remove"></span> Delete your profile
+		</button>
+	</div>
+</section>

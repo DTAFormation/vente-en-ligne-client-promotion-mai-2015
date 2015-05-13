@@ -10,9 +10,11 @@ public class ArticleJson {
 	private float price;
     private int stock;
     private String image;
+    private String nameProduct;
     
     public ArticleJson(Article article) {
     	this(article.getArticleId(), article.getName(), article.getPrice(), article.getStock(), article.getImage());
+    	this.nameProduct = article.getProduit().getNom();
     }
     
 	public ArticleJson(int articleId, String name, float price, int stock, String image) {
@@ -55,5 +57,12 @@ public class ArticleJson {
     public void setImage(String image) {
         this.image = image;
     }
-	
+
+	public String getNameProduct() {
+		return nameProduct;
+	}
+
+	public void setNameProduct(String nameProduct) {
+		this.nameProduct = nameProduct;
+	}
 }

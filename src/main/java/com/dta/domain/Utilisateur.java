@@ -12,6 +12,9 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 @NamedQueries({
 	@NamedQuery(
@@ -58,7 +61,9 @@ public class Utilisateur {
 			fetch=FetchType.EAGER)
 
 	private List<Adresse> adresses;
+	
 	@OneToMany(mappedBy="utilisateur")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Commande> commandes;
 	
 	public Utilisateur() {

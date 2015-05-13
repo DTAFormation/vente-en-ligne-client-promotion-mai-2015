@@ -1,4 +1,4 @@
-angular.module("venteEnLigne").controller("AddressController", function (AddressService, $scope, ModalService, $location) {
+angular.module("venteEnLigne").controller("AddressController", function (AddressService,BasketService, $scope, ModalService, $location) {
 	
 	$scope.address = {};
 
@@ -6,7 +6,8 @@ angular.module("venteEnLigne").controller("AddressController", function (Address
 	$scope.saveAddress = function () {
 		AddressService.saveAddress($scope.address) 
 		.then(
-			function(result) {				
+			function(result) {	
+				
 				angular.extend($scope.address, {
 					country: '', postcode: '',
 					departement: '', street: '',

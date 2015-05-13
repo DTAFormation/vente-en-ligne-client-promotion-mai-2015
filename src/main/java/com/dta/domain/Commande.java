@@ -1,23 +1,23 @@
 package com.dta.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
-@NamedQueries({
-	@NamedQuery(
-		name="findCommandeByUser",
-		query = "SELECT OBJECT(c) FROM Commande c WHERE c.utilisateur = :user"
-	)
-})
 public class Commande {
 
 	@Id
@@ -32,23 +32,30 @@ public class Commande {
 	private String numCarteCredit;
 	@Column(name="type_cartecredit", length=255)
 	private String typeCarteCredit;
-	@ManyToOne
+	@Column(name="validate", length=1)
+	private boolean validate;
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinTable(name="commandes_adresse")
 	private Adresse adresse;
 	@ManyToOne
 	@JoinTable(name="commandes_utilisateur")
 	private Utilisateur utilisateur;
-	
+	@OneToMany(mappedBy="commande")
+	private List<LigneCommande> ligneCommandes;
+
+
 	public Commande() {}
+	
 	public Commande(Date dateExpCarteCredit, Date dateCommande,
 			String numCarteCredit, String typeCarteCredit, Adresse adresse,
-			Utilisateur utilisateur) {
+			Utilisateur utilisateur, boolean validate) {
 		this.dateExpCarteCredit = dateExpCarteCredit;
 		this.dateCommande = dateCommande;
 		this.numCarteCredit = numCarteCredit;
 		this.typeCarteCredit = typeCarteCredit;
 		this.adresse = adresse;
 		this.utilisateur = utilisateur;
+		this.validate = validate;
 	}
 
 	public int getCommandeId() {
@@ -93,13 +100,27 @@ public class Commande {
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
+
+	public List<LigneCommande> getLigneCommandes() {
+		return ligneCommandes;
+	}
+	public void setLigneCommandes(List<LigneCommande> ligneCommandes) {
+		this.ligneCommandes = ligneCommandes;
+	}
+	
+	public boolean isValidate() {
+		return validate;
+	}
+	public void setValidate(boolean validate) {
+		this.validate = validate;
+	}
 	
 	@Override
 	public String toString() {
 		return "Commande [commandeId=" + commandeId + ", dateExpCarteCredit="
 				+ dateExpCarteCredit + ", dateCommande=" + dateCommande
 				+ ", numCarteCredit=" + numCarteCredit + ", typeCarteCredit="
-				+ typeCarteCredit + ", adresse=" + adresse + ", utilisateur="
-				+ utilisateur.getId() + "]";
-	}	
+				+ typeCarteCredit + ", validate=" + validate + ", adresse="
+				+ adresse + ", utilisateur=" + utilisateur + "]";
+	}
 }

@@ -8,10 +8,10 @@ describe('ValidatePaymentController', function() {
 		$controller('ValidatePaymentController', {$scope: scope});
 	}));
 
-	it("Should return the url '/payment'", inject(function(ConnectService, $rootScope, $controller, $location) {
+	it("Should return the url '/address'", inject(function(ConnectService, $rootScope, $controller, $location) {
 		ConnectService.setConnected("q");
 		scope.validate();
-		expect($location.path()).toEqual("/payment");
+		expect($location.path()).toEqual("/address");
 	}));
 
 	it("Should return the url '/connect'", inject(function(ConnectService, $rootScope, $controller, $location) {

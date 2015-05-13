@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dta.domain.Commande;
-import com.dta.domain.Utilisateur;
 import com.dta.service.CommandeService;
 
 @RestController
@@ -20,7 +19,7 @@ public class CommandeController {
 	@Autowired
 	private CommandeService commandeService;
 	
-	@RequestMapping(value="/{login}")
+	@RequestMapping(value="/commandes/{login}")
 	@ResponseBody
 	public List<CommandeJson> getCommande(@PathVariable("login") String login) {
 		
@@ -32,5 +31,5 @@ public class CommandeController {
 		}
 		return cmdsJson;
 	}
-
+	
 }

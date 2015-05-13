@@ -1,7 +1,16 @@
-angular.module("venteEnLigne").factory("BasketService", function(ItemService) {
+angular.module("venteEnLigne").factory("BasketService", function($http) {
 	return {
 		version: "1.0",
 
+		
+		
+		saveBasket : function(item){
+			var linecommand={};
+			linecommand.quantity = item.quantity;
+			linecommand.article=item.entity;
+			return $http.post("/VentesEnLigneClient/rest/linecommand", linecommand)
+		},
+		
 		addItemToBasket : function(item) {
 			
 			var basket = JSON.parse(window.localStorage.getItem("basket"));
@@ -14,6 +23,7 @@ angular.module("venteEnLigne").factory("BasketService", function(ItemService) {
 			var itemAMAJ;
 			var itemAMAJExists = false;
 			for (var i = 0; i < basket.length; i++){
+				console.log(basket[i]);
 				if(basket[i].entity.articleId == item.entity.articleId){
 					itemAMAJ = basket[i];
 					itemAMAJExists = true;

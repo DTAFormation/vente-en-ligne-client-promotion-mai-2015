@@ -9,18 +9,28 @@
 					<tr>
 						<td>
 							<div class="input-group">
-								<span class="input-group-btn"><button class="btn btn-primary" ng-click="decrementQuantity()"><span class="glyphicon glyphicon-minus"></span></button></span>
-								<input type="number" name="quantity" class="form-control input-number" min="{{minQuantity}}" max="{{maxQuantity}}" ng-model="article.quantity"/>
-								<span class="input-group-btn"><button class="btn btn-primary" ng-click="incrementQuantity()"><span class="glyphicon glyphicon-plus"></span></button></span>
+								<span class="input-group-btn"><button
+										class="btn btn-primary" ng-click="decrementQuantity()">
+										<span class="glyphicon glyphicon-minus"></span>
+									</button></span> <input type="number" name="quantity"
+									class="form-control input-number" min="{{minQuantity}}"
+									max="{{maxQuantity}}" ng-model="article.quantity" /> <span
+									class="input-group-btn"><button class="btn btn-primary"
+										ng-click="incrementQuantity()">
+										<span class="glyphicon glyphicon-plus"></span>
+									</button></span>
 							</div>
 						</td>
-						<td><input type="submit" class="btn btn-primary" ng-disabled="itemForm.$invalid" value="Add to basket" ng-click="addItemToBasket()"></td>
+						<td><input type="submit" class="btn btn-primary"
+							ng-disabled="itemForm.$invalid" value="Add to basket"
+							ng-click="addItemToBasket()"></td>
 					</tr>
 				</table>
 			</form>
 		</div>
 		<div class="col-md-3">
-			<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+			<alert ng-repeat="alert in alerts" type="{{alert.type}}"
+				close="closeAlert($index)">{{alert.msg}}</alert>
 		</div>
 	</div>
 </div>

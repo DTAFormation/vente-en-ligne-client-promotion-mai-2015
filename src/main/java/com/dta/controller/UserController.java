@@ -20,17 +20,22 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value="/{id}")
+	@RequestMapping(value="/{login}")
 	@ResponseBody
-	public UserJson getUser(@PathVariable("id") int id) {
-		Utilisateur result = userService.find(id);
+	public UserJson getUser(@PathVariable("login") String login) {
+		Utilisateur result = userService.find(login);
 		return new UserJson(result);
 	}
-	
 	
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
 	public void createUser(@RequestBody Utilisateur user) {
 		userService.create(user);
+	}
+	
+	@RequestMapping(value="/{login}", method=RequestMethod.PUT)
+	@ResponseStatus(value = HttpStatus.OK)
+	public void deleteUser(@PathVariable("login") String login) {
+		userService.delete(login);
 	}
 }

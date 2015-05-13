@@ -1,5 +1,6 @@
 <section>
-	<div class="container"><div style="width:500px">
+	<div class="container">
+		<h3 style="text-align: center;">Welcome {{user.entity.firstName}} {{user.entity.lastName}}</h3>
 		<table class="table table-bordered">
 			<tr>
 				<th>Id</th>
@@ -38,11 +39,10 @@
 				<td>{{user.entity.fax}}</td>
 			</tr>
 		</table>
-	
-		<button type="button" class="btn btn-default btn-lg"
+
+		<button type="button" class="btn btn-danger"
 			ng-click="deleteConfirmation()">
-			<span class="glyphicon glyphicon-remove"></span>
-			Delete your profile
+			<span class="glyphicon glyphicon-remove"></span> Delete your profile
 		</button>
 	</div>
 </section>

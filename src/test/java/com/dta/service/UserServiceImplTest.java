@@ -8,12 +8,14 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.stubbing.Answer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,6 +35,9 @@ public class UserServiceImplTest {
 	
 	@Mock 
 	private Query queryLogin;	
+	
+	@Mock 
+	private TypedQuery<Utilisateur> typedQuery;
 	
 	// Classe à tester
 	private UserServiceImpl service;
@@ -200,4 +205,33 @@ public class UserServiceImplTest {
         LOG.info("Alors le service renvoie faux");
         assertEquals("loginExists devrait retourner faux si le login n'est pas en base", false, result);
     }    
+    
+    
+	@Test
+    public void findTest() {
+
+		// 1 - Préparation
+        LOG.info("Etant donné un objet user avec toutes ses informations correctement renseignées");
+        // Objet user en entrée du service create
+        Utilisateur user = new Utilisateur();
+        user.setEmail("edward.nigma@test.fr");
+        user.setFirstName("Edward");
+        user.setLastName("nigma");
+        user.setLogin("login");
+        user.setActive(true);
+        List<Utilisateur> usersEnBase = new ArrayList<>();
+        usersEnBase.add(user);
+        // Programme le comportement du mock
+        when(em.createNamedQuery("findUserByLogin", Utilisateur.class)).thenReturn(typedQuery);
+        when(typedQuery.getResultList()).thenReturn(usersEnBase);
+        
+        // 2 - Exécution
+        LOG.info("Lorsque service.delete(user)");
+        // Méthode à tester!!!
+        Utilisateur userTest = service.find(user.getLogin());
+        
+        // 3 - Vérifications
+        // Vérifier que la méthode getResultList() du mock query a bien été invoké.
+        assertEquals("findTest : résultat", userTest, user);
+    }
 }

@@ -37,6 +37,9 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 	
+	/**
+	 * To delete an USER, set the ACTIVE field to FALSE
+	 */
 	@Override
 	@Transactional
 	public void delete(String login) {

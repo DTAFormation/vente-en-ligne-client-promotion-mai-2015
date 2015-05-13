@@ -33,9 +33,17 @@ describe('BasketService', function() {
 
 	it('Basket should update the quantity of an item already existing', inject(function(BasketService){
 		BasketService.addItemToBasket({"entity":{"articleId":1, "name":"truc"}, "quantity":4});
-		BasketService.addItemToBasket({"entity":{"articleId":1, "name":"truc"}, "quantity":2});
-		expect (BasketService.getBasket()).toEqual([{"entity":{"articleId":1, "name":"truc"}, "quantity":6}])
+		BasketService.updateItemInBasket({"entity":{"articleId":1, "name":"truc"}, "quantity":2});
+		expect (BasketService.getBasket()).toEqual([{"entity":{"articleId":1, "name":"truc"}, "quantity":2}])
 	}));
+
+	it('Adding multiple times the same item in the list view should increase its quantity', inject(function(BasketService){
+		BasketService.addItemToBasket({"entity":{"articleId":1, "name":"truc"}, "quantity":4});
+		BasketService.addItemToBasket({"entity":{"articleId":1, "name":"truc"}, "quantity":5});
+		BasketService.addItemToBasket({"entity":{"articleId":1, "name":"truc"}, "quantity":2});
+		expect (BasketService.getBasket()).toEqual([{"entity":{"articleId":1, "name":"truc"}, "quantity":11}])
+	}));
+	
 	
 	
 	afterEach(function() {

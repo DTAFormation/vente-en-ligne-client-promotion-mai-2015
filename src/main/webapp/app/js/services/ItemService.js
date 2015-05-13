@@ -14,6 +14,10 @@ angular.module("venteEnLigne")
 		showItem : function(item) {
 			
 			$location.path("/article/"+item.articleId)
+		},
+
+		updateStock : function(id, stock){
+			return $http.post("/VentesEnLigneClient/rest/article/"+id + "/stock/"+stock)
 		}
 		
 	}

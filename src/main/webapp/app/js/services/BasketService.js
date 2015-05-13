@@ -1,4 +1,4 @@
-angular.module("venteEnLigne").factory("BasketService", function() {
+angular.module("venteEnLigne").factory("BasketService", function(ItemService) {
 	return {
 		version: "1.0",
 
@@ -36,6 +36,7 @@ angular.module("venteEnLigne").factory("BasketService", function() {
 			q= +((q).replace(/,/,'.'));//gestion de la virgule de type -> , ou .
 			if(q === parseInt(q)){
 				//saisie valide -> on place l'item dans le panier
+				//on vérifie au préalable s'il existe déjà dans le panier
 				if(itemAMAJExists){
 					item.quantity= itemAMAJ.quantity + parseInt(item.quantity);
 				}else{
@@ -62,6 +63,47 @@ angular.module("venteEnLigne").factory("BasketService", function() {
 				return currentItem.entity.articleId!=item.entity.articleId
 			});
 			window.localStorage.setItem("basket", JSON.stringify(basket));
+		},
+
+		updateItemInBasket : function(item) {
+			
+			var basket = JSON.parse(window.localStorage.getItem("basket"));
+
+			//récupération de l'objet à updater dans le basket
+			var itemToUpdate;
+			for (var i = 0; i < basket.length; i++){
+				if(basket[i].entity.articleId == item.entity.articleId){
+					itemToUpdate = basket[i];
+					break;
+				}
+			}
+
+			basket = basket.filter(function(currentItem) {
+				return currentItem.entity.articleId!=item.entity.articleId
+			});
+
+			// GESTION SAISIE UTILISATEUR
+			var result;
+			if (typeof(item.quantity) == 'undefined'||item.quantity===0||item.quantity===null) {
+				result = {error: "Wrong value - Sent '1' instead"};
+				item.quantity=1
+			}
+
+			var q = (item.quantity).toString();
+			q= +((q).replace(/,/,'.'));//gestion de la virgule de type -> , ou .
+			if(q === parseInt(q)){
+				//saisie valide -> on place l'item dans le panier
+				item.quantity = parseInt(item.quantity);
+				basket.push(item);
+				window.localStorage.setItem("basket", JSON.stringify(basket));
+				result = result || {error: false};
+			}
+			else{
+				result = {error: "Wrong value - Please enter a whole number"};
+			}
+			
+
+			return result;
 		},
 
 		deleteBasket: function() {

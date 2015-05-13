@@ -31,6 +31,14 @@ describe('BasketController', function(){
 		expect(BasketService.getBasket()).toEqual([{"entity":{"articleId":1, "name":"truc"}, "quantity":2}, {"entity":{"articleId":3, "name":"bidule"}, "quantity":5}]);
 	}));
 
+	it('Basket should update the quantity of an item already existing', inject(function(BasketService) {
+		BasketService.addItemToBasket({"entity":{"articleId":1, "name":"truc"}, "quantity":2});
+		BasketService.addItemToBasket({"entity":{"articleId":2, "name":"machin"}, "quantity":1});
+		BasketService.addItemToBasket({"entity":{"articleId":3, "name":"bidule"}, "quantity":5});
+		BasketService.updateItemInBasket({"entity":{"articleId":2, "name":"machin"}, "quantity":8})
+		expect(BasketService.getBasket()).toEqual([{"entity":{"articleId":1, "name":"truc"}, "quantity":2}, {"entity":{"articleId":3, "name":"bidule"}, "quantity":5}, {"entity":{"articleId":2, "name":"machin"}, "quantity":8}]);
+	}));
+
 	afterEach(function() {
 		window.localStorage.removeItem("basket");
 	  });

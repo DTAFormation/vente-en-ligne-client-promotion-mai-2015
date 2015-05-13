@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dta.domain.Article;
 
@@ -31,6 +32,16 @@ public class ArticleServiceImpl implements ArticleService{
 		Query q = em.createQuery("From Article");
 		return (List<Article>) q.getResultList();
 	}
+
+	@Override
+	@Transactional
+	public void updateArticleStock(int id, int stock) {
+		Article article = em.find(Article.class, id);
+		article.setStock(stock);
+		em.persist(article);
+	}
+
+
 	
 
 }

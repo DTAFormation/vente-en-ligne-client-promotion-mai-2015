@@ -1,4 +1,4 @@
-angular.module("venteEnLigne").controller("ConnectController", function(ConnectService, ModalService, $scope, $location, $rootScope) {
+angular.module("venteEnLigne").controller("ConnectController", function(ConnectService, BasketService, ModalService, $scope, $location, $rootScope) {
 	$scope.logins = {};
 	$scope.inError = false;
 
@@ -12,8 +12,8 @@ angular.module("venteEnLigne").controller("ConnectController", function(ConnectS
 						"Welcome " + $scope.logins.usr,
 						"OK"
 					).result.then(
-						backToLastPage,
-						backToLastPage
+							redirection,
+							redirection
 					);
 				},
 				function(error) {
@@ -26,9 +26,23 @@ angular.module("venteEnLigne").controller("ConnectController", function(ConnectS
 	function backToLastPage() {
 		$location.path($rootScope.lastPage || "/");
 	}
-
+	
+	function redirection() {
+		if(BasketService.getBasket().toString()==[]) {
+			$location.path($rootScope.lastPage || "/");
+		}
+		else {
+			$location.path("/validatePayment");
+		}
+	}
+	
 	$scope.goToSignUp = function() {
 		$location.path("/signup");
 	};
+	
+	function goToPurchase() {
+		$location.path("/validatePayment");
+	};
+	
 
 });

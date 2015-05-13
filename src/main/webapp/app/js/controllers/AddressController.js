@@ -1,4 +1,4 @@
-angular.module("venteEnLigne").controller("AddressController", function (AddressService,BasketService, $scope, ModalService, $location) {
+angular.module("venteEnLigne").controller("AddressController", function (AddressService,ProfilService, $scope, ModalService, $location) {
 	
 	$scope.address = {};
 

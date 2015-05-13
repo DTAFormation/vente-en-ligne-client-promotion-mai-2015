@@ -16,30 +16,30 @@ describe('BasketController', function(){
 	}));
 
 	it('Basket should delete the item', inject(function(BasketService) {
-		BasketService.addItemToBasket({"name":"truc", "nameProduct":"truc", "entity":{"articleId":1, "name":"truc"}, "quantity":2});
-		BasketService.addItemToBasket({"name":"machin", "nameProduct":"bidule", "entity":{"articleId":2, "name":"machin"}, "quantity":1});
-		BasketService.deleteItemFromBasket({"name":"machin", "nameProduct":"bidule", "entity":{"articleId":2, "name":"machin"}, "quantity":1})
-		expect(BasketService.getBasket()).toEqual([{"name":"truc", "nameProduct":"truc", "entity":{"articleId":1, "name":"truc"}, "quantity":2}]);
+		BasketService.addItemToBasket({"entity":{"articleId":1, "name":"truc", "stock":20}, "quantity":2});
+		BasketService.addItemToBasket({"entity":{"articleId":2, "name":"machin", "stock":20}, "quantity":1});
+		BasketService.deleteItemFromBasket({"entity":{"articleId":2, "name":"machin", "stock":20}, "quantity":1})
+		expect(BasketService.getBasket()).toEqual([{"entity":{"articleId":1, "name":"truc", "stock":20}, "quantity":2}]);
 	}));
 
 
 	it('Basket should delete the item', inject(function(BasketService) {
-		BasketService.addItemToBasket({"name":"truc", "nameProduct":"truc", "entity":{"articleId":1, "name":"truc"}, "quantity":2});
-		BasketService.addItemToBasket({"name":"machin", "nameProduct":"truc", "entity":{"articleId":2, "name":"machin"}, "quantity":1});
-		BasketService.addItemToBasket({"name":"bidule", "nameProduct":"truc", "entity":{"articleId":3, "name":"bidule"}, "quantity":5});
-		BasketService.deleteItemFromBasket({"name":"machin", "nameProduct":"bidule", "entity":{"articleId":2, "name":"machin"}, "quantity":1})
-		expect(BasketService.getBasket()).toEqual([{"name":"truc", "nameProduct":"truc", "entity":{"articleId":1, "name":"truc"}, "quantity":2}, 
-		                                           {"name":"bidule", "nameProduct":"truc", "entity":{"articleId":3, "name":"bidule"}, "quantity":5}]);
+		BasketService.addItemToBasket({"entity":{"articleId":1, "name":"truc", "stock":20}, "quantity":2});
+		BasketService.addItemToBasket({"entity":{"articleId":2, "name":"machin", "stock":20}, "quantity":1});
+		BasketService.addItemToBasket({"entity":{"articleId":3, "name":"bidule", "stock":20}, "quantity":5});
+		BasketService.deleteItemFromBasket({"entity":{"articleId":2, "name":"machin", "stock":20}, "quantity":1})
+		expect(BasketService.getBasket()).toEqual([{"entity":{"articleId":1, "name":"truc", "stock":20}, "quantity":2}, 
+		                                           {"entity":{"articleId":3, "name":"bidule", "stock":20}, "quantity":5}]);
 	}));
 
 	it('Basket should update the quantity of an item already existing', inject(function(BasketService) {
-		BasketService.addItemToBasket({"name":"truc", "nameProduct":"truc", "entity":{"articleId":1, "name":"truc"}, "quantity":2});
-		BasketService.addItemToBasket({"name":"machin", "nameProduct":"truc", "entity":{"articleId":2, "name":"machin"}, "quantity":1});
-		BasketService.addItemToBasket({"name":"bidule", "nameProduct":"truc", "entity":{"articleId":3, "name":"bidule"}, "quantity":5});
-		BasketService.updateItemInBasket({"name":"machin", "nameProduct":"truc", "entity":{"articleId":2, "name":"machin"}, "quantity":8})
-		expect(BasketService.getBasket()).toEqual([{"name":"truc", "nameProduct":"truc", "entity":{"articleId":1, "name":"truc"}, "quantity":2},
-		                                           {"name":"bidule", "nameProduct":"truc", "entity":{"articleId":3, "name":"bidule"}, "quantity":5},
-		                                           {"name":"machin", "nameProduct":"truc", "entity":{"articleId":2, "name":"machin"}, "quantity":8}])
+		BasketService.addItemToBasket({"entity":{"articleId":1, "name":"truc", "stock":20}, "quantity":2});
+		BasketService.addItemToBasket({"entity":{"articleId":2, "name":"machin", "stock":20}, "quantity":1});
+		BasketService.addItemToBasket({"entity":{"articleId":3, "name":"bidule", "stock":20}, "quantity":5});
+		BasketService.updateItemInBasket({"entity":{"articleId":2, "name":"machin", "stock":20}, "quantity":8})
+		expect(BasketService.getBasket()).toEqual([{"entity":{"articleId":1, "name":"truc", "stock":20}, "quantity":2},
+		                                           {"entity":{"articleId":3, "name":"bidule", "stock":20}, "quantity":5},
+		                                           {"entity":{"articleId":2, "name":"machin", "stock":20}, "quantity":8}])
 	}));
 
 	afterEach(function() {

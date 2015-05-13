@@ -1,4 +1,4 @@
-angular.module("venteEnLigne").controller("SignUpController", function (ProfilService, ConnectService, $scope, ModalService, $location) {
+angular.module("venteEnLigne").controller("SignUpController", function (ProfilService, $scope, ModalService, $location) {
 	
 	$scope.profil = {};
 
@@ -13,8 +13,7 @@ angular.module("venteEnLigne").controller("SignUpController", function (ProfilSe
 					email: '', login: '',
 					password: '', telephone: '',
 					fax: ''
-				});	
-				ConnectService.setConnected($scope.profil)
+				});						
 			},
 			function(error) {
 				switch(error.status) {
@@ -56,7 +55,7 @@ angular.module("venteEnLigne").controller("SignUpController", function (ProfilSe
 	};		
 	
 	$scope.goToConnect = function () {
-		$location.path("/validatePayment");
+		$location.path("/connect");
 	};
 	
 	

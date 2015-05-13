@@ -55,15 +55,12 @@
 		</table>
 	</div>
 
-	<label>Filter by article: <input ng-model="search"
-		placeholder="Apply filter" />
+	<label>Filter by article: <input ng-model="search" placeholder="Apply filter" /></label>
+	<label>Filter by product: 
+		<select ng-options="p.value as p.name for p in products" ng-model="product">
+        	<option value="" selected>--Select your product--</option>
+    	</select>
 	</label>
-	
-	<label>Filter by product: <select ng-model="product">
-			<option ng-selected="product == ''">whatever</option>
-			<option ng-repeat="prod in products" ng-selected="product == prod">{{prod}}</option>
-	</select></label>
-
 
 	<div class="col-md-3">
 		<alert ng-repeat="alert in alerts" type="{{alert.type}}"

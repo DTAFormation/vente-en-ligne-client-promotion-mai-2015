@@ -4,10 +4,11 @@ angular.module("venteEnLigne").factory("BasketService", function($http) {
 
 		
 		
-		saveBasket : function(item){
+		saveBasketCommand : function(item){
 			var linecommand={};
 			linecommand.quantity = item.quantity;
 			linecommand.article=item.entity;
+			console.log(linecommand);
 			return $http.post("/VentesEnLigneClient/rest/linecommand", linecommand)
 		},
 		

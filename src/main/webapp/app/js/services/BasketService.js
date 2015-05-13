@@ -23,7 +23,6 @@ angular.module("venteEnLigne").factory("BasketService", function($http) {
 			var itemAMAJ;
 			var itemAMAJExists = false;
 			for (var i = 0; i < basket.length; i++){
-				console.log(basket[i]);
 				if(basket[i].entity.articleId == item.entity.articleId){
 					itemAMAJ = basket[i];
 					itemAMAJExists = true;
@@ -48,11 +47,23 @@ angular.module("venteEnLigne").factory("BasketService", function($http) {
 				//saisie valide -> on place l'item dans le panier
 				//on vérifie au préalable s'il existe déjà dans le panier
 				if(itemAMAJExists){
-					item.quantity= itemAMAJ.quantity + parseInt(item.quantity);
+					//on vérifie si la quantité demandée est disponible
+					if(itemAMAJ.quantity + parseInt(item.quantity) <= item.entity.stock){
+						item.quantity= itemAMAJ.quantity + parseInt(item.quantity);
+						basket.push(item);
+					}else{
+						result = {error: "There are only " + item.entity.stock + " " + item.entity.name +  " in the stock and you already have " + itemAMAJ.quantity + " in your basket. Please enter a correct value"};
+						basket.push(itemAMAJ);
+					}
 				}else{
-					item.quantity= parseInt(item.quantity);
+					//on vérifie si la quantité demandée est disponible
+					if(parseInt(item.quantity) <= item.entity.stock){
+						item.quantity= parseInt(item.quantity);
+						basket.push(item);
+					}else{
+						result = {error: "There are only " + item.entity.stock  + " " + item.entity.name + ". Please enter a correct value"};
+					}	
 				}
-				basket.push(item);
 				window.localStorage.setItem("basket", JSON.stringify(basket));
 				result = result || {error: false};
 			}
@@ -103,8 +114,14 @@ angular.module("venteEnLigne").factory("BasketService", function($http) {
 			q= +((q).replace(/,/,'.'));//gestion de la virgule de type -> , ou .
 			if(q === parseInt(q)){
 				//saisie valide -> on place l'item dans le panier
-				item.quantity = parseInt(item.quantity);
-				basket.push(item);
+				if(parseInt(item.quantity) <= item.entity.stock){
+					item.quantity = parseInt(item.quantity);
+					basket.push(item);
+				}else{
+					result = {error: "There are only " + item.entity.stock  + " " + item.entity.name + ". Please enter a correct value"};
+					basket.push(itemToUpdate);
+				}
+				
 				window.localStorage.setItem("basket", JSON.stringify(basket));
 				result = result || {error: false};
 			}

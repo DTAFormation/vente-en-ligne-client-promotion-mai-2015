@@ -22,7 +22,8 @@ angular.module("venteEnLigne")
 					$scope.items.push({name:items[i].name, nameProduct:items[i].nameProduct, entity: items[i], quantity: 1});
 					setProd.add(items[i].nameProduct);
 				}
-				setProd.forEach(function(value){$scope.products.push(value)})
+				$scope.products.push({name:"all products", value:""});
+				setProd.forEach(function(value){$scope.products.push({name: value, value: value})})
 			},
 			function(error) {
 				addAlert({type: "danger", msg:"Connection error"});

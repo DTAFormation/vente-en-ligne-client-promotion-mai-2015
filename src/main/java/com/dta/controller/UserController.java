@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dta.domain.Utilisateur;
-import com.dta.service.CommandeService;
 import com.dta.service.UserService;
 
 @RestController
@@ -20,16 +19,11 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
-	
-	@Autowired
-	private CommandeService cs;
 
 	@RequestMapping(value="/{login}")
 	@ResponseBody
 	public UserJson getUser(@PathVariable("login") String login) {
-		System.out.println("xx");
 		Utilisateur result = userService.find(login);
-		cs.setUtilisateur(result);
 		return new UserJson(result);
 	}
 	

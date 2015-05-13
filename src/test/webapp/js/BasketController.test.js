@@ -36,7 +36,7 @@ describe('BasketController', function(){
 		BasketService.addItemToBasket({"name":"truc", "nameProduct":"truc", "entity":{"articleId":1, "name":"truc"}, "quantity":2});
 		BasketService.addItemToBasket({"name":"machin", "nameProduct":"truc", "entity":{"articleId":2, "name":"machin"}, "quantity":1});
 		BasketService.addItemToBasket({"name":"bidule", "nameProduct":"truc", "entity":{"articleId":3, "name":"bidule"}, "quantity":5});
-		BasketService.updateItemInBasket({"name":"truc", "nameProduct":"truc", "entity":{"articleId":2, "name":"machin"}, "quantity":8})
+		BasketService.updateItemInBasket({"name":"machin", "nameProduct":"truc", "entity":{"articleId":2, "name":"machin"}, "quantity":8})
 		expect(BasketService.getBasket()).toEqual([{"name":"truc", "nameProduct":"truc", "entity":{"articleId":1, "name":"truc"}, "quantity":2},
 		                                           {"name":"machin", "nameProduct":"truc", "entity":{"articleId":2, "name":"machin"}, "quantity":8},
 		                                           {"name":"bidule", "nameProduct":"truc", "entity":{"articleId":3, "name":"bidule"}, "quantity":5}])

@@ -8,6 +8,7 @@ import com.dta.domain.LigneCommande;
 
 public interface CommandeService {
 	public List<Commande> getCommandeByLogin(String login);
+	public List<Commande> getBasketByLogin(String login);
 	public void saveCommande();
 	public void addLineCommand(LigneCommande lineCommand);
 	public void setAddress(Adresse address);

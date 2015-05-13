@@ -34,7 +34,6 @@ public class LigneCommande {
 		this.commande = commande;
 	}
 
-	
 
 	@Override
 	public String toString() {
@@ -73,9 +72,6 @@ public class LigneCommande {
 	public void setCommande(Commande commande) {
 		this.commande = commande;
 	}
-	
-	
-	 
 	
 }
 

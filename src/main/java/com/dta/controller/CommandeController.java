@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dta.domain.Commande;
+import com.dta.domain.LigneCommande;
 import com.dta.service.CommandeService;
 
 @RestController
@@ -31,5 +32,4 @@ public class CommandeController {
 		}
 		return cmdsJson;
 	}
-	
 }

@@ -31,15 +31,39 @@ public class CommandeServiceImpl implements CommandeService {
 	
 	@Override
 	public List<Commande> getCommandeByLogin(String login) {
+		
+		List<Commande> commandes = this.findCommandeByLogin(login);
+		List<Commande> validCommandes = new ArrayList<Commande>();
+		
+		for(Commande cmd : commandes){
+			if(cmd.isValidate()){
+				validCommandes.add(cmd);
+			}
+		}
+		return validCommandes;
+	}
+	
+	@Override
+	public List<Commande> getBasketByLogin(String login) {
+		
+		List<Commande> commandes = this.findCommandeByLogin(login);
+		List<Commande> unvalidCommandes = new ArrayList<Commande>();
+		
+		for(Commande cmd : commandes){
+			if(!cmd.isValidate()){
+				unvalidCommandes.add(cmd);
+			}
+		}
+		return unvalidCommandes;
+	}
+	
+	public List<Commande> findCommandeByLogin(String login) {
 		Query queryUserByLogin = em.createNamedQuery("findUserByLogin");
 		queryUserByLogin.setParameter("ulogin", login);
 		Utilisateur user = (Utilisateur) queryUserByLogin.getSingleResult();
 
 		return user.getCommandes();
 	}
-
-
-
 
 	@Override
 	public void addLineCommand(LigneCommande lineCommand) {

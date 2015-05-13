@@ -2,9 +2,16 @@ package com.dta.controller;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.List;
 
+import com.dta.domain.Article;
 import com.dta.domain.Commande;
+import com.dta.domain.LigneCommande;
+import com.mysql.fabric.xmlrpc.base.Array;
 
 public class CommandeJson {
 	
@@ -12,9 +19,20 @@ public class CommandeJson {
 	private String adresse;
 	private String commandDate;
 	private String paymentInfo;
-
+	
+	private List<String> entityName;
+	private List<String> entityPrice;
 
 	public CommandeJson(Commande cmd) {
+		
+		entityName = new ArrayList<String>();
+		entityPrice = new ArrayList<String>();
+		
+		for(LigneCommande lc : cmd.getLigneCommandes()){
+			entityName.add(lc.getArticle().getName());
+			entityPrice.add(Float.toString(lc.getArticle().getPrice()));
+		}
+		
 		this.commandId = cmd.getCommandeId();	
 		
 		this.adresse = cmd.getAdresse().getNumber() + " "
@@ -56,7 +74,6 @@ public class CommandeJson {
 		return adresse;
 	}
 
-
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
@@ -79,6 +96,26 @@ public class CommandeJson {
 
 	public void setPaymentInfo(String paymentInfo) {
 		this.paymentInfo = paymentInfo;
+	}
+
+
+	public List<String> getEntityName() {
+		return entityName;
+	}
+
+
+	public void setEntityName(List<String> entityName) {
+		this.entityName = entityName;
+	}
+
+
+	public List<String> getEntityPrice() {
+		return entityPrice;
+	}
+
+
+	public void setEntityPrice(List<String> entityPrice) {
+		this.entityPrice = entityPrice;
 	}
 
 }

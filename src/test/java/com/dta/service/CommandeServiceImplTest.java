@@ -39,7 +39,7 @@ public class CommandeServiceImplTest {
 	}
 	
 	@Test
-	public void getCommandeByLoginTest(){
+	public void findCommandeByLoginTest(){
 		List<Commande> results;
 		List<Commande> returnedList = new ArrayList<Commande>();
 		returnedList.add(new Commande());
@@ -48,11 +48,9 @@ public class CommandeServiceImplTest {
 		Mockito.when(query.getSingleResult()).thenReturn(user);
 		Mockito.when(user.getCommandes()).thenReturn(returnedList);
 		
-		results = service.getCommandeByLogin("login");
+		results = service.findCommandeByLogin("login");
 		
 		Assert.assertEquals(1,results.size());
 	}
-	
-	
 
 }

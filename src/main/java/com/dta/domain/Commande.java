@@ -41,6 +41,7 @@ public class Commande {
 	@JoinTable(name="commandes_utilisateur")
 	private Utilisateur utilisateur;
 	@OneToMany(mappedBy="commande")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<LigneCommande> ligneCommandes;
 
 
@@ -61,60 +62,75 @@ public class Commande {
 	public int getCommandeId() {
 		return commandeId;
 	}
+	
 	public void setCommandeId(int commandeId) {
 		this.commandeId = commandeId;
 	}
+	
 	public Date getDateExpCarteCredit() {
 		return dateExpCarteCredit;
 	}
+	
 	public void setDateExpCarteCredit(Date dateExpCarteCredit) {
 		this.dateExpCarteCredit = dateExpCarteCredit;
 	}
+	
 	public Date getDateCommande() {
 		return dateCommande;
 	}
+	
 	public void setDateCommande(Date dateCommande) {
 		this.dateCommande = dateCommande;
 	}
+	
 	public String getNumCarteCredit() {
 		return numCarteCredit;
 	}
+	
 	public void setNumCarteCredit(String numCarteCredit) {
 		this.numCarteCredit = numCarteCredit;
 	}
+	
 	public String getTypeCarteCredit() {
 		return typeCarteCredit;
 	}
+	
 	public void setTypeCarteCredit(String typeCarteCredit) {
 		this.typeCarteCredit = typeCarteCredit;
 	}
+	
 	public Adresse getAdresse() {
 		return adresse;
 	}
+	
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
+	
 	public Utilisateur getUtilisateur() {
 		return utilisateur;
 	}
+	
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
-	}
-
-	public List<LigneCommande> getLigneCommandes() {
-		return ligneCommandes;
-	}
-	public void setLigneCommandes(List<LigneCommande> ligneCommandes) {
-		this.ligneCommandes = ligneCommandes;
 	}
 	
 	public boolean isValidate() {
 		return validate;
 	}
+	
 	public void setValidate(boolean validate) {
 		this.validate = validate;
 	}
 	
+	public List<LigneCommande> getLigneCommandes() {
+		return ligneCommandes;
+	}
+
+	public void setLigneCommandes(List<LigneCommande> ligneCommandes) {
+		this.ligneCommandes = ligneCommandes;
+	}
+
 	@Override
 	public String toString() {
 		return "Commande [commandeId=" + commandeId + ", dateExpCarteCredit="

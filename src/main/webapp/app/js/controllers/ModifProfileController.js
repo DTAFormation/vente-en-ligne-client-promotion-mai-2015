@@ -20,11 +20,11 @@ angular.module("venteEnLigne")
 				function(result) {			
 					ModalService.openModal(
 							"Mofification done",
-							"Your profile has been modify",
+							"Your profile has been modify.",
 							"OK"
 						).result.then(
-								$scope.goToHome,
-								$scope.goToHome
+								$scope.goToProfile,
+								$scope.goToProfile
 						)
 				}
 			)

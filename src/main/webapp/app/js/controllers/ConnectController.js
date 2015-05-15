@@ -40,7 +40,7 @@ angular.module("venteEnLigne").controller("ConnectController", function(ConnectS
 		$location.path("/signup");
 	};
 	
-	function goToPurchase() {
+	$scope.goToPurchase = function() {
 		$location.path("/validatePayment");
 	};
 	

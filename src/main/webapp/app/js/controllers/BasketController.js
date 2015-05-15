@@ -1,14 +1,17 @@
 angular.module("venteEnLigne").controller("BasketController", function ($scope, BasketService, ItemService) {
-	
-	
+
+
 	$scope.alerts = [];
-		
+
+
 	$scope.showItem = function(item){
 		ItemService.showItem(item)
 	};
 
 	function fetchBasket (){
 		$scope.basket = BasketService.getBasket();
+		console.log("basket: ")
+		console.log($scope.basket)
 	}
 
 	fetchBasket();
@@ -25,7 +28,7 @@ angular.module("venteEnLigne").controller("BasketController", function ($scope, 
 	$scope.updateItem = function (item) {
 
 		itemToUpdate={
-			entity: item.entity, quantity: item.quantity
+				entity: item.entity, quantity: item.quantity
 		}
 		//$scope.deleteItemFromBasket(item);
 		var result = BasketService.updateItemInBasket(itemToUpdate);
@@ -36,7 +39,7 @@ angular.module("venteEnLigne").controller("BasketController", function ($scope, 
 		}
 		fetchBasket();
 	};
-	
+
 
 	function addAlert(params) {
 		$scope.alerts.push(params);
@@ -44,9 +47,9 @@ angular.module("venteEnLigne").controller("BasketController", function ($scope, 
 			$scope.alerts.shift();
 		}
 	}
-	
+
 	$scope.closeAlert = function(index) {
-	    $scope.alerts.splice(index, 1);
-	  };
+		$scope.alerts.splice(index, 1);
+	};
 
 });

@@ -1,9 +1,7 @@
 angular.module("venteEnLigne").factory("BasketService", function($http, CommandeService, ConnectService) {
 	return {
 		version: "1.0",
-		
-		initialized: false,
-		
+
 		saveBasketCommand : function(item){
 			var linecommand={};
 			linecommand.quantity = item.quantity;
@@ -11,11 +9,11 @@ angular.module("venteEnLigne").factory("BasketService", function($http, Commande
 			console.log(linecommand);
 			return $http.post("/VentesEnLigneClient/rest/linecommand", linecommand)
 		},
-		
+
 		addItemToBasket : function(item) {
-			
+
 			var basket = JSON.parse(window.localStorage.getItem("basket"));
-						
+
 			if (basket == null) {
 				basket=[];
 			}
@@ -30,7 +28,7 @@ angular.module("venteEnLigne").factory("BasketService", function($http, Commande
 					break;
 				}
 			}
-			
+
 			basket = basket.filter(function(currentItem) {	
 				return currentItem.entity.articleId!=item.entity.articleId
 			});
@@ -73,11 +71,11 @@ angular.module("venteEnLigne").factory("BasketService", function($http, Commande
 			}
 			return result;
 		},
-		
+
 		deleteItemFromBasket : function(item) {
-			
+
 			var basket = JSON.parse(window.localStorage.getItem("basket"));
-						
+
 			if (basket == null) {
 				basket=[];
 			}
@@ -88,7 +86,7 @@ angular.module("venteEnLigne").factory("BasketService", function($http, Commande
 		},
 
 		updateItemInBasket : function(item) {
-			
+
 			var basket = JSON.parse(window.localStorage.getItem("basket"));
 
 			//récupération de l'objet à updater dans le basket
@@ -122,14 +120,14 @@ angular.module("venteEnLigne").factory("BasketService", function($http, Commande
 					result = {error: "There are only " + item.entity.stock  + " " + item.entity.name + ". Please enter a correct value"};
 					basket.push(itemToUpdate);
 				}
-				
+
 				window.localStorage.setItem("basket", JSON.stringify(basket));
 				result = result || {error: false};
 			}
 			else{
 				result = {error: "Wrong value - Please enter a whole number"};
 			}
-			
+
 
 			return result;
 		},
@@ -137,20 +135,16 @@ angular.module("venteEnLigne").factory("BasketService", function($http, Commande
 		deleteBasket: function() {
 			window.localStorage.setItem("basket", "[]");
 		},
-		
+
+		initializeBasket: function(){
+			return CommandeService.getUnvalidCommande(ConnectService.getConnectedUser())
+		},
+
 		getBasket: function() {
 			var basket = JSON.parse(window.localStorage.getItem("basket"));
-			
-			console.log("in getBasket")
-			if(!this.initialized){
-				console.log("initilisation")
-				basket = CommandeService.getUnvalidCommande(ConnectService.getConnectedUser())
-				this.initialized = true
-			}
 			if(basket == null){
 				basket = []
 			}
-			console.log(basket)
 			return basket;
 		}
 	};

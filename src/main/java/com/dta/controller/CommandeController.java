@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dta.domain.Commande;
-import com.dta.domain.LigneCommande;
 import com.dta.service.CommandeService;
 
 @RestController
@@ -35,15 +34,15 @@ public class CommandeController {
 	
 	@RequestMapping(value="/basket/{login}")
 	@ResponseBody
-	public List<CommandeJson> getBasket(@PathVariable("login") String login) {
+	public List<LineCommandJson> getBasket(@PathVariable("login") String login) {
 		
 		List<Commande> cmds = commandeService.getBasketByLogin(login);
-		List<CommandeJson> cmdsJson = new ArrayList<CommandeJson>();
+		CommandeJson cmdJson = null;
 		
-		for(Commande cmd : cmds){
-			cmdsJson.add(new CommandeJson(cmd));
+		if(cmds.size() >= 1){
+			cmdJson = new CommandeJson(cmds.get(0));
 		}
 		
-		return cmdsJson;
+		return cmdJson.getCmdLines();
 	}
 }

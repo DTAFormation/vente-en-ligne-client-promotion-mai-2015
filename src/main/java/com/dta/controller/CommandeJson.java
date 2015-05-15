@@ -40,8 +40,6 @@ public class CommandeJson {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 		this.commandDate = dateFormat.format(date);
-		
-		System.out.println(this.toString());
 	}
 	
 	public CommandeJson(int commandId, String adresse, String commandDate,

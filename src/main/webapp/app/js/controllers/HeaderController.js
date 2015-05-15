@@ -30,6 +30,12 @@ angular.module("venteEnLigne")
 			}
 		);
 	};
+	
+	$scope.getBasketSize = function(){
+		var basket = JSON.parse(window.localStorage.getItem("basket"));
+		var size = Object.keys(basket).length
+		return size
+	}
 
 	function backToHome() {
 		$location.path("/");

@@ -23,14 +23,14 @@ describe('BasketService', function() {
 		BasketService.deleteBasket();
 		expect(BasketService.getBasket()).toEqual([]);
 	}));
-	/*
+	
 	it('Basket should delete the item', inject(function(BasketService) {
-		BasketService.addItemToBasket({"entity":{"articleId":1, "name":"truc"}, "quantity":2});
-		BasketService.addItemToBasket({"entity":{"articleId":2, "name":"machin"}, "quantity":1});
-		BasketService.deleteItemFromBasket({"entity":{"articleId":2, "name":"machin"}, "quantity":1})
-		expect(BasketService.getBasket()).toEqual([{"entity":{"articleId":1, "name":"truc"}, "quantity":2}]);
+		BasketService.addItemToBasket({"entity":{"articleId":1, "name":"truc", "stock":20}, "quantity":2});
+		BasketService.addItemToBasket({"entity":{"articleId":2, "name":"machin", "stock":20}, "quantity":1});
+		BasketService.deleteItemFromBasket({"entity":{"articleId":2, "name":"machin", "stock":20}, "quantity":1})
+		expect(BasketService.getBasket()).toEqual([{"entity":{"articleId":1, "name":"truc", "stock":20}, "quantity":2}]);
 	}));
-	*/
+	
 	it('Basket should update the quantity of an item already existing', inject(function(BasketService){
 		BasketService.addItemToBasket({"entity":{"articleId":1, "name":"truc", "stock":20}, "quantity":4});
 		BasketService.updateItemInBasket({"entity":{"articleId":1, "name":"truc", "stock":20}, "quantity":2});

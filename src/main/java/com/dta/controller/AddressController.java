@@ -21,5 +21,6 @@ public class AddressController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public void createAddress(@RequestBody Adresse address) {
 		cs.setAddress(address);
+		cs.saveCommande();
 	}
 }

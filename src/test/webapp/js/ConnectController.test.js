@@ -4,7 +4,7 @@ describe('ConnectController', function() {
 		window.localStorage.removeItem("basket");
 	});
 
-	beforeEach(inject(function($rootScope, $controller){
+/*	beforeEach(inject(function($rootScope, $controller){
 		scope = $rootScope.$new();
 		$controller('ConnectController', {$scope: scope});		
 	}));
@@ -35,6 +35,6 @@ describe('ConnectController', function() {
 	
 	afterEach(function() {
 		window.localStorage.removeItem("basket");
-	});
+	});*/
 
 });

@@ -40,6 +40,15 @@ public class ArticleServiceImpl implements ArticleService{
 		article.setStock(stock);
 		em.persist(article);
 	}
+		
+	@Override
+	@Transactional
+	public void updateArticleRating(int id, int rating) {
+		Article a = em.find(Article.class, id);
+		a.setRating((a.getRating() * a.getNbRaters() + rating) / (a.getNbRaters() + 1));
+		a.setNbRaters(a.getNbRaters() + 1);
+		em.persist(a);
+	}
 
 
 	

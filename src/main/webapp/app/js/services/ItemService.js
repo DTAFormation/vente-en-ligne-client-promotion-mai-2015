@@ -17,8 +17,11 @@ angular.module("venteEnLigne")
 		},
 
 		updateStock : function(id, stock){
-			return $http.post("/VentesEnLigneClient/rest/article/"+id + "/stock/"+stock)
-		}
+			return $http.post("/VentesEnLigneClient/rest/article/"+id + "/stock/"+stock);
+		},
 		
+		updateRating : function(id, rating){
+			return $http.post("/VentesEnLigneClient/rest/article/"+id+"/rating/"+rating);
+		}		
 	}
 }) 

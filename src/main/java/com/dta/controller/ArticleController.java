@@ -47,4 +47,10 @@ public class ArticleController {
 			@PathVariable("stock") int stock){
 		articleService.updateArticleStock(id, stock);
 	}
+	
+	@RequestMapping(value="/article/{id}/rating/{rating}", method=RequestMethod.POST)
+	@ResponseStatus(value=HttpStatus.OK)
+	public void setRatingArticle(@PathVariable("id") int id, @PathVariable("rating") int rating){
+		articleService.updateArticleRating(id, rating);
+	}
 }

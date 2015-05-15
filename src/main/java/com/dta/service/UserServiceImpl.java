@@ -87,4 +87,30 @@ public class UserServiceImpl implements UserService {
 		Utilisateur user = (Utilisateur) queryUserByLogin.getResultList().get(0);
 		return user;
 	}
+
+	@Override
+	public void modify(String login, Utilisateur newProfile) {
+		Utilisateur user = find(login);
+		if (newProfile.getTitre()!="" && newProfile.getTitre()!=null){
+			user.setTitre(newProfile.getTitre());
+		}
+		if (newProfile.getLastName()!="" && newProfile.getLastName()!=null){
+			user.setLastName(newProfile.getLastName());
+		}
+		if (newProfile.getFirstName()!="" && newProfile.getFirstName()!=null){
+			user.setFirstName(newProfile.getFirstName());
+		}
+		if (newProfile.getPassword()!="" && newProfile.getPassword()!=null){
+			user.setPassword(newProfile.getPassword());
+		}
+		if (newProfile.getEmail()!="" && newProfile.getEmail()!=null){
+			user.setEmail(newProfile.getEmail());
+		}
+		if (newProfile.getTelephone()!="" && newProfile.getTelephone()!=null){
+			user.setTelephone(newProfile.getTelephone());
+		}
+		if (newProfile.getFax()!="" && newProfile.getFax()!=null){
+			user.setFax(newProfile.getFax());
+		}
+	}
 }

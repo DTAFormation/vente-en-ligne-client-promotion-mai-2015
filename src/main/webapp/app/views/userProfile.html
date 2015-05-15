@@ -1,5 +1,5 @@
 <section>
-	<div class="container">
+	<div class="container" style="width:500px">
 		<h3 style="text-align: center;">Welcome {{user.entity.firstName}} {{user.entity.lastName}}</h3>
 		<table class="table table-bordered">
 			<tr>
@@ -41,8 +41,16 @@
 		</table>
 
 		<button type="button" class="btn btn-danger"
+			ng-click="goToMofifProfile()">
+			<span class="glyphicon glyphicon-remove"></span> Modify your profile
+		</button>
+
+		<button type="button" class="btn btn-danger"
 			ng-click="deleteConfirmation()">
 			<span class="glyphicon glyphicon-remove"></span> Delete your profile
 		</button>
+		
+		
+		
 	</div>
 </section>

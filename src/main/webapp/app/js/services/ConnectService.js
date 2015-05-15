@@ -35,6 +35,5 @@ angular.module("venteEnLigne").factory("ConnectService", function($http) {
 			}
 			return null;
 		}
-
 	};
 });

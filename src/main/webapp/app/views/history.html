@@ -12,11 +12,10 @@
 					<li>Date de commande: {{cmd.commandDate}}</li>
 					<li>Adresse de facturation: {{cmd.adresse}}</li>
 					<li>Informations de paiement: {{cmd.paymentInfo}}</li>
-					<li><br>
-						<ul ng-repeat="line in cmd.cmdLines">
-							<li>{{line.entity.name}} - x{{line.quantity}} - {{line.entity.price}}euros</li>
-						</ul>
-					</li>
+				</ul> <br>
+				<ul ng-repeat="line in cmd.cmdLines">
+					<li>{{line.entity.name}} - x{{line.quantity}} -
+						{{line.entity.price}}euros</li>
 				</ul>
 			</li>
 		</ul>

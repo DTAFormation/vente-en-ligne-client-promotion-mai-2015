@@ -10,7 +10,12 @@ angular.module("venteEnLigne").controller("ConnectController", function(ConnectS
 					
 					//get the saved basket
 					BasketService.initializeBasket().then(function(result){
-						var basket = result.data
+						
+						var basketLocal = JSON.parse(window.localStorage.getItem("basket"));
+						if(basketLocal == null){
+							basketLocal = []
+						}
+						var basket = basketLocal.concat(result.data)
 						if(basket == null){
 							basket = []
 						}	

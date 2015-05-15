@@ -12,8 +12,8 @@ angular.module("venteEnLigne").controller("ConnectController", function(ConnectS
 						"Welcome " + $scope.logins.usr,
 						"OK"
 					).result.then(
-							redirection,
-							redirection
+							$scope.redirection,
+							$scope.redirection
 					);
 				},
 				function(error) {
@@ -27,7 +27,7 @@ angular.module("venteEnLigne").controller("ConnectController", function(ConnectS
 		$location.path($rootScope.lastPage || "/");
 	}
 	
-	function redirection() {
+	$scope.redirection = function() {
 		if(BasketService.getBasket().toString()==[]) {
 			$location.path($rootScope.lastPage || "/");
 		}

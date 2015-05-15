@@ -1,0 +1,54 @@
+<div style="width:500px">
+	<form class="form-horizontal">
+		<table class="table table-bordered">
+			<tr>
+				<td><label class="col-sm-2 control-label">Id</label></td>
+				<td>{{user.entity.id}}</td>
+			</tr>
+			<tr>
+				<td><label class="col-sm-2 control-label">titre</label></td>
+				<td>
+					<select name="carlist" >
+					   <option value="M">M</option>
+					   <option value="Mme">Mme</option>
+					   <option value="Mlle">Mlle</option>
+					</select> {{user.entity.titre}}
+				</td>
+			</tr>
+			<tr>
+				<td><label for="inputFirstname" class="col-sm-2 control-label">firstName</label></td>
+				<td><input type="text" ng-init="newProfile.firstName='{{user.entity.firstName}}'" class="form-control" id="inputFirstname" ng-model="newProfile.firstName" ></td>
+			</tr>
+			<tr>
+				<td><label class="col-sm-2 control-label">lastName</label></td>
+				<td>{{user.entity.lastName}}</td>
+			</tr>
+			<tr>
+				<td><label class="col-sm-2 control-label">login</label></td>
+				<td>{{user.entity.login}}</td>
+			</tr>
+			<tr>
+				<td><label class="col-sm-2 control-label">password</label></td>
+				<td>{{user.entity.password}}</td>
+			</tr>
+			<tr>
+				<td><label class="col-sm-2 control-label">email</label></td>
+				<td>{{user.entity.email}}</td>
+			</tr>
+			<tr>
+				<td><label class="col-sm-2 control-label">telephone</label></td>
+				<td>{{user.entity.telephone}}</td>
+			</tr>
+			<tr>
+				<td><label class="col-sm-2 control-label">fax</label></td>
+				<td>{{user.entity.fax}}</td>
+			</tr>
+		</table>
+	
+		<button type="button" class="btn btn-default btn-lg"
+			ng-click="modifyProfil()">
+			<span class="glyphicon glyphicon-remove"></span>
+			Modify your profile
+		</button>
+	</form>
+</div>

@@ -32,4 +32,18 @@ public class CommandeController {
 		}
 		return cmdsJson;
 	}
+	
+	@RequestMapping(value="/basket/{login}")
+	@ResponseBody
+	public List<CommandeJson> getBasket(@PathVariable("login") String login) {
+		
+		List<Commande> cmds = commandeService.getBasketByLogin(login);
+		List<CommandeJson> cmdsJson = new ArrayList<CommandeJson>();
+		
+		for(Commande cmd : cmds){
+			cmdsJson.add(new CommandeJson(cmd));
+		}
+		
+		return cmdsJson;
+	}
 }

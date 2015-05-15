@@ -1,33 +1,42 @@
 package com.dta.controller;
 
-import java.util.Hashtable;
-
 import com.dta.domain.LigneCommande;
 
 public class LineCommandJson {
 	
-	private Hashtable<String, String> entity;
-	
 	private int quantity;
-
-	public LineCommandJson(Hashtable<String, String> entity, int stock) {
+	private ArticleJson entity;
+	
+	public LineCommandJson(LigneCommande lc){
+		this.quantity = lc.getQuantity();
+		this.entity = new ArticleJson(lc.getArticle());
+	}
+	
+	public LineCommandJson(int quantity, ArticleJson entity) {
 		super();
+		this.quantity = quantity;
 		this.entity = entity;
-		this.quantity = stock;
 	}
 	
-	public LineCommandJson(LigneCommande line){
-		
-		this.quantity = line.getQuantity();
-		
-		/*entity = new Hashtable<String, String>();
-		
-		this.entity.put("name", line.getArticle().getName());
-		this.entity.put("prix", Float.toString(line.getArticle().getPrice()));
-		*/
-		System.out.println(line.getArticle().toString());
+	public int getQuantity() {
+		return quantity;
 	}
 	
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 	
+	public ArticleJson getEntity() {
+		return entity;
+	}
+	
+	public void setEntity(ArticleJson entity) {
+		this.entity = entity;
+	}
 
+	@Override
+	public String toString() {
+		return "LineCommandJson [quantity=" + quantity + ", entity=" + entity
+				+ "]";
+	}
 }

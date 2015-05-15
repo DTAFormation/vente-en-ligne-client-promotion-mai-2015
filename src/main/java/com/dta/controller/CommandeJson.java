@@ -4,14 +4,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.List;
 
-import com.dta.domain.Article;
 import com.dta.domain.Commande;
 import com.dta.domain.LigneCommande;
-import com.mysql.fabric.xmlrpc.base.Array;
 
 public class CommandeJson {
 	
@@ -20,17 +16,14 @@ public class CommandeJson {
 	private String commandDate;
 	private String paymentInfo;
 	
-	private List<String> entityName;
-	private List<String> entityPrice;
+	private List<LineCommandJson> entities;
 
 	public CommandeJson(Commande cmd) {
 		
-		entityName = new ArrayList<String>();
-		entityPrice = new ArrayList<String>();
+		entities = new ArrayList<LineCommandJson>();
 		
 		for(LigneCommande lc : cmd.getLigneCommandes()){
-			entityName.add(lc.getArticle().getName());
-			entityPrice.add(Float.toString(lc.getArticle().getPrice()));
+			entities.add(new LineCommandJson(lc));
 		}
 		
 		this.commandId = cmd.getCommandeId();	
@@ -47,9 +40,10 @@ public class CommandeJson {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 		this.commandDate = dateFormat.format(date);
+		
+		System.out.println(this.toString());
 	}
 	
-
 	public CommandeJson(int commandId, String adresse, String commandDate,
 			String paymentInfo) {
 		super();
@@ -59,16 +53,13 @@ public class CommandeJson {
 		this.paymentInfo = paymentInfo;
 	}
 
-
 	public int getCommandId() {
 		return commandId;
 	}
 
-
 	public void setCommandId(int commandId) {
 		this.commandId = commandId;
 	}
-
 
 	public String getAdresse() {
 		return adresse;
@@ -78,44 +69,35 @@ public class CommandeJson {
 		this.adresse = adresse;
 	}
 
-
 	public String getCommandDate() {
 		return commandDate;
 	}
-
 
 	public void setCommandDate(String commandDate) {
 		this.commandDate = commandDate;
 	}
 
-
 	public String getPaymentInfo() {
 		return paymentInfo;
 	}
-
 
 	public void setPaymentInfo(String paymentInfo) {
 		this.paymentInfo = paymentInfo;
 	}
 
-
-	public List<String> getEntityName() {
-		return entityName;
+	public List<LineCommandJson> getCmdLines() {
+		return entities;
 	}
 
-
-	public void setEntityName(List<String> entityName) {
-		this.entityName = entityName;
+	public void setCmdLines(List<LineCommandJson> cmdLines) {
+		this.entities = cmdLines;
 	}
 
-
-	public List<String> getEntityPrice() {
-		return entityPrice;
+	
+	@Override
+	public String toString() {
+		return "CommandeJson [commandId=" + commandId + ", adresse=" + adresse
+				+ ", commandDate=" + commandDate + ", paymentInfo="
+				+ paymentInfo + ", cmdLines=" + entities + "]";
 	}
-
-
-	public void setEntityPrice(List<String> entityPrice) {
-		this.entityPrice = entityPrice;
-	}
-
 }

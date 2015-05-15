@@ -36,6 +36,7 @@ angular.module("venteEnLigne").controller("BasketController", function ($scope, 
 		}
 		fetchBasket();
 	};
+	
 
 	function addAlert(params) {
 		$scope.alerts.push(params);
@@ -47,6 +48,5 @@ angular.module("venteEnLigne").controller("BasketController", function ($scope, 
 	$scope.closeAlert = function(index) {
 	    $scope.alerts.splice(index, 1);
 	  };
-
 
 });

@@ -10,38 +10,41 @@ import com.dta.domain.Commande;
 import com.dta.domain.LigneCommande;
 
 public class CommandeJson {
-	
+
 	private int commandId;
 	private String adresse;
 	private String commandDate;
 	private String paymentInfo;
-	
+
 	private List<LineCommandJson> entities;
 
 	public CommandeJson(Commande cmd) {
-		
+
 		entities = new ArrayList<LineCommandJson>();
-		
+
 		for(LigneCommande lc : cmd.getLigneCommandes()){
 			entities.add(new LineCommandJson(lc));
 		}
-		
+
 		this.commandId = cmd.getCommandeId();	
-		
+
 		this.adresse = cmd.getAdresse().getNumber() + " "
 				+ cmd.getAdresse().getStreet() + " "
 				+ cmd.getAdresse().getPostcode() + " "
 				+ cmd.getAdresse().getCity() + ", "
 				+ cmd.getAdresse().getCountry().toUpperCase();
-		
-		this.paymentInfo = cmd.getTypeCarteCredit().toUpperCase() + " "
-				+ cmd.getNumCarteCredit().substring(0,5) + "XXXXXXXXXX";
-		
+
+		if(this.paymentInfo != null){
+			this.paymentInfo = cmd.getTypeCarteCredit().toUpperCase() + " "
+					+ cmd.getNumCarteCredit().substring(0,5) + "XXXXXXXXXX";
+
+		}
+
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 		this.commandDate = dateFormat.format(date);
 	}
-	
+
 	public CommandeJson(int commandId, String adresse, String commandDate,
 			String paymentInfo) {
 		super();
@@ -91,7 +94,7 @@ public class CommandeJson {
 		this.entities = cmdLines;
 	}
 
-	
+
 	@Override
 	public String toString() {
 		return "CommandeJson [commandId=" + commandId + ", adresse=" + adresse

@@ -84,6 +84,7 @@ public class CommandeServiceImpl implements CommandeService {
 		commande.setUtilisateur(utilisateur);
 		commande.setLigneCommandes(lineCommand);
 		commande.setDateCommande(new Date(System.currentTimeMillis()));
+		commande.setValidate(true);
 		
 		em.persist(address);
 		em.merge(utilisateur);

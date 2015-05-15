@@ -47,4 +47,8 @@ angular.module("venteEnLigne")
 		$location.path("/");
 	};
 	
+	$scope.goToMofifProfile= function () {
+		$location.path("/modifUser");
+	};
+	
 });

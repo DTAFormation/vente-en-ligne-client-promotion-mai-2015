@@ -5,6 +5,7 @@ import java.util.List;
 import com.dta.domain.Adresse;
 import com.dta.domain.Commande;
 import com.dta.domain.LigneCommande;
+import com.dta.domain.Utilisateur;
 
 public interface CommandeService {
 	public List<Commande> getCommandeByLogin(String login);
@@ -12,4 +13,5 @@ public interface CommandeService {
 	public void saveCommande();
 	public void addLineCommand(LigneCommande lineCommand);
 	public void setAddress(Adresse address);
+	public void setUtilisateur(Utilisateur utilisateur);
 }

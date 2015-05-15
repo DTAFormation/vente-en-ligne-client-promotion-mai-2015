@@ -8,6 +8,9 @@ angular.module("venteEnLigne").factory("ProfilService", function ($http) {
 		},
 		deleteProfil: function (login) {
 			return $http['put']("/VentesEnLigneClient/rest/user/"+login);
+		},
+		modifyProfil: function (login, newProfile) {
+			return $http['put']("/VentesEnLigneClient/rest/user/"+login,newProfile);
 		}
 	}
 });

@@ -14,15 +14,6 @@ angular.module("venteEnLigne").controller("AddressController", function (Address
 					city: '', number: '',
 				});		
 				$scope.goToPayment();	
-			},
-			function(error) {
-				switch(error.status) {
-				case 400 :
-					$scope.saveExists();
-					break;
-				default :
-					$scope.saveNoOk();
-				}
 			}
 		);
 	};		

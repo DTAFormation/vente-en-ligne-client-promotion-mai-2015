@@ -4,6 +4,23 @@
 	</div>
 </div>
 
+<br/>
+
+<table>
+	<tr>
+		<td><label>Filter by article:</label></td>
+		<td><input ng-model="search" placeholder="apply filter" style="width:175px;"/></td>
+	</tr>
+	<tr>
+		<td><label>Filter by product:</label></td>
+		<td><select	ng-options="p.value as p.name for p in products" ng-model="product" style="width:175px;">
+			<option value="" selected>--select your product--</option>
+		</select></td>
+	</tr>
+</table>
+
+<br/>
+
 <div class="row">
 	<div class="col-md-6">
 		<table class="table table-hover">
@@ -11,13 +28,19 @@
 				<tr>
 					<th width="50">&nbsp</th>
 					<th class="nameicon"
-						ng-click="currentColumn='name'; reverse=!reverse">Name <i
-						class="glyphicon" ng-class="getIcon('name')"></i></th>
+						ng-click="currentColumn='name'; reverse=!reverse"
+						style="width: 150px">Name <i class="glyphicon"
+						ng-class="getIcon('name')"></i></th>
 
 					<th class="priceicon"
-						ng-click="currentColumn='entity.price'; reverse=!reverse">Price
-						<i class="glyphicon" ng-class="getIcon('entity.price')"></i>
+						ng-click="currentColumn='entity.price'; reverse=!reverse"
+						style="width: 90px">Price <i class="glyphicon"
+						ng-class="getIcon('entity.price')"></i>
 					</th>
+					<th style="width: 200px">Quantity</th>
+					<th></th>
+					<th style="width: 150px">Users rating</th>
+					<th></th>
 					<th></th>
 				</tr>
 			</thead>
@@ -50,17 +73,24 @@
 							ng-disabled="itemsForm.quantity{{item.entity.articleId}}.$invalid">Add
 							to basket</button></td>
 
+					<td>
+						<p>Current rating: {{item.entity.rating}}</p>
+						<p>Number of raters: {{item.entity.nbRaters}}</p>
+					</td>
+
+					<td><select ng-options="r.value as r.name for r in rates"
+						ng-model="rate" ng-hide="item.disable">
+							<option value="" selected>--Add rating--</option>
+					</select></td>
+					<td>
+						<button class="btn btn-primary"
+							ng-click="getNewRating(item, rate)" ng-disabled="!rate"
+							ng-hide="item.disable">Rate it !</button>
+					</td>
 				</tr>
 			</form>
 		</table>
 	</div>
-
-	<label>Filter by article: <input ng-model="search" placeholder="Apply filter" /></label>
-	<label>Filter by product: 
-		<select ng-options="p.value as p.name for p in products" ng-model="product">
-        	<option value="" selected>--Select your product--</option>
-    	</select>
-	</label>
 
 	<div class="col-md-3">
 		<alert ng-repeat="alert in alerts" type="{{alert.type}}"

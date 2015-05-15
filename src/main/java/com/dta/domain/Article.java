@@ -32,6 +32,10 @@ public class Article {
     private Produit produit;
     @Column(name="stock", length=19)
     private int stock;
+    @Column(name="rating", length=19)
+    private float rating = 0.0f;
+    @Column(name="nb_raters", length=19)
+    private int nbRaters = 0;
 
 	public Article() {
 	}
@@ -85,8 +89,21 @@ public class Article {
     public String getImage() {
         return image;
     }
+    
+    public float getRating() {
+		return rating;
+	}
+	public void setRating(float rating) {
+		this.rating = rating;
+	}
 	
-    @Override
+	public int getNbRaters() {
+		return nbRaters;
+	}
+	public void setNbRaters(int nbRaters) {
+		this.nbRaters = nbRaters;
+	}
+	@Override
     public String toString() {
         return "Article [articleId=" + articleId + ", nom=" + name + ", price="
                 + price + ", produit=" + produit + ", stock=" + stock + "]";

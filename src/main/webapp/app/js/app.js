@@ -37,7 +37,7 @@ angular.module("venteEnLigne", ["ngRoute", "ui.bootstrap"])
 		templateUrl: "app/views/userProfile.html",
 		controller: "UserProfileController"
 	})
-	.when("/mofifUser", {
+	.when("/modifUser", {
 		templateUrl: "app/views/modifProfile.html",
 		controller: "ModifProfileController"
 	})

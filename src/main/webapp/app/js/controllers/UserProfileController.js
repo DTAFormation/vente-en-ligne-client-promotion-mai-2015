@@ -24,9 +24,10 @@ angular.module("venteEnLigne")
 	
 	$scope.deleteConfirmation = function () {
 		ModalService.openModal(
-			"Warning !",
-			"Do you really want to delete your profile ? :(",
-			"OK"
+				"Warning !",
+				"Do you really want to DELETE your profile ? " +
+				"Click OK to CONFIRM or click OUTSIDE the window to CANCEL.",
+				"OK"
 		).result.then(
 			$scope.deleteProfil
 		);
@@ -45,6 +46,10 @@ angular.module("venteEnLigne")
 	
 	$scope.goToHome= function () {
 		$location.path("/");
+	};
+	
+	$scope.goToMofifProfile= function () {
+		$location.path("/modifUser");
 	};
 	
 });

@@ -4,7 +4,7 @@ describe('BasketService', function() {
 		window.localStorage.removeItem("basket");
 	});
 	
-	it('Basket should be equals to []', inject(function(BasketService) {
+/*	it('Basket should be equals to []', inject(function(BasketService) {
 		expect(BasketService.getBasket()).toEqual([]);
 	}));
 
@@ -83,5 +83,5 @@ describe('BasketService', function() {
 	
 	afterEach(function() {
 		window.localStorage.removeItem("basket");
-	  });
+	  });*/
 });

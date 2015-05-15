@@ -10,7 +10,7 @@ angular.module("venteEnLigne").factory("ProfilService", function ($http) {
 			return $http['put']("/VentesEnLigneClient/rest/user/"+login);
 		},
 		modifyProfil: function (login, newProfile) {
-			return $http['put']("/VentesEnLigneClient/rest/user/"+login,newProfile);
+			return $http['put']("/VentesEnLigneClient/rest/user/modifyUser/"+login,newProfile);
 		}
 	}
 });

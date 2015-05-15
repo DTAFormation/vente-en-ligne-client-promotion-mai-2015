@@ -1,6 +1,6 @@
 angular.module("venteEnLigne")
 
-.controller("ModifProfileController",function(ProfilService, $scope, $routeParams){
+.controller("ModifProfileController",function(ProfilService, ModalService, $routeParams, $location, $scope){
 
 	$scope.user = {};
 	$scope.newProfile = {};
@@ -18,47 +18,24 @@ angular.module("venteEnLigne")
 		ProfilService.modifyProfil(window.sessionStorage.getItem("connected"),$scope.newProfile) 
 		.then(
 				function(result) {			
-								
-				},
-				function(error) {
-
+					ModalService.openModal(
+							"Mofification done",
+							"Your profile has been modify.",
+							"OK"
+						).result.then(
+								$scope.goToProfile,
+								$scope.goToProfile
+						)
 				}
-			);
+			)
+	}
 	
+	
+	$scope.goToProfile= function () {
+		$location.path("/user");
 	};
 	
 	
-	
-	$scope.deleteProfil = function () {		
-		ProfilService.deleteProfil(window.sessionStorage.getItem("connected")) 
-		.then(
-			function(result) {			
-				$scope.deleteDone();										
-			}
-		);
-		ConnectService.setDisconnected()
-	};	
-	
-	$scope.deleteConfirmation = function () {
-		ModalService.openModal(
-			"Warning !",
-			"Do you really want to delete your profile ? :(",
-			"OK"
-		).result.then(
-			$scope.deleteProfil
-		);
-	};
-	
-	$scope.deleteDone = function () {
-		ModalService.openModal(
-			"See you",
-			"Your profile has been deleted. You will now be logged out.",
-			"OK"
-		).result.then(
-			$scope.goToHome,
-			$scope.goToHome
-		);
-	};
 	
 	$scope.goToHome= function () {
 		$location.path("/");

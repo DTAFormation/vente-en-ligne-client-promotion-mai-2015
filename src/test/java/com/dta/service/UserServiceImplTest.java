@@ -234,4 +234,70 @@ public class UserServiceImplTest {
         // Vérifier que la méthode getResultList() du mock query a bien été invoké.
         assertEquals("findTest : résultat", userTest, user);
     }
+	
+	/*
+	public void modify(String login, Utilisateur newProfile) {
+		Utilisateur user = find(login);
+		if (newProfile.getTitre()!="" && newProfile.getTitre()!=null){
+			user.setTitre(newProfile.getTitre());
+		}
+		if (newProfile.getLastName()!="" && newProfile.getLastName()!=null){
+			user.setLastName(newProfile.getLastName());
+		}
+		if (newProfile.getFirstName()!="" && newProfile.getFirstName()!=null){
+			user.setFirstName(newProfile.getFirstName());
+		}
+		if (newProfile.getPassword()!="" && newProfile.getPassword()!=null){
+			user.setPassword(newProfile.getPassword());
+		}
+		if (newProfile.getEmail()!="" && newProfile.getEmail()!=null){
+			user.setEmail(newProfile.getEmail());
+		}
+		if (newProfile.getTelephone()!="" && newProfile.getTelephone()!=null){
+			user.setTelephone(newProfile.getTelephone());
+		}
+		if (newProfile.getFax()!="" && newProfile.getFax()!=null){
+			user.setFax(newProfile.getFax());
+		}
+	}
+	
+	*/
+	
+	
+	@Test
+    public void modifyTest() {
+
+		// 1 - Préparation
+        LOG.info("Etant donné un objet user avec toutes ses informations correctement renseignées");
+        // Objet user en entrée du service create
+        Utilisateur user = new Utilisateur();
+        user.setEmail("edward.nigma@test.fr");
+        user.setFirstName("Edward");
+        user.setLastName("nigma");
+        user.setLogin("login");
+        user.setActive(true);
+        List<Utilisateur> usersEnBase = new ArrayList<>();
+        usersEnBase.add(user);
+        // Programme le comportement du mock
+        when(em.createNamedQuery("findUserByLogin", Utilisateur.class)).thenReturn(typedQuery);
+        when(typedQuery.getResultList()).thenReturn(usersEnBase);
+        
+        Utilisateur newProfile = new Utilisateur();
+        newProfile.setEmail("e.enigma@test.fr");
+        newProfile.setLastName("Enigma");
+        
+        // 2 - Exécution
+        LOG.info("Lorsque service.delete(user)");
+        // Méthode à tester!!!
+        service.modify("login", newProfile);
+        
+        Utilisateur userTest = service.find(user.getLogin());
+        user.setEmail(newProfile.getEmail());
+        user.setLastName(newProfile.getLastName());
+        
+        // 3 - Vérifications
+        // Vérifier que la méthode getResultList() du mock query a bien été invoké.
+        assertEquals("findTest : résultat", userTest, user);
+    }
+	
 }

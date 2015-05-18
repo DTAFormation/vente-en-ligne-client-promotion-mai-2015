@@ -9,6 +9,11 @@ angular.module("venteEnLigne")
 		
 		getUnvalidCommande : function(login){
 			return $http.get("/VentesEnLigneClient/rest/commande/basket/"+login);
+		},
+		
+		saveBasket : function(login){
+			console.log("inside command service save basket")
+			return $http.post("/VentesEnLigneClient/rest/commande/basket/", login);
 		}
 	}
 });

@@ -2,18 +2,18 @@
 	<div class="container">
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li ng-class="{active: currentPage() == '/'}"><a ng-click="goToPage('/')">Home</a></li>
-				<li ng-class="{active: currentPage() == '/validatePayment'}"><a ng-click="goToPage('/validatePayment')">Purchase</a></li>
-				<li ng-class="{active: currentPage() == '/basket'}"><a ng-click="goToPage('/basket')">Basket <span class="badge" ng-show="isConnected()">{{getBasketSize()}}</span></a></li>
+				<li ng-class="{active: currentPage() == '/'}"><a ng-click="goToPage('/')"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+				<li ng-class="{active: currentPage() == '/validatePayment'}"><a ng-click="goToPage('/validatePayment')"><span class="glyphicon glyphicon-usd"></span> Purchase</a></li>
+				<li ng-class="{active: currentPage() == '/basket'}"><a ng-click="goToPage('/basket')"><span class="glyphicon glyphicon-shopping-cart"></span> Basket <span class="badge" ng-show="isConnected()">{{getBasketSize()}}</span></a></li>
 				<li ng-class="{active: currentPage() == '/connect'}" ng-hide="isConnected()"><a ng-click="goToPage('/connect')">Sign in/Sign up</a></li>
 				<li ng-show="isConnected()" ng-class="dropdown" dropdown is-open="status.isopen">
-						<a ng-class="dropdown-toggle" dropdown-toggle><span class="glyphicon glyphicon-user"></span> {{getConnectedUser()}}</a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a ng-click="goToPage('/user')">Profile</a></li>
-							<li><a ng-click="goToPage('/history')">Historique</a></li>
-							<li class="divider"></li>
-							<li><a ng-click="logout()">Deconnexion</a></li></li>
-						</ul>
+					<a ng-class="dropdown-toggle" dropdown-toggle><span class="glyphicon glyphicon-user"></span> {{getConnectedUser()}}</a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a ng-click="goToPage('/user')">Profile</a></li>
+						<li><a ng-click="goToPage('/history')">Historique</a></li>
+						<li class="divider"></li>
+						<li><a ng-click="logout()"><span class="glyphicon glyphicon-off"></span> Deconnexion</a></li></li>
+					</ul>
 				</li>
 			</ul>
 		</div>

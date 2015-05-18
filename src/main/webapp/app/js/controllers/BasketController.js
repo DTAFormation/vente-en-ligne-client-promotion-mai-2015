@@ -1,7 +1,9 @@
-angular.module("venteEnLigne").controller("BasketController", function ($scope, BasketService, ItemService) {
+angular.module("venteEnLigne").controller("BasketController", function ($scope, BasketService, ItemService, ConnectService, CommandeService, ProfilService ) {
 
 
 	$scope.alerts = [];
+	
+	$scope.basket = BasketService.getBasket();
 
 
 	$scope.showItem = function(item){
@@ -51,5 +53,19 @@ angular.module("venteEnLigne").controller("BasketController", function ($scope, 
 	$scope.closeAlert = function(index) {
 		$scope.alerts.splice(index, 1);
 	};
+	
+	$scope.saveBasket = function(){
+		if(!ConnectService.isConnected())
+			$location.path("/connect");
+		else{
+			$scope.basket = BasketService.getBasket();
+			console.log($scope.basket)
+			$scope.basket.forEach(function(d){
+				BasketService.saveBasketCommand(d);
+			})
+			CommandeService.saveBasket(ConnectService.getConnectedUser());
+			addAlert({type:"success", msg:'Basket saved'})
+		}
+	}
 
 });

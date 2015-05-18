@@ -2,59 +2,48 @@
 	<form class="form-horizontal" ng-submit="modifyProfil()">
 		<table class="table table-bordered">
 			<tr>
-				<td style="width: 200px"><label class="col-sm-2 control-label">Id</label></td>
-				<td style="width: 300px">{{user.entity.id}}</td>
-				<td style="width: 300px">{{user.entity.id}}</td>
-			</tr>
-			<tr>
-				<td><label for="inputTitre" class="col-sm-2 control-label">titre</label></td>
+				<th class="active">Civility</label></th>
 				<td>{{user.entity.titre}}</td>
 				<td><select name="carlist" id="inputTitre"
 					ng-model="newProfile.titre">
 						<option value=""></option>
 						<option value="M">M</option>
-						<option value="Mme">Mme</option>
-						<option value="Mlle">Mlle</option>
+						<option value="Mme">Mrs</option>
+						<option value="Mlle">Miss</option>
 				</select></td>
 			</tr>
 			<tr>
-				<td><label for="inputFirstname" class="col-sm-2 control-label">firstName</label></td>
-				<!-- <td><input type="text" ng-init="newProfile.firstName='{{user.entity.firstName}}'" class="form-control" id="inputFirstname" ng-model="newProfile.firstName" ></td> -->
+				<th class="active">First Name</th>
 				<td>{{user.entity.firstName}}</td>
 				<td><input type="text" class="form-control" id="inputFirstname"
 					ng-model="newProfile.firstName"></td>
 			</tr>
 			<tr>
-				<td><label for="inputLastname" class="col-sm-2 control-label">lastName</label></td>
+				<th class="active">Last Name</th>
 				<td>{{user.entity.lastName}}</td>
 				<td><input type="text" class="form-control" id="inputLastname"
 					ng-model="newProfile.lastName"></td>
 			</tr>
 			<tr>
-				<td><label for="inputLogin" class="col-sm-2 control-label">login</label></td>
-				<td>{{user.entity.login}}</td>
-				<td>{{user.entity.login}}</td>
-			</tr>
-			<tr>
-				<td><label for="inputPassword" class="col-sm-2 control-label">password</label></td>
+				<th class="active">Password</th>
 				<td>********</td>
 				<td><input type="password" class="form-control"
 					id="inputPassword" ng-model="newProfile.password"></td>
 			</tr>
 			<tr>
-				<td><label for="inputEmail" class="col-sm-2 control-label">email</label></td>
+				<th class="active">E-mail</label></th>
 				<td>{{user.entity.email}}</td>
 				<td><input type="email" class="form-control" id="inputEmail"
 					ng-model="newProfile.email"></td>
 			</tr>
 			<tr>
-				<td><label for="inputTelephone" class="col-sm-2 control-label">telephone</label></td>
+				<th class="active">Telephone</th>
 				<td>{{user.entity.telephone}}</td>
 				<td><input type="text" class="form-control" id="inputTelephone"
 					ng-model="newProfile.telephone"></td>
 			</tr>
 			<tr>
-				<td><label for="inputFax" class="col-sm-2 control-label">fax</label></td>
+				<th class="active">Fax</th>
 				<td>{{user.entity.fax}}</td>
 				<td><input type="text" class="form-control" id="inputFax"
 					ng-model="newProfile.fax"></td>

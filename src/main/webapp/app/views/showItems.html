@@ -1,99 +1,90 @@
-<div class="row">
-	<div class="col-md-6">
-		<h2>Liste articles</h2>
-	</div>
-</div>
+<div>
+	<h2>List of Articles</h2>
 
-<br/>
-
-<table>
-	<tr>
-		<td><label>Filter by article:</label></td>
-		<td><input ng-model="search" placeholder="apply filter" style="width:175px;"/></td>
-	</tr>
-	<tr>
-		<td><label>Filter by product:</label></td>
-		<td><select	ng-options="p.value as p.name for p in products" ng-model="product" style="width:175px;">
-			<option value="" selected>--select your product--</option>
-		</select></td>
-	</tr>
-</table>
-
-<br/>
-
-<div class="row">
-	<div class="col-md-6">
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th width="50">&nbsp</th>
-					<th class="nameicon"
-						ng-click="currentColumn='name'; reverse=!reverse"
-						style="width: 150px">Name <i class="glyphicon"
-						ng-class="getIcon('name')"></i></th>
-
-					<th class="priceicon"
-						ng-click="currentColumn='entity.price'; reverse=!reverse"
-						style="width: 90px">Price <i class="glyphicon"
-						ng-class="getIcon('entity.price')"></i>
-					</th>
-					<th style="width: 200px">Quantity</th>
-					<th></th>
-					<th style="width: 150px">Users rating</th>
-					<th></th>
-					<th></th>
-				</tr>
-			</thead>
-
-			<form id="itemsForm" name="itemsForm" novalidate>
-				<tr class="clickable-row"
-					ng-repeat="item in items | filter: {name: search, nameProduct: product} | orderBy:currentColumn:reverse">
-					<td width="50"><img height="42" width="42"
-						src="{{item.entity.image}}"></td>
-					<td ng-click="showItem(item.entity)"><strong>{{item.entity.name}}</strong></td>
-					<td ng-click="showItem(item.entity)">{{item.entity.price |
-						currency}}</td>
-					<td>
-						<div class="input-group">
-							<span class="input-group-btn"><button
-									class="btn btn-primary" ng-click="decrementQuantity(item)">
-									<span class="glyphicon glyphicon-minus"></span>
-								</button></span> <input type="number" name="quantity{{item.entity.articleId}}"
-								class="form-control input-number" min="{{minQuantity}}"
-								max="{{maxQuantity}}" ng-model="item.quantity" /> <span
-								class="input-group-btn"><button class="btn btn-primary"
-									ng-click="incrementQuantity(item)">
-									<span class="glyphicon glyphicon-plus"></span>
-								</button></span>
-						</div>
-					</td>
-
-					<td><button class="btn btn-primary"
-							ng-click="addItemToBasket(item)"
-							ng-disabled="itemsForm.quantity{{item.entity.articleId}}.$invalid">Add
-							to basket</button></td>
-
-					<td>
-						<p>Current rating: {{item.entity.rating | number: 1}}/5</p>
-						<p>Number of raters: {{item.entity.nbRaters}}</p>
-					</td>
-
-					<td><select ng-options="r.value as r.name for r in rates"
-						ng-model="rate" ng-hide="item.disable">
-							<option value="" selected>--Add rating--</option>
-					</select></td>
-					<td>
-						<button class="btn btn-primary"
-							ng-click="getNewRating(item, rate)" ng-disabled="!rate"
-							ng-hide="item.disable">Rate it !</button>
-					</td>
-				</tr>
-			</form>
-		</table>
+	<div style="margin-bottom: 20px;">
+		<span style="float: left; margin-right: 10px; margin-bottom: 20px"> <label>By
+				article:</label> <input type="text" class="form-control" ng-model="search"
+			placeholder="Apply filter" style="width: 175px;" />
+		</span> 
+		<span style="float: left;">
+			<label>By product:</label> <select class="form-control"
+			ng-options="p.value as p.name for p in products" ng-model="product"
+			style="width: 175px;">
+				<option value="" selected>Select your product</option>
+		</select>
+		</span>
+		<div class="col-md-6" style="float: right">
+			<alert ng-repeat="alert in alerts" type="{{alert.type}}"
+				close="closeAlert($index)">{{alert.msg}}</alert>
+		</div>
 	</div>
 
-	<div class="col-md-3">
-		<alert ng-repeat="alert in alerts" type="{{alert.type}}"
-			close="closeAlert($index)">{{alert.msg}}</alert>
+	<div class="row">
+		<div>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th width="50">&nbsp</th>
+						<th class="nameicon"
+							ng-click="currentColumn='name'; reverse=!reverse">Name <i
+							class="glyphicon" ng-class="getIcon('name')"></i>
+						</th>
+
+						<th class="priceicon"
+							ng-click="currentColumn='entity.price'; reverse=!reverse">Price
+							<i class="glyphicon" ng-class="getIcon('entity.price')"></i>
+						</th>
+						<th style="width: 150px">Quantity</th>
+						<th></th>
+						<th>Users rating</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<form id="itemsForm" name="itemsForm" novalidate>
+					<tr class="clickable-row"
+						ng-repeat="item in items | filter: {name: search, nameProduct: product} | orderBy:currentColumn:reverse">
+						<td width="50"><img height="42" width="42"
+							src="{{item.entity.image}}"></td>
+						<td ng-click="showItem(item.entity)"><strong>{{item.entity.name | uppercase}}</strong></td>
+						<td ng-click="showItem(item.entity)">{{item.entity.price | currency}}</td>
+						<td>
+							<div class="input-group">
+								<span class="input-group-btn"><button
+										class="btn btn-primary" ng-click="decrementQuantity(item)">
+										<span class="glyphicon glyphicon-minus"></span>
+									</button></span> <input type="number" name="quantity{{item.entity.articleId}}"
+									class="form-control input-number" min="{{minQuantity}}"
+									max="{{maxQuantity}}" ng-model="item.quantity" /> <span
+									class="input-group-btn"><button class="btn btn-primary"
+										ng-click="incrementQuantity(item)">
+										<span class="glyphicon glyphicon-plus"></span>
+									</button></span>
+							</div>
+						</td>
+
+						<td><button class="btn btn-primary"
+								ng-click="addItemToBasket(item)"
+								ng-disabled="itemsForm.quantity{{item.entity.articleId}}.$invalid">Add
+								to basket</button></td>
+
+						<td><span><b>Current rating: </b>{{item.entity.rating
+								| number: 1}}/5 <br> <b>Number of raters: </b>{{item.entity.nbRaters}}
+						</span></td>
+						<td><select class="form-control"
+							ng-options="r.value as r.name for r in rates" ng-model="rate"
+							ng-hide="item.disable">
+								<option value="" selected>Add rating</option>
+						</select></td>
+						<td>
+							<button class="btn btn-primary"
+								ng-click="getNewRating(item, rate)" ng-disabled="!rate"
+								ng-hide="item.disable">Rate it !</button>
+						</td>
+					</tr>
+				</form>
+			</table>
+		</div>
 	</div>
 </div>

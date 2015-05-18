@@ -15,11 +15,11 @@ angular.module("venteEnLigne")
 	$scope.reverse = false;
 		
 	$scope.rates = [
-			{value:1, name:"nullissime"},
-			{value:2, name:"très mauvais"},
-			{value:3, name:"bof, pas terrible"},
-			{value:4, name:"moui, pas trop mal"},
-			{value:5, name:"excellent"}
+			{value:1, name:"très mauvais"},
+			{value:2, name:"assez mauvais"},
+			{value:3, name:"moyen"},
+			{value:4, name:"assez bon"},
+			{value:5, name:"très bon"}
 	];
 
 	ItemService.getItems().then(
@@ -60,7 +60,7 @@ angular.module("venteEnLigne")
 
 	function addAlert(params) {
 		$scope.alerts.push(params);
-		if($scope.alerts.length > 3) {
+		if($scope.alerts.length > 1) {
 			$scope.alerts.shift();
 		}
 	}

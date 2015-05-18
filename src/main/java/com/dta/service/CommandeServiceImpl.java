@@ -90,8 +90,6 @@ public class CommandeServiceImpl implements CommandeService {
 			}
 			em.remove(cmd);
 		}
-
-		System.out.println("create new command");
 		Commande newCmd = new Commande();
 		newCmd.setLigneCommandes(lineCommand);
 		newCmd.setValidate(false);

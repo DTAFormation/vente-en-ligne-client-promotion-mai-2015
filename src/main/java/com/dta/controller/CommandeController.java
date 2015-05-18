@@ -13,10 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dta.domain.Adresse;
 import com.dta.domain.Commande;
-import com.dta.domain.LigneCommande;
-import com.dta.domain.Utilisateur;
 import com.dta.service.CommandeService;
 
 @RestController

@@ -21,7 +21,7 @@ public class LineCommandController {
 	
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
-	public void createAddress(@RequestBody LigneCommande lineCommand) {
+	public void createLineCommand(@RequestBody LigneCommande lineCommand) {
 		cs.addLineCommand(lineCommand);
 	}
 }

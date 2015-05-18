@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -109,35 +110,58 @@ public class CommandeServiceImpl implements CommandeService {
 	public void addLineCommand(LigneCommande lineCommand) {
 		this.lineCommand.add(lineCommand);
 	}
-
-	@Override
-	public void saveCommande() {
-		Commande commande = new Commande();
-		List<Adresse> addresses= new ArrayList<Adresse>();
-		address.setUtilisateur(utilisateur);
-		addresses.add(address);
-		utilisateur.setAdresses(addresses);
-		commande.setAdresse(address);
-		commande.setUtilisateur(utilisateur);
-		commande.setLigneCommandes(lineCommand);
-		commande.setDateCommande(new Date(System.currentTimeMillis()));
-		commande.setValidate(true);
-
-		em.persist(address);
-		em.merge(utilisateur);
-		for(LigneCommande lc: lineCommand){
-			lc.setCommande(commande);
-			em.persist(lc);
-		}
-		em.persist(commande);
-		reset();
-	}
-
+	
 	private void reset(){
 		address=null;
 		lineCommand = new ArrayList<LigneCommande>();
 	}
+	
+	@Override
+	public void saveCommande(){
+		boolean newCommand =false;
+		Commande command = SearchIdCommandeNotValidate();
+		if(command == null){
+			command=new Commande();
+			newCommand=true;
+		}
 
+		List<Adresse> addresses= new ArrayList<Adresse>();
+		address.setUtilisateur(utilisateur);
+		addresses.add(address);
+		utilisateur.setAdresses(addresses);
+		
+		command.setAdresse(address);
+		command.setUtilisateur(utilisateur);
+		command.setDateCommande(new Date(System.currentTimeMillis()));
+		command.setValidate(true);
+
+		em.persist(address);
+		em.merge(utilisateur);
+		
+		if(newCommand){
+			for(LigneCommande lc: lineCommand){
+				lc.setCommande(command);
+				em.persist(lc);
+			}
+			em.persist(command);
+		}
+		else{
+			em.merge(command);
+		}
+		reset();
+	}
+
+	
+	public Commande SearchIdCommandeNotValidate(){
+		Query queryCommandsByValidate = em.createNamedQuery("Commande.findByValidateFalse");
+		List<Commande> commands = queryCommandsByValidate.getResultList();
+		if(commands.size() != 0)
+			return commands.get(0);
+		else{
+			return null;
+		}
+	}
+	
 	@Override
 	public void setAddress(Adresse address) {
 		this.address=address;

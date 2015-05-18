@@ -1,6 +1,11 @@
 <nav ng-controller="HeaderController" class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
 		<div id="navbar" class="navbar-collapse collapse">
+		<div class="navbar-header">
+      <a class="navbar-brand" href="#/">
+        <img alt="Brand" src="http://www.dta-ingenierie.fr/img/logoDTA2.png" style="display: block; height: 30px;" >
+      </a>
+    </div>
 			<ul class="nav navbar-nav">
 				<li ng-class="{active: currentPage() == '/'}"><a ng-click="goToPage('/')"><span class="glyphicon glyphicon-home"></span> Home</a></li>
 				<li ng-class="{active: currentPage() == '/validatePayment'}"><a ng-click="goToPage('/validatePayment')"><span class="glyphicon glyphicon-usd"></span> Purchase</a></li>

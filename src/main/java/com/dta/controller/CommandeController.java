@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dta.domain.Adresse;
 import com.dta.domain.Commande;
+import com.dta.domain.LigneCommande;
+import com.dta.domain.Utilisateur;
 import com.dta.service.CommandeService;
 
 @RestController
@@ -46,8 +48,17 @@ public class CommandeController {
 		
 		if(cmds.size() >= 1){
 			cmdJson = new CommandeJson(cmds.get(0));
+		}else{
+			return new ArrayList<LineCommandJson>();
 		}
+		
 		return cmdJson.getCmdLines();
+	}
+	
+	@RequestMapping(value="/basket", method=RequestMethod.POST)
+	@ResponseStatus(value = HttpStatus.OK)
+	public void saveBasket(@RequestBody String login) {
+		commandeService.saveBasket(login);
 	}
 
 }

@@ -14,4 +14,5 @@ public interface CommandeService {
 	public void addLineCommand(LigneCommande lineCommand);
 	public void setAddress(Adresse address);
 	public void setUtilisateur(Utilisateur utilisateur);
+	public void saveBasket(String login);
 }

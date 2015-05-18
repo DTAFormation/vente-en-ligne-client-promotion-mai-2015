@@ -28,11 +28,14 @@ public class CommandeJson {
 
 		this.commandId = cmd.getCommandeId();	
 
-		this.adresse = cmd.getAdresse().getNumber() + " "
-				+ cmd.getAdresse().getStreet() + " "
-				+ cmd.getAdresse().getPostcode() + " "
-				+ cmd.getAdresse().getCity() + ", "
-				+ cmd.getAdresse().getCountry().toUpperCase();
+		if(cmd.getAdresse()!=null){
+			this.adresse = cmd.getAdresse().getNumber() + " "
+					+ cmd.getAdresse().getStreet() + " "
+					+ cmd.getAdresse().getPostcode() + " "
+					+ cmd.getAdresse().getCity() + ", "
+					+ cmd.getAdresse().getCountry().toUpperCase();
+			
+		}
 
 		if(this.paymentInfo != null){
 			this.paymentInfo = cmd.getTypeCarteCredit().toUpperCase() + " "

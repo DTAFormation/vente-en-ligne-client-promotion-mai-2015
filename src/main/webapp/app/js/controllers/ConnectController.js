@@ -20,8 +20,6 @@ angular.module("venteEnLigne").controller("ConnectController", function(ConnectS
 							basket = []
 						}	
 						window.localStorage.setItem("basket", JSON.stringify(basket));
-						console.log("basket service: ")
-						console.log(basket)
 						$scope.basket = basket
 						$scope.initialized = true
 					});

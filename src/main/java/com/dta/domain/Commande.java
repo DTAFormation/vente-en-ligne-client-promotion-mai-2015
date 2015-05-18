@@ -18,6 +18,9 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name="Commande.findByValidateFalse", query="SELECT c FROM Commande c WHERE c.validate=false")
+})
 public class Commande {
 
 	@Id

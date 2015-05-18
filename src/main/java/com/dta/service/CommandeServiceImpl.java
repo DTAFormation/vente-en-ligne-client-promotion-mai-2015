@@ -101,7 +101,6 @@ public class CommandeServiceImpl implements CommandeService {
 		lineCommand = new ArrayList<LigneCommande>();
 	}
 	
-
 	@Override
 	public void setAddress(Adresse address) {
 		this.address=address;

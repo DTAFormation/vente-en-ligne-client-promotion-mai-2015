@@ -69,6 +69,7 @@ public class CommandeServiceImpl implements CommandeService {
 		try {
 			user = (Utilisateur) queryUserByLogin.getSingleResult();
 		} catch (NoResultException e) {
+			LOGGER.info(e); 
 			return new ArrayList<Commande>();
 		}
 

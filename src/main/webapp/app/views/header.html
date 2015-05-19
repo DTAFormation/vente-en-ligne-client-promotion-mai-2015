@@ -8,7 +8,6 @@
     </div>
             <ul class="nav navbar-nav">
                 <li ng-class="{active: currentPage() == '/'}"><a ng-click="goToPage('/')"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li ng-class="{active: currentPage() == '/validatePayment'}"><a ng-click="goToPage('/validatePayment')"><span class="glyphicon glyphicon-usd"></span> Purchase</a></li>
                 <li ng-class="{active: currentPage() == '/basket'}"><a ng-click="goToPage('/basket')"><span class="glyphicon glyphicon-shopping-cart"></span> Basket <span class="badge" ng-show="isConnected()">{{getBasketSize()}}</span></a></li>
                 <li ng-class="{active: currentPage() == '/connect'}" ng-hide="isConnected()"><a ng-click="goToPage('/connect')">Sign in/Sign up</a></li>
                 <li ng-show="isConnected()" ng-class="dropdown" dropdown is-open="status.isopen">

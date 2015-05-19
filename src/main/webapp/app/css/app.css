@@ -23,15 +23,11 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
     {
     -webkit-appearance: none;
     margin: 0;
-<<<<<<< HEAD
 }
 
-body {
-    
+body {    
     padding-right: 5%;
     padding-left: 5%;
-=======
->>>>>>> devromain
 }
 
 input[type="number"] {
@@ -44,8 +40,4 @@ input[type="number"] {
     border: 0;
     box-shadow: 0;
     display: inline;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> devromain

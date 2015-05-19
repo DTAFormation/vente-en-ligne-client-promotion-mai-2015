@@ -79,6 +79,7 @@ public class UserServiceImpl implements UserService {
         this.em = em;
     }
 
+
     @Override
     public Utilisateur find(String login) {
         Query queryUserByLogin = em.createNamedQuery("findUserByLogin", Utilisateur.class);

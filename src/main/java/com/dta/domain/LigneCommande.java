@@ -5,9 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name="LigneCommande.findLigneCommandeByCommande", query= "SELECT lc FROM LigneCommande lc WHERE lc.commande=:command")
+})
 public class LigneCommande {
 
     @Id

@@ -24,6 +24,7 @@ public class UserController {
     @Autowired
     private CommandeService cs;
 
+    
     @RequestMapping(value="/modifyUser/{login}", method=RequestMethod.PUT)
     @ResponseStatus(value = HttpStatus.OK)
     public void modifyUser(@PathVariable("login") String login, @RequestBody Utilisateur newProfile) {

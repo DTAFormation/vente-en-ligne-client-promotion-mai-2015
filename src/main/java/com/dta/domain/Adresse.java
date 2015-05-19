@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
@@ -40,7 +39,10 @@ public class Adresse {
     @JoinTable(name="adresses_utilisateur")
     private Utilisateur utilisateur;
 
-    public Adresse() {}
+    public Adresse() {
+        
+    }
+    
     public Adresse(int codePostal, String departement, int num, String pays,
             String rue, String ville, List<Commande> commande,
             Utilisateur utilisateur) {

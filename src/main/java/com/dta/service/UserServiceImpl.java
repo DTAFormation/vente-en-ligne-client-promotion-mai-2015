@@ -83,7 +83,6 @@ public class UserServiceImpl implements UserService {
 	public Utilisateur find(String login) {
 		Query queryUserByLogin = em.createNamedQuery("findUserByLogin", Utilisateur.class);
 		queryUserByLogin.setParameter("ulogin", login);
-		System.out.println(queryUserByLogin.getResultList().get(0));
 		Utilisateur user = (Utilisateur) queryUserByLogin.getResultList().get(0);
 		return user;
 	}

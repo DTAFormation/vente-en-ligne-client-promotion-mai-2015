@@ -36,3 +36,9 @@ input[type="number"] {
 	box-shadow: 0;
 	display: inline;
 }
+
+body {
+	
+    padding-right: 5%;
+    padding-left: 5%;
+}

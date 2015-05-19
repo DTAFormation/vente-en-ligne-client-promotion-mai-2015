@@ -36,7 +36,7 @@ public class UserController {
 	@ResponseBody
 	public UserJson getUser(@PathVariable("login") String login) {
 		Utilisateur result = userService.find(login);
-		cs.setUtilisateur(result);;
+		cs.setUtilisateur(result);
 		return new UserJson(result);
 	}
 	

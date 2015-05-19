@@ -133,6 +133,7 @@ public class CommandeServiceImpl implements CommandeService {
 		command.setDateCommande(new Date(System.currentTimeMillis()));
 		command.setValidate(true);
 
+		System.out.println(utilisateur);
 		em.persist(address);
 		em.merge(utilisateur);
 		

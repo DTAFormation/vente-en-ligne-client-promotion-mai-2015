@@ -59,7 +59,6 @@ angular.module("venteEnLigne").controller("BasketController", function ($scope, 
 			$location.path("/connect");
 		else{
 			$scope.basket = BasketService.getBasket();
-			console.log($scope.basket)
 			$scope.basket.forEach(function(d){
 				BasketService.saveBasketCommand(d);
 			})

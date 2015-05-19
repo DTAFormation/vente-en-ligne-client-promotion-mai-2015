@@ -83,7 +83,7 @@ public class SeleniumBasketTest {
             WebElement plus = driver.findElement(By.xpath("(//button[@name='plus'])[3]"));
             plus.click();
             plus.click();
-            WebElement number = driver.findElement(By.xpath("(//input[@name='number'])[3]"));
+            WebElement number = driver.findElement(By.xpath("(//input[@type='number'])[3]"));
             Assert.assertEquals(3, Integer.parseInt(number.getAttribute("value")));       
     }
    

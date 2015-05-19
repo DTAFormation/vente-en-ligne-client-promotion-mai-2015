@@ -91,7 +91,7 @@ angular.module("venteEnLigne").controller("ConnectController", function(ConnectS
                     								  myWindow.moveTo(deplaceX, deplaceY);
                     								  myWindow.focus();							  
                     							  }
-                    						  }, 800);
+                    						  }, 400);
                     					  }
                     				  }else{
                     					  i = 0

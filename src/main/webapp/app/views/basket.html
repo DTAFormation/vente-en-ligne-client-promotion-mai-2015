@@ -20,7 +20,7 @@
                 <tr class="clickable-row" ng-repeat="item in basket">
                     <td width="50" ng-click="showItem(item.entity)"><img height="42" width="42" src="{{item.entity.image}}"></td>
                     <td ng-click="showItem(item.entity)"><strong>{{item.entity.name | uppercase}}</strong></td>
-                    <td><input type="number" ng-model="item.quantity"></input></td>
+                    <td><input type="number" ng-model="item.quantity" min="0"></input></td>
                     <td><button class="btn btn-primary" ng-click="updateItem(item)">Update</button></td>
                     <td ng-click="showItem(item.entity)">{{item.quantity*item.entity.price | currency}}</td>
                     <td><button class="btn btn-primary" ng-click="deleteItemFromBasket(item)">Delete from basket</button></td>

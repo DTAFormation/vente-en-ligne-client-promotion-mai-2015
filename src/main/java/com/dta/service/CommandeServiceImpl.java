@@ -119,10 +119,10 @@ public class CommandeServiceImpl implements CommandeService {
 	
 	@Override
 	public void saveCommande(){
-		boolean newCommand =false;
-		List<Adresse> addresses= new ArrayList<Adresse>();
+	    boolean newCommand =false;
+	    List<Adresse> addresses= new ArrayList<Adresse>();
 		
-		Commande command = SearchIdCommandeNotValidate();
+	    Commande command = SearchIdCommandeNotValidate();
 		if(command == null){
 			command=new Commande();
 			newCommand=true;
@@ -150,22 +150,18 @@ public class CommandeServiceImpl implements CommandeService {
 				em.persist(lc);
 			}
 			em.persist(command);
-		
-			
 		}
 		else{
 			em.merge(command);
 			updateStockCommand(command);
 		}
-		
 		reset();
 	}
 
 	
 	public void updateStockCommand(Commande command) {
 		ArticleService as= new ArticleServiceImpl();
-		
-		Query query = em.createQuery("SELECT lc FROM LigneCommande lc WHERE lc.commande=:command");
+		Query query = em.createNamedQuery("LigneCommande.findLigneCommandeByCommande");
 		query.setParameter("command", command);
 		lineCommand = query.getResultList();
 		for(LigneCommande lc: lineCommand){

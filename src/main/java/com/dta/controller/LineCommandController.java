@@ -14,13 +14,13 @@ import com.dta.service.CommandeService;
 @RestController
 @RequestMapping("/linecommand")
 public class LineCommandController {
-	
-	@Autowired
-	private CommandeService cs;
-	
-	@RequestMapping(method=RequestMethod.POST)
-	@ResponseStatus(value = HttpStatus.OK)
-	public void createLineCommand(@RequestBody LigneCommande lineCommand) {
-		cs.addLineCommand(lineCommand);
-	}
+    
+    @Autowired
+    private CommandeService cs;
+    
+    @RequestMapping(method=RequestMethod.POST)
+    @ResponseStatus(value = HttpStatus.OK)
+    public void createLineCommand(@RequestBody LigneCommande lineCommand) {
+        cs.addLineCommand(lineCommand);
+    }
 }

@@ -1,52 +1,52 @@
 <section>
-	<div class="container" style="width:500px">
-		<h3 style="text-align: center;">Welcome {{user.entity.firstName}} {{user.entity.lastName}}</h3>
-		<table class="table table-bordered">
-			<tr>
-				<th class="active">Civility</th>
-				<td>{{user.entity.titre}}</td>
-			</tr>
-			<tr>
-				<th class="active">First Name</th>
-				<td>{{user.entity.firstName}}</td>
-			</tr>
-			<tr>
-				<th class="active">Last Name</th>
-				<td>{{user.entity.lastName}}</td>
-			</tr>
-			<tr>
-				<th class="active">Login</th>
-				<td>{{user.entity.login}}</td>
-			</tr>
-			<tr>
-				<th class="active">Password</th>
-				<td>{{user.entity.password}}</td>
-			</tr>
-			<tr>
-				<th class="active">Email</th>
-				<td>{{user.entity.email}}</td>
-			</tr>
-			<tr>
-				<th class="active">Phone Number</th>
-				<td>{{user.entity.telephone}}</td>
-			</tr>
-			<tr>
-				<th class="active">Fax Number</th>
-				<td>{{user.entity.fax}}</td>
-			</tr>
-		</table>
+    <div class="container" style="width:500px">
+        <h3 style="text-align: center;">Welcome {{user.entity.firstName}} {{user.entity.lastName}}</h3>
+        <table class="table table-bordered">
+            <tr>
+                <th class="active">Civility</th>
+                <td>{{user.entity.titre}}</td>
+            </tr>
+            <tr>
+                <th class="active">First Name</th>
+                <td>{{user.entity.firstName}}</td>
+            </tr>
+            <tr>
+                <th class="active">Last Name</th>
+                <td>{{user.entity.lastName}}</td>
+            </tr>
+            <tr>
+                <th class="active">Login</th>
+                <td>{{user.entity.login}}</td>
+            </tr>
+            <tr>
+                <th class="active">Password</th>
+                <td>{{user.entity.password}}</td>
+            </tr>
+            <tr>
+                <th class="active">Email</th>
+                <td>{{user.entity.email}}</td>
+            </tr>
+            <tr>
+                <th class="active">Phone Number</th>
+                <td>{{user.entity.telephone}}</td>
+            </tr>
+            <tr>
+                <th class="active">Fax Number</th>
+                <td>{{user.entity.fax}}</td>
+            </tr>
+        </table>
 
-		<button type="button" class="btn btn-success"
-			ng-click="goToMofifProfile()">
-			<span class="glyphicon glyphicon-edit"></span> Modify your profile
-		</button>
+        <button type="button" class="btn btn-success"
+            ng-click="goToMofifProfile()">
+            <span class="glyphicon glyphicon-edit"></span> Modify your profile
+        </button>
 
-		<button type="button" class="btn btn-danger"
-			ng-click="deleteConfirmation()" style="float:right;">
-			<span class="glyphicon glyphicon-remove"></span> Delete your profile
-		</button>
-		
-		
-		
-	</div>
+        <button type="button" class="btn btn-danger"
+            ng-click="deleteConfirmation()" style="float:right;">
+            <span class="glyphicon glyphicon-remove"></span> Delete your profile
+        </button>
+        
+        
+        
+    </div>
 </section>

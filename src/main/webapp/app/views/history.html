@@ -1,23 +1,23 @@
 <div class="panel panel-default">
-	<div class="panel-heading">Historique des commandes</div>
+    <div class="panel-heading">Historique des commandes</div>
 
-	<table class="table">
-		<ul class="list-group" ng-repeat="cmd in cmds">
-			<li class="list-group-item">
-				<h4 class="list-group-item-heading">Ref commande:
-					{{cmd.commandId}}</h4>
-				<p class="list-group-item-text">...</p>
-				<p class="list-group-item-text">
-				<ul>
-					<li>Date de commande: {{cmd.commandDate}}</li>
-					<li>Adresse de facturation: {{cmd.adresse}}</li>
-					<li>Informations de paiement: {{cmd.paymentInfo}}</li>
-				</ul> <br>
-				<ul ng-repeat="line in cmd.cmdLines">
-					<li>{{line.entity.name}} - x{{line.quantity}} -
-						{{line.entity.price}}euros</li>
-				</ul>
-			</li>
-		</ul>
-	</table>
+    <table class="table">
+        <ul class="list-group" ng-repeat="cmd in cmds">
+            <li class="list-group-item">
+                <h4 class="list-group-item-heading">Ref commande:
+                    {{cmd.commandId}}</h4>
+                <p class="list-group-item-text">...</p>
+                <p class="list-group-item-text">
+                <ul>
+                    <li>Date de commande: {{cmd.commandDate}}</li>
+                    <li>Adresse de facturation: {{cmd.adresse}}</li>
+                    <li>Informations de paiement: {{cmd.paymentInfo}}</li>
+                </ul> <br>
+                <ul ng-repeat="line in cmd.cmdLines">
+                    <li>{{line.entity.name}} - x{{line.quantity}} -
+                        {{line.entity.price}}euros</li>
+                </ul>
+            </li>
+        </ul>
+    </table>
 </div>

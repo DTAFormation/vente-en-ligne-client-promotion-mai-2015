@@ -24,35 +24,7 @@ public class UserController {
     @Autowired
     private CommandeService cs;
 
-<<<<<<< HEAD
-	@RequestMapping(value="/modifyUser/{login}", method=RequestMethod.PUT)
-	@ResponseStatus(value = HttpStatus.OK)
-	public void modifyUser(@PathVariable("login") String login, @RequestBody Utilisateur newProfile) {
-		userService.modify(login,newProfile);
-	}
-	
-	
-	
-	@RequestMapping(value="/{login}")
-	@ResponseBody
-	public UserJson getUser(@PathVariable("login") String login) {
-		Utilisateur result = userService.find(login);
-		cs.setUtilisateur(result);
-		return new UserJson(result);
-	}
-	
-	@RequestMapping(method=RequestMethod.POST)
-	@ResponseStatus(value = HttpStatus.OK)
-	public void createUser(@RequestBody Utilisateur user) {
-		userService.create(user);
-	}
-	
-	@RequestMapping(value="/{login}", method=RequestMethod.PUT)
-	@ResponseStatus(value = HttpStatus.OK)
-	public void deleteUser(@PathVariable("login") String login) {
-		userService.delete(login);
-	}
-=======
+    
     @RequestMapping(value="/modifyUser/{login}", method=RequestMethod.PUT)
     @ResponseStatus(value = HttpStatus.OK)
     public void modifyUser(@PathVariable("login") String login, @RequestBody Utilisateur newProfile) {
@@ -80,5 +52,4 @@ public class UserController {
     public void deleteUser(@PathVariable("login") String login) {
         userService.delete(login);
     }
->>>>>>> c004cb34a35afccbf1b34c809dbb786e96952372
 }

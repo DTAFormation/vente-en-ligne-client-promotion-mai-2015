@@ -79,15 +79,7 @@ public class UserServiceImpl implements UserService {
         this.em = em;
     }
 
-<<<<<<< HEAD
-	@Override
-	public Utilisateur find(String login) {
-		Query queryUserByLogin = em.createNamedQuery("findUserByLogin", Utilisateur.class);
-		queryUserByLogin.setParameter("ulogin", login);
-		Utilisateur user = (Utilisateur) queryUserByLogin.getResultList().get(0);
-		return user;
-	}
-=======
+
     @Override
     public Utilisateur find(String login) {
         Query queryUserByLogin = em.createNamedQuery("findUserByLogin", Utilisateur.class);
@@ -96,7 +88,6 @@ public class UserServiceImpl implements UserService {
         Utilisateur user = (Utilisateur) queryUserByLogin.getResultList().get(0);
         return user;
     }
->>>>>>> c004cb34a35afccbf1b34c809dbb786e96952372
 
     @Override
     public void modify(String login, Utilisateur newProfile) {

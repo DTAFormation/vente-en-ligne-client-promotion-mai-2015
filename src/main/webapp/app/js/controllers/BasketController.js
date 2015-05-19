@@ -1,5 +1,4 @@
-angular.module("venteEnLigne").controller("BasketController", function ($scope, BasketService, ItemService, ConnectService, CommandeService, ProfilService ) {
-
+angular.module("venteEnLigne").controller("BasketController", function ($scope, BasketService, ItemService, ConnectService, CommandeService, ProfilService, $location) {
 
     $scope.alerts = [];
     
@@ -64,6 +63,14 @@ angular.module("venteEnLigne").controller("BasketController", function ($scope, 
 			})
 			CommandeService.saveBasket(ConnectService.getConnectedUser());
 			addAlert({type:"success", msg:'Basket saved'})
+		}
+	}
+	
+	$scope.purchaseBasket = function (){
+		if(!ConnectService.isConnected())
+			$location.path("/connect");
+		else{
+			$location.path("/validatePayment");
 		}
 	}
 

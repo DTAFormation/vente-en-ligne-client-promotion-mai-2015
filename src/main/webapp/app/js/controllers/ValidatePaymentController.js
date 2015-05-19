@@ -21,6 +21,7 @@ angular.module("venteEnLigne")
                 BasketService.saveBasketCommand(d);
             })
             ProfilService.getProfil(window.sessionStorage.getItem("connected"));
+            CommandeService.saveBasket(ConnectService.getConnectedUser());
             $location.path("/address");
         }
             

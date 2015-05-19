@@ -19,43 +19,43 @@ import com.dta.service.CommandeService;
 @RestController
 @RequestMapping("/commande")
 public class CommandeController {
-	
-	@Autowired
-	private CommandeService commandeService;
-	
-	@RequestMapping(value="/commandes/{login}")
-	@ResponseBody
-	public List<CommandeJson> getCommande(@PathVariable("login") String login) {
-		
-		List<Commande> cmds = commandeService.getCommandeByLogin(login);
-		List<CommandeJson> cmdsJson = new ArrayList<CommandeJson>();
-		
-		for(Commande cmd : cmds){
-			cmdsJson.add(new CommandeJson(cmd));
-		}
-		return cmdsJson;
-	}
-	
-	@RequestMapping(value="/basket/{login}")
-	@ResponseBody
-	public List<LineCommandJson> getBasket(@PathVariable("login") String login) {
-		
-		List<Commande> cmds = commandeService.getBasketByLogin(login);
-		CommandeJson cmdJson = null;
-		
-		if(cmds.size() >= 1){
-			cmdJson = new CommandeJson(cmds.get(0));
-		}else{
-			return new ArrayList<LineCommandJson>();
-		}
-		
-		return cmdJson.getCmdLines();
-	}
-	
-	@RequestMapping(value="/basket", method=RequestMethod.POST)
-	@ResponseStatus(value = HttpStatus.OK)
-	public void saveBasket(@RequestBody String login) {
-		commandeService.saveBasket(login);
-	}
+    
+    @Autowired
+    private CommandeService commandeService;
+    
+    @RequestMapping(value="/commandes/{login}")
+    @ResponseBody
+    public List<CommandeJson> getCommande(@PathVariable("login") String login) {
+        
+        List<Commande> cmds = commandeService.getCommandeByLogin(login);
+        List<CommandeJson> cmdsJson = new ArrayList<CommandeJson>();
+        
+        for(Commande cmd : cmds){
+            cmdsJson.add(new CommandeJson(cmd));
+        }
+        return cmdsJson;
+    }
+    
+    @RequestMapping(value="/basket/{login}")
+    @ResponseBody
+    public List<LineCommandJson> getBasket(@PathVariable("login") String login) {
+        
+        List<Commande> cmds = commandeService.getBasketByLogin(login);
+        CommandeJson cmdJson = null;
+        
+        if(cmds.size() >= 1){
+            cmdJson = new CommandeJson(cmds.get(0));
+        }else{
+            return new ArrayList<LineCommandJson>();
+        }
+        
+        return cmdJson.getCmdLines();
+    }
+    
+    @RequestMapping(value="/basket", method=RequestMethod.POST)
+    @ResponseStatus(value = HttpStatus.OK)
+    public void saveBasket(@RequestBody String login) {
+        commandeService.saveBasket(login);
+    }
 
 }

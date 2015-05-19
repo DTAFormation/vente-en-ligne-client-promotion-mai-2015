@@ -25,33 +25,33 @@ import com.dta.domain.Utilisateur;
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceImplTest {
 
-	private static final Logger LOG = LoggerFactory.getLogger(UserServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UserServiceImpl.class);
 
-	@Mock 
-	private EntityManager em;
-	
-	@Mock 
-	private Query queryEmail;
-	
-	@Mock 
-	private Query queryLogin;	
-	
-	@Mock 
-	private TypedQuery<Utilisateur> typedQuery;
-	
-	// Classe à tester
-	private UserServiceImpl service;
-	
-	@Before
-	public void setUp() {
-		service = new UserServiceImpl();
-		service.setEm(em);
-	}
-	
-	@Test
+    @Mock 
+    private EntityManager em;
+    
+    @Mock 
+    private Query queryEmail;
+    
+    @Mock 
+    private Query queryLogin;    
+    
+    @Mock 
+    private TypedQuery<Utilisateur> typedQuery;
+    
+    // Classe à tester
+    private UserServiceImpl service;
+    
+    @Before
+    public void setUp() {
+        service = new UserServiceImpl();
+        service.setEm(em);
+    }
+    
+    @Test
     public void create_user_cas_nominal() {
 
-		// 1 - Préparation
+        // 1 - Préparation
         LOG.info("Etant donné un objet user avec toutes ses informations correctement renseignées");
         // Objet user en entrée du service create
         Utilisateur user = new Utilisateur();
@@ -80,8 +80,8 @@ public class UserServiceImplTest {
 
     @Test(expected = UserAlreadyExistsException.class)
     public void create_user_avec_email_existant_deja_en_base() {
-    	
-    	// 1 - Préparation
+        
+        // 1 - Préparation
         LOG.info("Etant donné un objet user avec une adresse email existant en base");
         // Objet user en entrée du service create
         Utilisateur user = new Utilisateur();
@@ -104,8 +104,8 @@ public class UserServiceImplTest {
 
     @Test(expected = UserAlreadyExistsException.class)
     public void create_user_avec_login_existant_deja_en_base() {
-    	
-    	// 1 - Préparation
+        
+        // 1 - Préparation
         LOG.info("Etant donné un objet user avec un login existant en base");
         // Objet user en entrée du service create
         Utilisateur user = new Utilisateur();
@@ -131,9 +131,9 @@ public class UserServiceImplTest {
     @Test
     public void emailExists_avec_email_existant() {
         
-    	// 1 - Préparation
-    	LOG.info("Etant donné une adresse email existant en base");
-    	// Simule la présence d'un user en base
+        // 1 - Préparation
+        LOG.info("Etant donné une adresse email existant en base");
+        // Simule la présence d'un user en base
         List<Utilisateur> usersEnBase = new ArrayList<>();
         usersEnBase.add(new Utilisateur());
         // Programmer le comportement du mock
@@ -152,9 +152,9 @@ public class UserServiceImplTest {
     @Test
     public void emailExists_avec_email_non_existant() {
         
-    	// 1 - Préparation
-    	LOG.info("Etant donné une adresse email n'existant pas en base");
-    	// Programmer le comportement du mock
+        // 1 - Préparation
+        LOG.info("Etant donné une adresse email n'existant pas en base");
+        // Programmer le comportement du mock
         when(em.createNamedQuery("findUserByEmail")).thenReturn(queryEmail);
         when(queryEmail.getResultList()).thenReturn(new ArrayList<Utilisateur>());
 
@@ -170,9 +170,9 @@ public class UserServiceImplTest {
     @Test
     public void loginExists_avec_login_existant() {
         
-    	// 1 - Préparation
-    	LOG.info("Etant donné une adresse email existant en base");
-    	// Simule la présence d'un user en base
+        // 1 - Préparation
+        LOG.info("Etant donné une adresse email existant en base");
+        // Simule la présence d'un user en base
         List<Utilisateur> usersEnBase = new ArrayList<>();
         usersEnBase.add(new Utilisateur());
         // Programmer le comportement du mock
@@ -191,9 +191,9 @@ public class UserServiceImplTest {
     @Test
     public void loginExists_avec_login_non_existant() {
         
-    	// 1 - Préparation
-    	LOG.info("Etant donné une adresse email n'existant pas en base");
-    	// Programmer le comportement du mock
+        // 1 - Préparation
+        LOG.info("Etant donné une adresse email n'existant pas en base");
+        // Programmer le comportement du mock
         when(em.createNamedQuery("findUserByLogin")).thenReturn(queryLogin);
         when(queryLogin.getResultList()).thenReturn(new ArrayList<Utilisateur>());
 
@@ -207,10 +207,10 @@ public class UserServiceImplTest {
     }    
     
     
-	@Test
+    @Test
     public void findTest() {
 
-		// 1 - Préparation
+        // 1 - Préparation
         LOG.info("Etant donné un objet user avec toutes ses informations correctement renseignées");
         // Objet user en entrée du service create
         Utilisateur user = new Utilisateur();
@@ -234,40 +234,40 @@ public class UserServiceImplTest {
         // Vérifier que la méthode getResultList() du mock query a bien été invoké.
         assertEquals("findTest : résultat", userTest, user);
     }
-	
-	/*
-	public void modify(String login, Utilisateur newProfile) {
-		Utilisateur user = find(login);
-		if (newProfile.getTitre()!="" && newProfile.getTitre()!=null){
-			user.setTitre(newProfile.getTitre());
-		}
-		if (newProfile.getLastName()!="" && newProfile.getLastName()!=null){
-			user.setLastName(newProfile.getLastName());
-		}
-		if (newProfile.getFirstName()!="" && newProfile.getFirstName()!=null){
-			user.setFirstName(newProfile.getFirstName());
-		}
-		if (newProfile.getPassword()!="" && newProfile.getPassword()!=null){
-			user.setPassword(newProfile.getPassword());
-		}
-		if (newProfile.getEmail()!="" && newProfile.getEmail()!=null){
-			user.setEmail(newProfile.getEmail());
-		}
-		if (newProfile.getTelephone()!="" && newProfile.getTelephone()!=null){
-			user.setTelephone(newProfile.getTelephone());
-		}
-		if (newProfile.getFax()!="" && newProfile.getFax()!=null){
-			user.setFax(newProfile.getFax());
-		}
-	}
-	
-	*/
-	
-	
-	@Test
+    
+    /*
+    public void modify(String login, Utilisateur newProfile) {
+        Utilisateur user = find(login);
+        if (newProfile.getTitre()!="" && newProfile.getTitre()!=null){
+            user.setTitre(newProfile.getTitre());
+        }
+        if (newProfile.getLastName()!="" && newProfile.getLastName()!=null){
+            user.setLastName(newProfile.getLastName());
+        }
+        if (newProfile.getFirstName()!="" && newProfile.getFirstName()!=null){
+            user.setFirstName(newProfile.getFirstName());
+        }
+        if (newProfile.getPassword()!="" && newProfile.getPassword()!=null){
+            user.setPassword(newProfile.getPassword());
+        }
+        if (newProfile.getEmail()!="" && newProfile.getEmail()!=null){
+            user.setEmail(newProfile.getEmail());
+        }
+        if (newProfile.getTelephone()!="" && newProfile.getTelephone()!=null){
+            user.setTelephone(newProfile.getTelephone());
+        }
+        if (newProfile.getFax()!="" && newProfile.getFax()!=null){
+            user.setFax(newProfile.getFax());
+        }
+    }
+    
+    */
+    
+    
+    @Test
     public void modifyTest() {
 
-		// 1 - Préparation
+        // 1 - Préparation
         LOG.info("Etant donné un objet user avec toutes ses informations correctement renseignées");
         // Objet user en entrée du service create
         Utilisateur user = new Utilisateur();
@@ -299,5 +299,5 @@ public class UserServiceImplTest {
         // Vérifier que la méthode getResultList() du mock query a bien été invoké.
         assertEquals("findTest : résultat", userTest, user);
     }
-	
+    
 }

@@ -14,13 +14,13 @@ import com.dta.service.CommandeService;
 @RestController
 @RequestMapping("/address")
 public class AddressController {
-	@Autowired
-	private CommandeService cs;
-	
-	@RequestMapping(method=RequestMethod.POST)
-	@ResponseStatus(value = HttpStatus.OK)
-	public void createAddress(@RequestBody Adresse address) {
-		cs.setAddress(address);
-		cs.saveCommande();
-	}
+    @Autowired
+    private CommandeService cs;
+    
+    @RequestMapping(method=RequestMethod.POST)
+    @ResponseStatus(value = HttpStatus.OK)
+    public void createAddress(@RequestBody Adresse address) {
+        cs.setAddress(address);
+        cs.saveCommande();
+    }
 }

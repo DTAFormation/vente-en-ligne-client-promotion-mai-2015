@@ -1,61 +1,61 @@
 <div class="container" style="width: 800px">
-	<form class="form-horizontal" ng-submit="modifyProfil()">
-		<table class="table table-bordered">
-			<tr>
-				<th class="active">Civility</label></th>
-				<td>{{user.entity.titre}}</td>
-				<td><select name="carlist" id="inputTitre"
-					ng-model="newProfile.titre">
-						<option value=""></option>
-						<option value="M">M</option>
-						<option value="Mme">Mrs</option>
-						<option value="Mlle">Miss</option>
-				</select></td>
-			</tr>
-			<tr>
-				<th class="active">First Name</th>
-				<td>{{user.entity.firstName}}</td>
-				<td><input type="text" class="form-control" id="inputFirstname"
-					ng-model="newProfile.firstName"></td>
-			</tr>
-			<tr>
-				<th class="active">Last Name</th>
-				<td>{{user.entity.lastName}}</td>
-				<td><input type="text" class="form-control" id="inputLastname"
-					ng-model="newProfile.lastName"></td>
-			</tr>
-			<tr>
-				<th class="active">Password</th>
-				<td>********</td>
-				<td><input type="password" class="form-control"
-					id="inputPassword" ng-model="newProfile.password"></td>
-			</tr>
-			<tr>
-				<th class="active">E-mail</label></th>
-				<td>{{user.entity.email}}</td>
-				<td><input type="email" class="form-control" id="inputEmail"
-					ng-model="newProfile.email"></td>
-			</tr>
-			<tr>
-				<th class="active">Telephone</th>
-				<td>{{user.entity.telephone}}</td>
-				<td><input type="text" class="form-control" id="inputTelephone"
-					ng-model="newProfile.telephone"></td>
-			</tr>
-			<tr>
-				<th class="active">Fax</th>
-				<td>{{user.entity.fax}}</td>
-				<td><input type="text" class="form-control" id="inputFax"
-					ng-model="newProfile.fax"></td>
-			</tr>
-		</table>
+    <form class="form-horizontal" ng-submit="modifyProfil()">
+        <table class="table table-bordered">
+            <tr>
+                <th class="active">Civility</label></th>
+                <td>{{user.entity.titre}}</td>
+                <td><select name="carlist" id="inputTitre"
+                    ng-model="newProfile.titre">
+                        <option value=""></option>
+                        <option value="M">M</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Miss">Miss</option>
+                </select></td>
+            </tr>
+            <tr>
+                <th class="active">First Name</th>
+                <td>{{user.entity.firstName}}</td>
+                <td><input type="text" class="form-control" id="inputFirstname"
+                    ng-model="newProfile.firstName"></td>
+            </tr>
+            <tr>
+                <th class="active">Last Name</th>
+                <td>{{user.entity.lastName}}</td>
+                <td><input type="text" class="form-control" id="inputLastname"
+                    ng-model="newProfile.lastName"></td>
+            </tr>
+            <tr>
+                <th class="active">Password</th>
+                <td>********</td>
+                <td><input type="password" class="form-control"
+                    id="inputPassword" ng-model="newProfile.password"></td>
+            </tr>
+            <tr>
+                <th class="active">E-mail</label></th>
+                <td>{{user.entity.email}}</td>
+                <td><input type="email" class="form-control" id="inputEmail"
+                    ng-model="newProfile.email"></td>
+            </tr>
+            <tr>
+                <th class="active">Telephone</th>
+                <td>{{user.entity.telephone}}</td>
+                <td><input type="text" class="form-control" id="inputTelephone"
+                    ng-model="newProfile.telephone"></td>
+            </tr>
+            <tr>
+                <th class="active">Fax</th>
+                <td>{{user.entity.fax}}</td>
+                <td><input type="text" class="form-control" id="inputFax"
+                    ng-model="newProfile.fax"></td>
+            </tr>
+        </table>
 
-		<button type="submit" class="btn btn-success">
-			<span class="glyphicon glyphicon-ok"></span> Modify your profile
-		</button>
-		<button type="button" class="btn btn-danger"
-			ng-click="goToProfile()" style="float:right">
-			<span class="glyphicon glyphicon-remove"></span> Cancel
-		</button>
-	</form>
+        <button type="submit" class="btn btn-success">
+            <span class="glyphicon glyphicon-ok"></span> Modify your profile
+        </button>
+        <button type="button" class="btn btn-danger"
+            ng-click="goToProfile()" style="float:right">
+            <span class="glyphicon glyphicon-remove"></span> Cancel
+        </button>
+    </form>
 </div>

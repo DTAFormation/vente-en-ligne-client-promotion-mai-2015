@@ -22,29 +22,29 @@ import com.dta.domain.Article;
 @RunWith(MockitoJUnitRunner.class)
 public class ArticleServiceImplTest {
 
-	private static final Logger LOG = LoggerFactory.getLogger(ArticleServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ArticleServiceImpl.class);
 
-	@Mock 
-	private EntityManager em;
-	
-	@Mock 
-	private Query queryFindAll;
-	
-	// Classe à tester
-	private ArticleServiceImpl service;
-	
-	@Before
-	public void setUp() {
-		service = new ArticleServiceImpl();
-		service.setEm(em);
-	}
+    @Mock 
+    private EntityManager em;
+    
+    @Mock 
+    private Query queryFindAll;
+    
+    // Classe à tester
+    private ArticleServiceImpl service;
+    
+    @Before
+    public void setUp() {
+        service = new ArticleServiceImpl();
+        service.setEm(em);
+    }
     
     @Test
     public void FindAllTest() {
         
-    	LOG.info("On veut récupérer toute la liste d'articles en base");
+        LOG.info("On veut récupérer toute la liste d'articles en base");
         
-    	// Simule la présence d'un user en base
+        // Simule la présence d'un user en base
         List<Article> articlesEnBase = new ArrayList<>();
         articlesEnBase.add(new Article());
         
@@ -64,11 +64,11 @@ public class ArticleServiceImplTest {
     @Test
     public void findTestExists() {
         
-    	LOG.info("Etant donné un id d'article en base");
+        LOG.info("Etant donné un id d'article en base");
        
-    	Article articleEnBase = new Article();
+        Article articleEnBase = new Article();
      
-    	// Programmer le comportement du mock
+        // Programmer le comportement du mock
         when(em.find(Article.class,1)).thenReturn(articleEnBase);
      
         LOG.info("Lorsque service.find(id)");
@@ -83,10 +83,10 @@ public class ArticleServiceImplTest {
     @Test
     public void findTestNotExists() {
         
-    	LOG.info("Etant donné un id d'article qui n'est pas en base");
+        LOG.info("Etant donné un id d'article qui n'est pas en base");
        
-    	
-    	// Programmer le comportement du mock
+        
+        // Programmer le comportement du mock
         when(em.find(Article.class,1)).thenReturn(null);
      
         LOG.info("Lorsque service.find(id)");

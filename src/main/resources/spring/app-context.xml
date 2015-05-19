@@ -53,5 +53,4 @@
 				authorities-by-username-query="select login,type_util from Utilisateur where login=?" />
 		</secu:authentication-provider>
 	</secu:authentication-manager>
-
 </beans>

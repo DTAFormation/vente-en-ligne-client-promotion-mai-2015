@@ -1,23 +1,48 @@
-<div class="panel panel-default">
-    <div class="panel-heading">Historique des commandes</div>
+<h2>Purchase History</h2>
 
-    <table class="table">
-        <ul class="list-group" ng-repeat="cmd in cmds">
-            <li class="list-group-item">
-                <h4 class="list-group-item-heading">Ref commande:
-                    {{cmd.commandId}}</h4>
-                <p class="list-group-item-text">...</p>
-                <p class="list-group-item-text">
-                <ul>
-                    <li>Date de commande: {{cmd.commandDate}}</li>
-                    <li>Adresse de facturation: {{cmd.adresse}}</li>
-                    <li>Informations de paiement: {{cmd.paymentInfo}}</li>
-                </ul> <br>
-                <ul ng-repeat="line in cmd.cmdLines">
-                    <li>{{line.entity.name}} - x{{line.quantity}} -
-                        {{line.entity.price}}euros</li>
-                </ul>
-            </li>
-        </ul>
-    </table>
+<div class="panel panel-default">
+		<ul class="list-group" ng-repeat="cmd in cmds">
+			<li class="list-group-item">
+				<h4 class="list-group-item-heading">Ref commande:
+					{{cmd.commandId}}</h4>
+				<p class="list-group-item-text">
+				<ul>
+					<li>Date de commande: {{cmd.commandDate}}</li>
+					<li>Adresse de facturation: {{cmd.adresse}}</li>
+					<li>Informations de paiement: {{cmd.paymentInfo}}</li>
+				</ul>
+				<br>
+				<div class="panel panel-default">
+					<!-- Default panel contents -->
+					<div class="panel-heading">
+						<a ng-click="proccessShow(cmd.commandId)"><span class="glyphicon glyphicon-search"></span>
+							Articles</a>
+					</div>
+
+					<!-- Table -->
+					<table class="table" ng-show="index == cmd.commandId">
+					<thead>
+							<td>Article name</td>
+							<td>Quantity</td>
+							<td>Unit price <span class="glyphicon glyphicon-euro" aria-hidden="true"></td>
+							<td>Total price <span class="glyphicon glyphicon-euro" aria-hidden="true"></td>
+					</thead>
+					<tbody>
+						<tr ng-repeat="line in cmd.cmdLines">
+							<td>{{line.entity.name}}</td>
+							<td>{{line.quantity}}</td>
+							<td>{{line.entity.price}}</td>
+							<td>{{line.entity.price * line.quantity}}</td>
+						</tr>
+						<tr >
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>{{getTotalPrice(cmd.cmdLines)}}</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</li>
+		</ul>
 </div>

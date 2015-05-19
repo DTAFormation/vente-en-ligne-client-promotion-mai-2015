@@ -117,17 +117,17 @@ public class CommandeServiceImpl implements CommandeService {
 	@Override
 	public void saveCommande(){
 		boolean newCommand =false;
+		List<Adresse> addresses= new ArrayList<Adresse>();
+		
 		Commande command = SearchIdCommandeNotValidate();
 		if(command == null){
 			command=new Commande();
 			newCommand=true;
 		}
-
-		List<Adresse> addresses= new ArrayList<Adresse>();
+		
 		address.setUtilisateur(utilisateur);
 		addresses.add(address);
 		utilisateur.setAdresses(addresses);
-		
 		command.setAdresse(address);
 		command.setUtilisateur(utilisateur);
 		command.setDateCommande(new Date(System.currentTimeMillis()));
@@ -138,21 +138,43 @@ public class CommandeServiceImpl implements CommandeService {
 		
 		if(newCommand){
 			for(LigneCommande lc: lineCommand){
+				ArticleService as=new ArticleServiceImpl();
+				
 				lc.setCommande(command);
+				int newStock = (lc.getArticle().getStock()-lc.getQuantity());
+				as.setEm(em);
+				as.updateArticleStock(lc.getArticle().getArticleId(),newStock);
 				em.persist(lc);
 			}
 			em.persist(command);
+		
+			
 		}
 		else{
 			em.merge(command);
+			updateStockCommand(command);
 		}
+		
 		reset();
 	}
 
 	
+	public void updateStockCommand(Commande command) {
+		ArticleService as= new ArticleServiceImpl();
+		
+		Query query = em.createQuery("SELECT lc FROM LigneCommande lc WHERE lc.commande=:command");
+		query.setParameter("command", command);
+		lineCommand = query.getResultList();
+		for(LigneCommande lc: lineCommand){
+			int newStock = (lc.getArticle().getStock()-lc.getQuantity());
+			as.setEm(em);
+			as.updateArticleStock(lc.getArticle().getArticleId(),newStock);
+		}
+	}
+
 	public Commande SearchIdCommandeNotValidate(){
 		Query queryCommandsByValidate = em.createNamedQuery("Commande.findByValidateFalse");
-		List<Commande> commands = queryCommandsByValidate.getResultList();
+		List<Commande> commands = (List<Commande>) queryCommandsByValidate.getResultList();
 		if(commands.size() != 0)
 			return commands.get(0);
 		else{

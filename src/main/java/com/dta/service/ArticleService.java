@@ -2,6 +2,8 @@ package com.dta.service;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import com.dta.domain.Article;
 
 public interface ArticleService {
@@ -10,4 +12,5 @@ public interface ArticleService {
 	public List<Article> findAll();
 	public void updateArticleStock(int id, int stock);
 	public void updateArticleRating(int id, int rating);
+	public void setEm(EntityManager em);
 }

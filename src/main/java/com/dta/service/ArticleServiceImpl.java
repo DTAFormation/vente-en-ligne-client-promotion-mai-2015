@@ -12,7 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.dta.domain.Article;
 
 @Service
+@Transactional
 public class ArticleServiceImpl implements ArticleService{
+
 
 	private EntityManager em;
 
@@ -34,15 +36,14 @@ public class ArticleServiceImpl implements ArticleService{
 	}
 
 	@Override
-	@Transactional
 	public void updateArticleStock(int id, int stock) {
+		System.out.println(em);
 		Article article = em.find(Article.class, id);
 		article.setStock(stock);
 		em.persist(article);
 	}
 		
 	@Override
-	@Transactional
 	public void updateArticleRating(int id, int rating) {
 		Article a = em.find(Article.class, id);
 		a.setRating((a.getRating() * a.getNbRaters() + rating) / (a.getNbRaters() + 1));

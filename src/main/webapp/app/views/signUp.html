@@ -1,58 +1,58 @@
 <section>
-	<div class="container">
-		<form name="profilForm" ng-submit="saveProfil()" novalidate>
-			<div class="input-group">
-				<span class="input-group-addon">First name</span> <input type="text"
-					class="form-control" placeholder="Enter first name"
-					ng-model="profil.firstName" required>
-			</div>
-			<br />
-			<div class="input-group">
-				<span class="input-group-addon">Last name</span> <input type="text"
-					class="form-control" placeholder="Enter last name"
-					ng-model="profil.lastName" required>
-			</div>
-			<br />
-			<div class="input-group">
-				<span class="input-group-addon">Email</span> <input type="email"
-					class="form-control" placeholder="Enter email"
-					ng-model="profil.email" required>
-				
-			</div>
-			<br />
-			<div class="input-group">
-				<span class="input-group-addon">Login</span> <input type="text"
-					class="form-control" placeholder="Enter login"
-					ng-model="profil.login" required>
-			</div>
-			<br />
-			<div class="input-group">
-				<span class="input-group-addon">Password</span> <input
-					type="password" class="form-control" placeholder="Enter password"
-					ng-model="profil.password" required>
-			</div>
-			<br />
-			<div class="input-group">
-				<span class="input-group-addon">Telephone number</span> <input
-					type="text" class="form-control"
-					placeholder="Enter telephone number" ng-model="profil.telephone">
-			</div>
-			<br />
-			<div class="input-group">
-				<span class="input-group-addon">Fax number</span> <input type="text"
-					class="form-control" placeholder="Enter fax number"
-					ng-model="profil.fax">
-			</div>
-			<br />
-			<div class="input-group">
-				<button type="submit" class="btn btn-primary" disabled="disabled"
-					ng-disabled="profilForm.$invalid">Save</button>
-			</div>
-		</form>
-		<br />
-		<button type="button" class="btn btn-default btn-lg"
-			ng-click="goToConnect()">
-			<span class="glyphicon glyphicon-arrow-left"></span>
-		</button>
-	</div>
+    <div class="container">
+        <form name="profilForm" ng-submit="saveProfil()" novalidate>
+            <div class="input-group">
+                <span class="input-group-addon">First name</span> <input type="text"
+                    class="form-control" placeholder="Enter first name"
+                    ng-model="profil.firstName" required>
+            </div>
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">Last name</span> <input type="text"
+                    class="form-control" placeholder="Enter last name"
+                    ng-model="profil.lastName" required>
+            </div>
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">Email</span> <input type="email"
+                    class="form-control" placeholder="Enter email"
+                    ng-model="profil.email" required>
+                
+            </div>
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">Login</span> <input type="text"
+                    class="form-control" placeholder="Enter login"
+                    ng-model="profil.login" required>
+            </div>
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">Password</span> <input
+                    type="password" class="form-control" placeholder="Enter password"
+                    ng-model="profil.password" required>
+            </div>
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">Telephone number</span> <input
+                    type="text" class="form-control"
+                    placeholder="Enter telephone number" ng-model="profil.telephone">
+            </div>
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">Fax number</span> <input type="text"
+                    class="form-control" placeholder="Enter fax number"
+                    ng-model="profil.fax">
+            </div>
+            <br />
+            <div class="input-group">
+                <button type="submit" class="btn btn-primary" disabled="disabled"
+                    ng-disabled="profilForm.$invalid">Save</button>
+            </div>
+        </form>
+        <br />
+        <button type="button" class="btn btn-default btn-lg"
+            ng-click="goToConnect()">
+            <span class="glyphicon glyphicon-arrow-left"></span>
+        </button>
+    </div>
 </section>

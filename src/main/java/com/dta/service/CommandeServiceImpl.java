@@ -25,153 +25,172 @@ import com.dta.domain.Utilisateur;
 @Transactional
 public class CommandeServiceImpl implements CommandeService {
 
-    private EntityManager em;
+	private EntityManager em;
 
-    private Adresse address;
-    private List<LigneCommande> lineCommand = new ArrayList<LigneCommande>();
-    private Utilisateur utilisateur;
-    private static final Logger LOG = LoggerFactory.getLogger(CommandeServiceImpl.class);
+	private Adresse address;
+	private List<LigneCommande> lineCommand = new ArrayList<LigneCommande>();
+	private Utilisateur utilisateur;
 
-    @PersistenceContext(unitName = "entityManagerFactory")
-    public void setEm(EntityManager em) {
-        this.em = em;
-    }
 
-    @Override
-    public List<Commande> getCommandeByLogin(String login) {
+	@PersistenceContext(unitName = "entityManagerFactory")
+	public void setEm(EntityManager em) {
+		this.em = em;
+	}
 
-        List<Commande> commandes = this.findCommandeByLogin(login);
-        List<Commande> validCommandes = new ArrayList<Commande>();
+	@Override
+	public List<Commande> getCommandeByLogin(String login) {
 
-        for(Commande cmd : commandes){
-            if(cmd.isValidate()){
-                validCommandes.add(cmd);
-            }
-        }
-        return validCommandes;
-    }
+		List<Commande> commandes = this.findCommandeByLogin(login);
+		List<Commande> validCommandes = new ArrayList<Commande>();
 
-    @Override
-    public List<Commande> getBasketByLogin(String login) {
+		for(Commande cmd : commandes){
+			if(cmd.isValidate()){
+				validCommandes.add(cmd);
+			}
+		}
+		return validCommandes;
+	}
 
-        List<Commande> commandes = this.findCommandeByLogin(login);
-        List<Commande> unvalidCommandes = new ArrayList<Commande>();
+	@Override
+	public List<Commande> getBasketByLogin(String login) {
 
-        for(Commande cmd : commandes){
-            if(!cmd.isValidate()){
-                unvalidCommandes.add(cmd);
-            }
-        }
-        return unvalidCommandes;
-    }
+		List<Commande> commandes = this.findCommandeByLogin(login);
+		List<Commande> unvalidCommandes = new ArrayList<Commande>();
 
-    public List<Commande> findCommandeByLogin(String login) {
-        Query queryUserByLogin = em.createNamedQuery("findUserByLogin");
-        queryUserByLogin.setParameter("ulogin", login);
+		for(Commande cmd : commandes){
+			if(!cmd.isValidate()){
+				unvalidCommandes.add(cmd);
+			}
+		}
+		return unvalidCommandes;
+	}
 
-        Utilisateur user;
-        try {
-            user = (Utilisateur) queryUserByLogin.getSingleResult();
-        } catch (NoResultException e) {
-            LOG.info("error, login not find", e);
-            return new ArrayList<Commande>();
-        }
+	public List<Commande> findCommandeByLogin(String login) {
+		Query queryUserByLogin = em.createNamedQuery("findUserByLogin");
+		queryUserByLogin.setParameter("ulogin", login);
 
-        return user.getCommandes();
-    }
+		Utilisateur user;
+		try {
+			user = (Utilisateur) queryUserByLogin.getSingleResult();
+		} catch (NoResultException e) {
+			return new ArrayList<Commande>();
+		}
 
-    @Override
-    public void saveBasket(String login){
+		return user.getCommandes();
+	}
 
-        Query queryUserByLogin = em.createNamedQuery("findUserByLogin");
-        queryUserByLogin.setParameter("ulogin", login);
-        utilisateur = (Utilisateur) queryUserByLogin.getSingleResult();
+	public void saveBasket(String login){
 
-        if(getBasketByLogin(login).size() > 0){
-            Commande cmd = getBasketByLogin(login).get(0);
+		Query queryUserByLogin = em.createNamedQuery("findUserByLogin");
+		queryUserByLogin.setParameter("ulogin", login);
+		utilisateur = (Utilisateur) queryUserByLogin.getSingleResult();
 
-            for(LigneCommande lc: cmd.getLigneCommandes()){
-                em.remove(lc);
-            }
-            em.remove(cmd);
-        }
-        Commande newCmd = new Commande();
-        newCmd.setLigneCommandes(lineCommand);
-        newCmd.setValidate(false);
-        newCmd.setUtilisateur(utilisateur);
+		if(getBasketByLogin(login).size() > 0){
+			Commande cmd = getBasketByLogin(login).get(0);
 
-        for(LigneCommande line : lineCommand){
-            line.setCommande(newCmd);
-            em.persist(line);
-        }
-        
-        em.persist(newCmd);
-        reset();
-    }
+			for(LigneCommande lc: cmd.getLigneCommandes()){
+				em.remove(lc);
+			}
+			em.remove(cmd);
+		}
+		Commande newCmd = new Commande();
+		newCmd.setLigneCommandes(lineCommand);
+		newCmd.setValidate(false);
+		newCmd.setUtilisateur(utilisateur);
 
-    @Override
-    public void addLineCommand(LigneCommande lineCommand) {
-        this.lineCommand.add(lineCommand);
-    }
-    
-    private void reset(){
-        address=null;
-        lineCommand = new ArrayList<LigneCommande>();
-    }
-    
-    @Override
-    public void saveCommande(){
-        boolean newCommand =false;
-        Commande command = SearchIdCommandeNotValidate();
-        if(command == null){
-            command=new Commande();
-            newCommand=true;
-        }
+		for(LigneCommande line : lineCommand){
+			line.setCommande(newCmd);
+			em.persist(line);
+		}
+		
+		em.persist(newCmd);
+		reset();
+	}
 
-        List<Adresse> addresses= new ArrayList<Adresse>();
-        address.setUtilisateur(utilisateur);
-        addresses.add(address);
-        utilisateur.setAdresses(addresses);
-        
-        command.setAdresse(address);
-        command.setUtilisateur(utilisateur);
-        command.setDateCommande(new Date(System.currentTimeMillis()));
-        command.setValidate(true);
+	@Override
+	public void addLineCommand(LigneCommande lineCommand) {
+		this.lineCommand.add(lineCommand);
+	}
+	
+	private void reset(){
+		address=null;
+		lineCommand = new ArrayList<LigneCommande>();
+	}
+	
+	@Override
+	public void saveCommande(){
+		boolean newCommand =false;
+		List<Adresse> addresses= new ArrayList<Adresse>();
+		
+		Commande command = SearchIdCommandeNotValidate();
+		if(command == null){
+			command=new Commande();
+			newCommand=true;
+		}
+		
+		address.setUtilisateur(utilisateur);
+		addresses.add(address);
+		utilisateur.setAdresses(addresses);
+		command.setAdresse(address);
+		command.setUtilisateur(utilisateur);
+		command.setDateCommande(new Date(System.currentTimeMillis()));
+		command.setValidate(true);
 
-        em.persist(address);
-        em.merge(utilisateur);
-        
-        if(newCommand){
-            for(LigneCommande lc: lineCommand){
-                lc.setCommande(command);
-                em.persist(lc);
-            }
-            em.persist(command);
-        }
-        else{
-            em.merge(command);
-        }
-        reset();
-    }
+		em.persist(address);
+		em.merge(utilisateur);
+		
+		if(newCommand){
+			for(LigneCommande lc: lineCommand){
+				ArticleService as=new ArticleServiceImpl();
+				
+				lc.setCommande(command);
+				int newStock = (lc.getArticle().getStock()-lc.getQuantity());
+				as.setEm(em);
+				as.updateArticleStock(lc.getArticle().getArticleId(),newStock);
+				em.persist(lc);
+			}
+			em.persist(command);
+		
+			
+		}
+		else{
+			em.merge(command);
+			updateStockCommand(command);
+		}
+		
+		reset();
+	}
 
-    
-    public Commande SearchIdCommandeNotValidate(){
-        Query queryCommandsByValidate = em.createNamedQuery("Commande.findByValidateFalse");
-        List<Commande> commands = queryCommandsByValidate.getResultList();
-        if(commands.size() != 0)
-            return commands.get(0);
-        else{
-            return null;
-        }
-    }
-    
-    @Override
-    public void setAddress(Adresse address) {
-        this.address=address;
-    }
+	
+	public void updateStockCommand(Commande command) {
+		ArticleService as= new ArticleServiceImpl();
+		
+		Query query = em.createQuery("SELECT lc FROM LigneCommande lc WHERE lc.commande=:command");
+		query.setParameter("command", command);
+		lineCommand = query.getResultList();
+		for(LigneCommande lc: lineCommand){
+			int newStock = (lc.getArticle().getStock()-lc.getQuantity());
+			as.setEm(em);
+			as.updateArticleStock(lc.getArticle().getArticleId(),newStock);
+		}
+	}
 
-    @Override
-    public void setUtilisateur(Utilisateur utilisateur) {
-        this.utilisateur = utilisateur;
-    }
+	public Commande SearchIdCommandeNotValidate(){
+		Query queryCommandsByValidate = em.createNamedQuery("Commande.findByValidateFalse");
+		List<Commande> commands = (List<Commande>) queryCommandsByValidate.getResultList();
+		if(commands.size() != 0)
+			return commands.get(0);
+		else{
+			return null;
+		}
+	}
+	
+	@Override
+	public void setAddress(Adresse address) {
+		this.address=address;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
 }

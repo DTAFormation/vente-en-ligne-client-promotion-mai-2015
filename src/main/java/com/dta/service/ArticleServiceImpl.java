@@ -12,45 +12,40 @@ import org.springframework.transaction.annotation.Transactional;
 import com.dta.domain.Article;
 
 @Service
+@Transactional
 public class ArticleServiceImpl implements ArticleService{
+	private EntityManager em;
 
-    private EntityManager em;
+	@PersistenceContext(unitName = "entityManagerFactory")
+	public void setEm(EntityManager em) {
+		this.em = em;
+	}
+	
+	@Override
+	public Article find(int id) {
+		return em.find(Article.class, id);
+	}
 
-    @PersistenceContext(unitName = "entityManagerFactory")
-    public void setEm(EntityManager em) {
-        this.em = em;
-    }
-    
-    @Override
-    public Article find(int id) {
-        return em.find(Article.class, id);
-    }
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Article> findAll() {
+		Query q = em.createQuery("From Article");
+		return (List<Article>) q.getResultList();
+	}
 
-    @Override
-    @SuppressWarnings("unchecked")
-    public List<Article> findAll() {
-        Query q = em.createQuery("From Article");
-        return (List<Article>) q.getResultList();
-    }
-
-    @Override
-    @Transactional
-    public void updateArticleStock(int id, int stock) {
-        Article article = em.find(Article.class, id);
-        article.setStock(stock);
-        em.persist(article);
-    }
-        
-    @Override
-    @Transactional
-    public void updateArticleRating(int id, int rating) {
-        Article a = em.find(Article.class, id);
-        a.setRating((a.getRating() * a.getNbRaters() + rating) / (a.getNbRaters() + 1));
-        a.setNbRaters(a.getNbRaters() + 1);
-        em.persist(a);
-    }
-
-
-    
-
+	@Override
+	public void updateArticleStock(int id, int stock) {
+		System.out.println(em);
+		Article article = em.find(Article.class, id);
+		article.setStock(stock);
+		em.persist(article);
+	}
+		
+	@Override
+	public void updateArticleRating(int id, int rating) {
+		Article a = em.find(Article.class, id);
+		a.setRating((a.getRating() * a.getNbRaters() + rating) / (a.getNbRaters() + 1));
+		a.setNbRaters(a.getNbRaters() + 1);
+		em.persist(a);
+	}
 }

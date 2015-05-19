@@ -12,6 +12,10 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import org.slf4j.Logger; 
+import org.slf4j.LoggerFactory; 
+
+
 import com.dta.domain.Adresse;
 import com.dta.domain.Commande;
 import com.dta.domain.LigneCommande;
@@ -26,7 +30,7 @@ public class CommandeServiceImpl implements CommandeService {
 	private Adresse address;
 	private List<LigneCommande> lineCommand = new ArrayList<LigneCommande>();
 	private Utilisateur utilisateur;
-
+	private static final Logger LOG = LoggerFactory.getLogger(CommandeServiceImpl.class);
 
 	@PersistenceContext(unitName = "entityManagerFactory")
 	public void setEm(EntityManager em) {

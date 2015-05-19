@@ -38,8 +38,11 @@ public class Adresse {
     @ManyToOne
     @JoinTable(name="adresses_utilisateur")
     private Utilisateur utilisateur;
+
+    public Adresse() {
         
-    public Adresse() {}
+    }
+    
     public Adresse(int codePostal, String departement, int num, String pays,
             String rue, String ville, List<Commande> commande,
             Utilisateur utilisateur) {
@@ -52,7 +55,7 @@ public class Adresse {
         this.commande = commande;
         this.utilisateur = utilisateur;
     }
-    
+
     @Override
     public String toString() {
         return "Adresse [adresseId=" + adresseId + ", postCode=" + postcode
@@ -60,7 +63,7 @@ public class Adresse {
                 + ", country=" + country + ", street=" + street + ", city="
                 + city + "]";
     }
-    
+
     public int getAdresseId() {
         return adresseId;
     }

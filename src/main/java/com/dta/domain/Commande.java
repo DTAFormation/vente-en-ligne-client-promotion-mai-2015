@@ -48,7 +48,8 @@ public class Commande {
     private List<LigneCommande> ligneCommandes;
 
 
-    public Commande() {}
+    public Commande() {        
+    }
     
     public Commande(Date dateExpCarteCredit, Date dateCommande,
             String numCarteCredit, String typeCarteCredit, Adresse adresse,

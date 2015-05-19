@@ -35,7 +35,9 @@ public class Produit {
     @Column(nullable=true)
     private List<Article> articles;
     
-    public Produit() {}
+    public Produit() {
+        
+    }
     
     public Produit(String description, String nom, Catalogue catalogue,
             List<Article> articles) {

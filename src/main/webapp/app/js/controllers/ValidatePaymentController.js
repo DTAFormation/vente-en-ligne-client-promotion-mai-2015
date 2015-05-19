@@ -1,5 +1,5 @@
 angular.module("venteEnLigne")
-.controller("ValidatePaymentController", function ($scope, $location, ConnectService, BasketService,ProfilService) {
+.controller("ValidatePaymentController", function ($scope, $location, ConnectService, BasketService,ProfilService,CommandeService) {
     
     $scope.basket = BasketService.getBasket();
     

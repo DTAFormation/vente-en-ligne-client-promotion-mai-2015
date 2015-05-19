@@ -1,57 +1,57 @@
 <section>
-	<div class="row">
-		<div class="col-md-6">
-			<h2>Please validate your Address</h2>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Please validate your Address</h2>
+        </div>
+    </div>
 
-	<div class="container">
-		<form name="AddressForm" ng-submit="saveAddress()" novalidate>
-			<div class="input-group">
-				<span class="input-group-addon">Country</span> <input type="text"
-					class="form-control" placeholder="Enter your Country"
-					ng-model="address.country" required>
-			</div>
-			<br />
-			<div class="input-group">
-				<span class="input-group-addon">Department</span> <input type="text"
-					class="form-control" placeholder="Enter your department"
-					ng-model="address.departement">
-			</div>
-			<br />
-			<div class="input-group">
-				<span class="input-group-addon">City</span> <input type="text"
-					class="form-control" placeholder="Enter your city"
-					ng-model="address.city" required>
-			</div>
-			<br />
-			<div class="input-group">
-				<span class="input-group-addon">postcode</span> <input type="text"
-					class="form-control" placeholder="Enter your postcode"
-					ng-model="address.postcode" required>
-			</div>
-			<br />
-			<div class="input-group">
-				<span class="input-group-addon">Street</span> <input type="text"
-					class="form-control" placeholder="Enter your street"
-					ng-model="address.street" required>
-			</div>
-			<br />
-			<div class="input-group">
-				<span class="input-group-addon">Number</span> <input
-					type="text" class="form-control" placeholder="Enter number of your street"
-					ng-model="address.number" required>
-			</div>
-			<br />
-			<div class="input-group">
-				<button type="submit" class="btn btn-primary" disabled="disabled"
-					ng-disabled="AddressForm.$invalid">Save</button>
-			</div>
-		</form>
-		<br />
-		<button type="button" class="btn btn-default btn-lg"
-			ng-click="goToConnect()">
-			<span class="glyphicon glyphicon-arrow-left"></span>
-		</button>
-	</div>
+    <div class="container">
+        <form name="AddressForm" ng-submit="saveAddress()" novalidate>
+            <div class="input-group">
+                <span class="input-group-addon">Country</span> <input type="text"
+                    class="form-control" placeholder="Enter your Country"
+                    ng-model="address.country" required>
+            </div>
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">Department</span> <input type="text"
+                    class="form-control" placeholder="Enter your department"
+                    ng-model="address.departement">
+            </div>
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">City</span> <input type="text"
+                    class="form-control" placeholder="Enter your city"
+                    ng-model="address.city" required>
+            </div>
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">postcode</span> <input type="text"
+                    class="form-control" placeholder="Enter your postcode"
+                    ng-model="address.postcode" required>
+            </div>
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">Street</span> <input type="text"
+                    class="form-control" placeholder="Enter your street"
+                    ng-model="address.street" required>
+            </div>
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">Number</span> <input
+                    type="text" class="form-control" placeholder="Enter number of your street"
+                    ng-model="address.number" required>
+            </div>
+            <br />
+            <div class="input-group">
+                <button type="submit" class="btn btn-primary" disabled="disabled"
+                    ng-disabled="AddressForm.$invalid">Save</button>
+            </div>
+        </form>
+        <br />
+        <button type="button" class="btn btn-default btn-lg"
+            ng-click="goToConnect()">
+            <span class="glyphicon glyphicon-arrow-left"></span>
+        </button>
+    </div>
 </section>

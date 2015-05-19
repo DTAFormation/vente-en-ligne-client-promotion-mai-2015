@@ -1,32 +1,38 @@
 .nav, .pagination, .carousel, .panel-title a, .clickable-row, .nameicon,
-	.priceicon {
-	cursor: pointer;
+    .priceicon {
+    cursor: pointer;
 }
 
 table th, td {
-	text-align: left
+    text-align: left
 }
 
 thead {
-	background-color: rgb(233, 241, 253)
+    background-color: rgb(233, 241, 253)
 }
 
 .connectInputGroup {
-	margin-top: 15px;
+    margin-top: 15px;
 }
 
 .connectFormError {
-	color: red;
+    color: red;
 }
 
 input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
-	{
-	-webkit-appearance: none;
-	margin: 0;
+    {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+body {
+    
+    padding-right: 5%;
+    padding-left: 5%;
 }
 
 input[type="number"] {
-	-moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
 
 #share-buttons img {
@@ -38,7 +44,6 @@ input[type="number"] {
 }
 
 body {
-	
     padding-right: 5%;
     padding-left: 5%;
 }

@@ -17,18 +17,18 @@ import com.dta.domain.Produit;
     @NamedQuery(name="Article.findAll", query="SELECT a FROM Article a")
 }) 
 public class Article {
-	
-	@Id
-	@GeneratedValue
-	@Column(name="article_id", length=19)
-	private int articleId;
-	@Column(name="nom", unique=true, length=255)
-	private String name;
-	@Column(name="image", length=255)
-	private String image;
-	@Column(name="prix")
-	private float price;
-	@ManyToOne
+    
+    @Id
+    @GeneratedValue
+    @Column(name="article_id", length=19)
+    private int articleId;
+    @Column(name="nom", unique=true, length=255)
+    private String name;
+    @Column(name="image", length=255)
+    private String image;
+    @Column(name="prix")
+    private float price;
+    @ManyToOne
     private Produit produit;
     @Column(name="stock", length=19)
     private int stock;
@@ -37,49 +37,49 @@ public class Article {
     @Column(name="nb_raters", length=19)
     private int nbRaters = 0;
 
-	public Article() {
-	}
-	public Article(String name, float price) {
-		super();
-		this.name = name;
-		this.price = price;
-	}
-	public Article(String name, float price, Produit product, int stock) {
+    public Article() {
+    }
+    public Article(String name, float price) {
+        super();
+        this.name = name;
+        this.price = price;
+    }
+    public Article(String name, float price, Produit product, int stock) {
         this.name = name;
         this.price = price;
         this.produit = product;
         this.stock = stock;
     }
-	public int getArticleId() {
-		return articleId;
-	}
-	public void setArticleId(int articleId) {
-		this.articleId = articleId;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public float getPrice() {
-		return price;
-	}
-	public void setPrice(float price) {
-		this.price = price;
-	}
-	
-	public Produit getProduit() {
+    public int getArticleId() {
+        return articleId;
+    }
+    public void setArticleId(int articleId) {
+        this.articleId = articleId;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public float getPrice() {
+        return price;
+    }
+    public void setPrice(float price) {
+        this.price = price;
+    }
+    
+    public Produit getProduit() {
         return produit;
     }
     public void setProduit(Produit produit) {
         this.produit = produit;
     }
-	
-	public int getStock() {
+    
+    public int getStock() {
         return stock;
     }
-	public void setStock(int stock) {
+    public void setStock(int stock) {
         this.stock = stock;
     }
     public void setImage(String image) {
@@ -91,19 +91,19 @@ public class Article {
     }
     
     public float getRating() {
-		return rating;
-	}
-	public void setRating(float rating) {
-		this.rating = rating;
-	}
-	
-	public int getNbRaters() {
-		return nbRaters;
-	}
-	public void setNbRaters(int nbRaters) {
-		this.nbRaters = nbRaters;
-	}
-	@Override
+        return rating;
+    }
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
+    
+    public int getNbRaters() {
+        return nbRaters;
+    }
+    public void setNbRaters(int nbRaters) {
+        this.nbRaters = nbRaters;
+    }
+    @Override
     public String toString() {
         return "Article [articleId=" + articleId + ", nom=" + name + ", price="
                 + price + ", produit=" + produit + ", stock=" + stock + "]";

@@ -2,56 +2,57 @@
 
 <html>
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-	<!--  CSS -->
-	<link rel="stylesheet" href="app/css/app.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!--  CSS -->
+    <link rel="stylesheet" href="app/css/app.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="http://www.dta-ingenierie.fr/img/logoDTA2.png"> 
 
-	<!-- Libraries -->
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-	<script type="text/javascript" src="https://code.angularjs.org/1.3.15/angular-route.min.js"></script>
-	<script type="text/javascript" src="https://code.angularjs.org/1.3.15/i18n/angular-locale_fr-fr.js"></script>
-	<script type="text/javascript" src="app/js/bootstrap/ui-bootstrap-0.13.0.min.js"></script>
-	
-	<!-- Init and config -->
-	<script type="text/javascript" src="app/js/app.js"></script>
-	<script src="app/js/bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>
-	
-	<!-- Controllers -->
-	<script type="text/javascript" src="app/js/controllers/ConnectController.js"></script>
-	<script type="text/javascript" src="app/js/controllers/DetailController.js"></script>
-	<script type="text/javascript" src="app/js/controllers/SignUpController.js"></script>		
-	<script type="text/javascript" src="app/js/controllers/ValidatePaymentController.js"></script>
-	<script type="text/javascript" src="app/js/controllers/ListItemController.js"></script>
-	<script type="text/javascript" src="app/js/controllers/BasketController.js"></script>
-	<script type="text/javascript" src="app/js/controllers/HeaderController.js"></script>
-	<script type="text/javascript" src="app/js/controllers/ModalController.js"></script>
-	<script type="text/javascript" src="app/js/controllers/PaymentController.js"></script>
-	<script type="text/javascript" src="app/js/controllers/HistoryController.js"></script>
-	<script type="text/javascript" src="app/js/controllers/UserProfileController.js"></script>
-	<script type="text/javascript" src="app/js/controllers/ModifProfileController.js"></script>
-	<script type="text/javascript" src="app/js/controllers/AddressController.js"></script>
+    <!-- Libraries -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script type="text/javascript" src="https://code.angularjs.org/1.3.15/angular-route.min.js"></script>
+    <script type="text/javascript" src="https://code.angularjs.org/1.3.15/i18n/angular-locale_fr-fr.js"></script>
+    <script type="text/javascript" src="app/js/bootstrap/ui-bootstrap-0.13.0.min.js"></script>
+    
+    <!-- Init and config -->
+    <script type="text/javascript" src="app/js/app.js"></script>
+    <script src="app/js/bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>
+    
+    <!-- Controllers -->
+    <script type="text/javascript" src="app/js/controllers/ConnectController.js"></script>
+    <script type="text/javascript" src="app/js/controllers/DetailController.js"></script>
+    <script type="text/javascript" src="app/js/controllers/SignUpController.js"></script>        
+    <script type="text/javascript" src="app/js/controllers/ValidatePaymentController.js"></script>
+    <script type="text/javascript" src="app/js/controllers/ListItemController.js"></script>
+    <script type="text/javascript" src="app/js/controllers/BasketController.js"></script>
+    <script type="text/javascript" src="app/js/controllers/HeaderController.js"></script>
+    <script type="text/javascript" src="app/js/controllers/ModalController.js"></script>
+    <script type="text/javascript" src="app/js/controllers/PaymentController.js"></script>
+    <script type="text/javascript" src="app/js/controllers/HistoryController.js"></script>
+    <script type="text/javascript" src="app/js/controllers/UserProfileController.js"></script>
+    <script type="text/javascript" src="app/js/controllers/ModifProfileController.js"></script>
+    <script type="text/javascript" src="app/js/controllers/AddressController.js"></script>
 
-	<!-- Services -->
-	<script type="text/javascript" src="app/js/services/ConnectService.js"></script>
-	<script type="text/javascript" src="app/js/services/ProfilService.js"></script>
-	<script type="text/javascript" src="app/js/services/ItemService.js"></script>
-	<script type="text/javascript" src="app/js/services/BasketService.js"></script>
-	<script type="text/javascript" src="app/js/services/ModalService.js"></script>
-	<script type="text/javascript" src="app/js/services/CommandeService.js"></script>
-	<script type="text/javascript" src="app/js/services/AddressService.js"></script>
+    <!-- Services -->
+    <script type="text/javascript" src="app/js/services/ConnectService.js"></script>
+    <script type="text/javascript" src="app/js/services/ProfilService.js"></script>
+    <script type="text/javascript" src="app/js/services/ItemService.js"></script>
+    <script type="text/javascript" src="app/js/services/BasketService.js"></script>
+    <script type="text/javascript" src="app/js/services/ModalService.js"></script>
+    <script type="text/javascript" src="app/js/services/CommandeService.js"></script>
+    <script type="text/javascript" src="app/js/services/AddressService.js"></script>
 
-	<title>Vente en ligne</title>
+    <title>Vente en ligne</title>
 </head>
 
 <body ng-app="venteEnLigne">
-	<ng-include src="'app/views/header.html'"></ng-include>
-	<br>
-	<br>
-	<br>
-	<div style="margin-left: auto; margin-right: auto; width: 1000px">
-		<ng-view></ng-view>
-	</div>
+    <ng-include src="'app/views/header.html'"></ng-include>
+    <br>
+    <br>
+    <br>
+    <div style="margin-left: auto; margin-right: auto; width: 1000px">
+        <ng-view></ng-view>
+    </div>
 </body>
 </html>
